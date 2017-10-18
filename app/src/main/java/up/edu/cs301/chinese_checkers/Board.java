@@ -12,9 +12,13 @@ import android.graphics.Path;
 /*Class for drawing the board.*/
 public class Board
 {
-    protected float x, y;
     protected Path board;
     protected Paint myPaint;
+
+    public Board()
+    {
+
+    }
 
     public void draw(Canvas c)
     {
