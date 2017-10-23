@@ -2,6 +2,8 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/up.edu.cs301.chinese_checkers"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -9,6 +11,7 @@
     tools:context="up.edu.cs301.chinese_checkers.MainActivity">
 
     <LinearLayout
+        android:id="@+id/ll1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -36,11 +39,12 @@
 
         </LinearLayout>
 
-        <SurfaceView
+        <up.edu.cs301.chinese_checkers.BoardSurfaceView
             android:id="@+id/boardSurfaceView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/darker_gray"/>
 
         <LinearLayout
             android:layout_width="wrap_content"

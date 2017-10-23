@@ -1,0 +1,2 @@
+1.  Consulted for learning how to draw on a SurfaceView:  https://stackoverflow.com/questions/10931419/android-drawing-on-surfaceview-and-canvas
+2.  Consulted for learning how to add custom attributes to XML file:  https://developer.android.com/training/custom-views/create-view.html

@@ -1,25 +1,160 @@
 package up.edu.cs301.chinese_checkers;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Path;
+import android.graphics.Paint;
+import android.icu.text.DisplayContext;
+import android.util.AttributeSet;
+import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.widget.LinearLayout;
 
 /**
  * Created by Luke D. Douville on 10/17/17.
  */
 
-public class BoardSurfaceView extends SurfaceView
+public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callback
 {
+    private SurfaceView boardSurfaceView;
+    private SurfaceHolder boardSurfaceHolder;
+    private Board b;
+    protected Path boardPath;
+    protected Paint boardPaint;
+    private Canvas tempCanvas;
+    private LinearLayout boardSurfaceViewParent;
+    private Context context;
+
     public BoardSurfaceView(Context context)
     {
         super(context);
     }
 
-//    @Override
-//    public void draw(Canvas c)//error message:  overriding method should call super.draw()
-//    {
-//        Board b = new Board();
+    public BoardSurfaceView(Context context, AttributeSet as)
+    {
+        super(context, as);
+        if(!isInEditMode())
+        {
+            init(context);
+        }
+
+//        TypedArray ta = context.getTheme().obtainStyledAttributes(as, R.styleable.BoardSurfaceView, 0, 0);
+//        try
+//        {
+//
+//        }
+
+//        boardSurfaceHolder = boardSurfaceView.getHolder();
+//        boardSurfaceHolder.addCallback(this);
+//        boardSurfaceView.setWillNotDraw(false);
+//        boardSurfaceView.invalidate();
+    }
+
+    public BoardSurfaceView(Context context, AttributeSet as, int defStyle)
+    {
+        super(context, as, defStyle);
+        if(!isInEditMode())
+        {
+            init(context);
+        }
+    }
+
+    private void init(Context context)
+    {
+        this.context = context;
+        boardPaint = new Paint();
+        boardPaint.setColor(Color.BLUE);
+        boardSurfaceViewParent = (LinearLayout)findViewById(R.id.ll1);
+        if(boardSurfaceView.getHeight() == 0)
+        {
+            boardSurfaceView.setMinimumHeight(boardSurfaceViewParent.getHeight());
+        }
+        if(boardSurfaceView.getWidth() == 0)
+        {
+            boardSurfaceView.setMinimumWidth(boardSurfaceViewParent.getWidth());
+        }
+        /*Draw top triangle.*/
+        boardPath.moveTo(100, 200);
+        boardPath.lineTo(200, 100);
+        boardPath.lineTo(300, 200);
+        boardPath.lineTo(100, 200);
+        boardSurfaceHolder = boardSurfaceView.getHolder();
+        boardSurfaceHolder.addCallback(this);
+        boardSurfaceView.setWillNotDraw(false);
+//        boardSurfaceView.invalidate();
+        tempCanvas = boardSurfaceHolder.lockCanvas();
+    }
+
+    @Override
+    public void onSizeChanged(int currWidth, int currHeight, int oldWidth, int oldHeight)
+    {
+        currWidth = oldWidth;
+        currHeight = oldHeight;
+    }
+
+    /*Have to clean project after project is built with draw instead of onDraw.*/
+    @Override
+    public void onDraw(Canvas c)
+//    public void draw(Canvas c)
+    {
+//        c = boardSurfaceHolder.lockCanvas();
+        super.onDraw(c);
+//        c = boardSurfaceHolder.lockCanvas();
+//        b = new Board();
 //        b.draw(c);
-//    }
+//        boardSurfaceHolder = boardSurfaceView.getHolder();
+//        surfaceCreated(boardSurfaceHolder);
+//        boardSurfaceHolder.addCallback(this);
+//        boardSurfaceView.setWillNotDraw(false);
+//        boardSurfaceView.invalidate();
+//        c.drawColor(Color.WHITE);
+//        boardPaint = new Paint();
+//        boardPaint.setColor(Color.BLUE);
+        /*Put setting of Path variable(s) in init() method.  onDraw should only contain commands to draw a Paint object.*/
+        /*Draw top triangle.*/
+//        boardPath.moveTo(500, 200);
+//        boardPath.lineTo(600, 100);
+//        boardPath.lineTo(700, 200);
+//        boardPath.lineTo(500, 200);
+
+        /*Really does not like this line of code for some reason.
+        * Layout builder will not render if the line below is not commented.*/
+//        c.drawPath(boardPath, boardPaint);
+    }
+
+    /*Needed all three of these abstract methods or else the class wouldn't compile.*/
+    public void surfaceChanged(SurfaceHolder sh, int a, int b, int c)
+    {
+
+    }
+
+    public void surfaceDestroyed(SurfaceHolder sh)
+    {
+
+    }
+
+    public void surfaceCreated(SurfaceHolder sh)
+    {
+//        boardPaint.setColor(Color.BLUE);
+//        /*Draw top triangle.*/
+//        boardPath.moveTo(500, 200);
+//        boardPath.lineTo(600, 100);
+//        boardPath.lineTo(700, 200);
+//        boardPath.lineTo(500, 200);
+
+//        tempCanvas = sh.lockCanvas();
+//        draw(tempCanvas);
+
+//        boardSurfaceHolder = boardSurfaceView.getHolder();
+//        boardSurfaceHolder.addCallback(this);
+//        boardSurfaceView.setWillNotDraw(false);
+//        tempCanvas = boardSurfaceHolder.lockCanvas();
+//        onDraw(tempCanvas);//error:  suspicious call; should probably call "draw" rather than "onDraw"
+//        boardSurfaceView.invalidate();
+    }
 }

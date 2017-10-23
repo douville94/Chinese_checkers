@@ -20,13 +20,15 @@ public class Board
 
     }
 
+    /*Maybe put all this info in the constructor and call the onDraw method in the MainActivity class?*/
     public void draw(Canvas c)
     {
-        myPaint.setColor(Color.BLACK);
+        myPaint.setColor(Color.BLUE);
         /*Draw top triangle.*/
         board.moveTo(500, 200);
         board.lineTo(600, 100);
         board.lineTo(700, 200);
+        board.lineTo(500, 200);
 
         /*After all Path points set:*/
         c.drawPath(board, myPaint);
