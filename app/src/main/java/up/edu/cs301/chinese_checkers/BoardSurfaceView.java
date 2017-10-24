@@ -21,7 +21,7 @@ import android.widget.LinearLayout;
 
 public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callback
 {
-//    private SurfaceView boardSurfaceView;
+    //    private SurfaceView boardSurfaceView;
 //    private SurfaceHolder boardSurfaceHolder;
 //    private Board b;
     protected Path boardPath;

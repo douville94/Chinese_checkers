@@ -16,13 +16,13 @@ public class MainActivity extends AppCompatActivity// implements SurfaceHolder.C
 {
     private TextView turnTextView;
     private TextView currentPlayerTextView;
-//    private SurfaceView boardSurfaceView;
+    //    private SurfaceView boardSurfaceView;
 //    private SurfaceHolder boardSurfaceHolder;
 //    private Path board;
     private Board b;
     private Canvas c;
     private BoardSurfaceView bsf;
-//    Path boardPath;//does not get assigned if "private" modifier used
+    //    Path boardPath;//does not get assigned if "private" modifier used
 //    Paint boardPaint;
     private Bitmap bm;
     private int width, height;
@@ -32,10 +32,10 @@ public class MainActivity extends AppCompatActivity// implements SurfaceHolder.C
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        turnTextView = (TextView)findViewById(R.id.turnTextView);
-        currentPlayerTextView = (TextView)findViewById(R.id.currentPlayerTextView);
+        turnTextView = (TextView) findViewById(R.id.turnTextView);
+        currentPlayerTextView = (TextView) findViewById(R.id.currentPlayerTextView);
 //        boardSurfaceView = (SurfaceView)findViewById(R.id.boardSurfaceView);
-        bsf = (BoardSurfaceView)findViewById(R.id.boardSurfaceView);
+        bsf = (BoardSurfaceView) findViewById(R.id.boardSurfaceView);
 //        bsf = new BoardSurfaceView(this);
 //        setContentView(bsf);
 //        b = new Board();
