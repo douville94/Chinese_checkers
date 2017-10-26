@@ -1,6 +1,6 @@
 package up.edu.cs301.game.actionMsg;
 
-import up.edu.cs301.game.GamePlayer;
+import up.edu.cs301.game.CCPlayer;
 
 /**
  * An action by which the player tells the game its name
@@ -9,7 +9,7 @@ import up.edu.cs301.game.GamePlayer;
  * @author Steven R. Vegdahl
  * @version July 2013
  */
-public class ReadyAction extends GameAction
+public class ReadyAction extends CCAction
 {
 
     // to satisfy the Serializable interface
@@ -20,7 +20,7 @@ public class ReadyAction extends GameAction
      *
      * @param p the player who sent the action
      */
-    public ReadyAction(GamePlayer p)
+    public ReadyAction(CCPlayer p)
     {
         super(p);
     }

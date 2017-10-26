@@ -2,7 +2,7 @@ package up.edu.cs301.game.actionMsg;
 
 import java.io.Serializable;
 
-import up.edu.cs301.game.GamePlayer;
+import up.edu.cs301.game.CCPlayer;
 
 /**
  * An action for a generic game.  A game action is something that a player
@@ -21,21 +21,21 @@ import up.edu.cs301.game.GamePlayer;
  * @author Andrew M. Nuxoll
  * @version July 2013
  */
-public abstract class GameAction implements Serializable
+public abstract class CCAction implements Serializable
 {
 
     // to support the Serializable interface
     private static final long serialVersionUID = 30672013L;
 
     // the player who generated the request
-    private GamePlayer player;
+    private CCPlayer player;
 
     /**
-     * constructor for GameAction
+     * constructor for CCAction
      *
      * @param player the player who created the action
      */
-    public GameAction(GamePlayer player)
+    public CCAction(CCPlayer player)
     {
         this.player = player;
     }
@@ -45,7 +45,7 @@ public abstract class GameAction implements Serializable
      *
      * @return the player who created the action
      */
-    public GamePlayer getPlayer()
+    public CCPlayer getPlayer()
     {
         return player;
     }
@@ -56,7 +56,7 @@ public abstract class GameAction implements Serializable
      *
      * @param p the new player to which the action is to be associated
      */
-    public void setPlayer(GamePlayer p)
+    public void setPlayer(CCPlayer p)
     {
         this.player = p;
     }

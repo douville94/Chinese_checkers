@@ -7,7 +7,7 @@ package up.edu.cs301.game.infoMsg;
  * @author Steven R. Vegdahl
  * @version July 2013
  */
-public class IllegalMoveInfo extends GameInfo
+public class IllegalMoveInfo extends CCInfo
 {
 
     // to satisfy Serializable interface

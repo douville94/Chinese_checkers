@@ -7,7 +7,7 @@ package up.edu.cs301.game.infoMsg;
  * @author Steven R. Vegdahl
  * @version July 2013
  */
-public class GameOverInfo extends GameInfo
+public class GameOverInfo extends CCInfo
 {
 
     // to satisfy the Serializable interface

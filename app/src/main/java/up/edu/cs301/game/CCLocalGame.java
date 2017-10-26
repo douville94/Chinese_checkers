@@ -5,7 +5,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
-import up.edu.cs301.game.actionMsg.GameAction;
+import up.edu.cs301.game.actionMsg.CCAction;
 import up.edu.cs301.game.actionMsg.GameOverAckAction;
 import up.edu.cs301.game.actionMsg.MyNameIsAction;
 import up.edu.cs301.game.actionMsg.ReadyAction;
@@ -31,7 +31,7 @@ import up.edu.cs301.game.util.Tickable;
  * @author Andrew Nuxoll
  * @version July 2013
  */
-public abstract class LocalGame implements Game, Tickable
+public abstract class CCLocalGame implements CCGame, Tickable
 {
 
     // the stage that the game is in
@@ -41,7 +41,7 @@ public abstract class LocalGame implements Game, Tickable
     private Handler myHandler;
 
     // the players in the game, in order of  player number
-    protected GamePlayer[] players;
+    protected CCPlayer[] players;
 
     // whether the game's thread is running
     private boolean running = false;
@@ -76,7 +76,7 @@ public abstract class LocalGame implements Game, Tickable
      *
      * @param players the list of players who are playing in the game
      */
-    public void start(GamePlayer[] players)
+    public void start(CCPlayer[] players)
     {
         // if the game has already started, don't restart
         if(this.players != null)
@@ -85,7 +85,7 @@ public abstract class LocalGame implements Game, Tickable
         }
 
         // create/store a copy of the player array
-        this.players = (GamePlayer[]) players.clone();
+        this.players = (CCPlayer[]) players.clone();
 
         // create an array for the players' names; these names will be
         // filled during the initial message-protocol between the game
@@ -109,7 +109,7 @@ public abstract class LocalGame implements Game, Tickable
                 public void run()
                 {
                     Looper.prepare();
-                    myHandler = new MyHandler(LocalGame.this);
+                    myHandler = new MyHandler(CCLocalGame.this);
                     Looper.loop();
                 }
             };
@@ -138,7 +138,7 @@ public abstract class LocalGame implements Game, Tickable
      *
      * @param p the player to notify
      */
-    protected abstract void sendUpdatedStateTo(GamePlayer p);
+    protected abstract void sendUpdatedStateTo(CCPlayer p);
 
     /**
      * Notify all players that the game's state has changed. Typically this simply
@@ -146,7 +146,7 @@ public abstract class LocalGame implements Game, Tickable
      */
     protected final void sendAllUpdatedState()
     {
-        for(GamePlayer p : players)
+        for(CCPlayer p : players)
         {
             sendUpdatedStateTo(p);
         }
@@ -158,7 +158,7 @@ public abstract class LocalGame implements Game, Tickable
      * @param p the player whose player ID we want
      * @return the player's ID, or -1 if the player is not a player in this game
      */
-    protected final int getPlayerIdx(GamePlayer p)
+    protected final int getPlayerIdx(CCPlayer p)
     {
         for(int i = 0; i < players.length; i++)
         {
@@ -178,9 +178,9 @@ public abstract class LocalGame implements Game, Tickable
      */
     private void receiveMessage(Message msg)
     {
-        if(msg.obj instanceof GameAction)
-        { // ignore if not GameAction
-            GameAction action = (GameAction) msg.obj;
+        if(msg.obj instanceof CCAction)
+        { // ignore if not CCAction
+            CCAction action = (CCAction) msg.obj;
 
             // CASE 1: the game is at the stage where we we waiting for
             // players to tell us their names. In this case, we expect
@@ -209,7 +209,7 @@ public abstract class LocalGame implements Game, Tickable
                     Log.i("LocalGame", "broadcasting player names");
                     gameStage = GameStage.WAITING_FOR_READY;
                     playersReady = new boolean[players.length]; // array to keep track of players responding
-                    for(GamePlayer p : players)
+                    for(CCPlayer p : players)
                     {
                         p.sendInfo(
                                 new StartGameInfo((String[]) playerNames.clone()));
@@ -255,7 +255,7 @@ public abstract class LocalGame implements Game, Tickable
                 {
                     this.checkAndHandleAction(action);
                 }
-            } else if(action instanceof GameAction && gameStage == GameStage.DURING_GAME)
+            } else if(action instanceof CCAction && gameStage == GameStage.DURING_GAME)
             {
 
                 // CASE 4: it's during the game, and we get an action from a player
@@ -281,11 +281,11 @@ public abstract class LocalGame implements Game, Tickable
      *
      * @param action the action that was sent
      */
-    private final void checkAndHandleAction(GameAction action)
+    private final void checkAndHandleAction(CCAction action)
     {
 
         // get the player and player ID
-        GamePlayer player = action.getPlayer();
+        CCPlayer player = action.getPlayer();
         int playerId = getPlayerIdx(player);
 
         // if the player is NOT a player who is presently allowed to
@@ -352,7 +352,7 @@ public abstract class LocalGame implements Game, Tickable
         playerFinishedCount = 0;
 
         // send all players a "game over" message
-        for(GamePlayer p : players)
+        for(CCPlayer p : players)
         {
             p.sendInfo(new GameOverInfo(msg));
         }
@@ -364,14 +364,14 @@ public abstract class LocalGame implements Game, Tickable
      * @param action The move that the player has sent to the game
      * @return Tells whether the move was a legal one.
      */
-    protected abstract boolean makeMove(GameAction action);
+    protected abstract boolean makeMove(CCAction action);
 
     /**
      * sends a given action to the Game object
      *
      * @param action the action to send
      */
-    public final void sendAction(GameAction action)
+    public final void sendAction(CCAction action)
     {
         // wait until handler is set
         while(myHandler == null)
@@ -412,10 +412,10 @@ public abstract class LocalGame implements Game, Tickable
     private static class MyHandler extends Handler
     {
         // the game
-        private LocalGame game;
+        private CCLocalGame game;
 
         // constructor; parameter is expected to be this game
-        public MyHandler(LocalGame game)
+        public MyHandler(CCLocalGame game)
         {
             this.game = game;
         }

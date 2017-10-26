@@ -1,9 +1,9 @@
 package up.edu.cs301.game.config;
 
-import up.edu.cs301.game.GamePlayer;
+import up.edu.cs301.game.CCPlayer;
 
 /**
- * class GamePlayerType
+ * class CCPlayerType
  * <p>
  * An instance of this class describes a single type of game player. Typical
  * player types include: "local human player", "remote human player",
@@ -14,7 +14,7 @@ import up.edu.cs301.game.GamePlayer;
  * @see GameConfig
  */
 
-public abstract class GamePlayerType implements Cloneable /*, Serializable*/
+public abstract class CCPlayerType implements Cloneable /*, Serializable*/
 {
 
 //	/** satisfy the Serializable interface */
@@ -31,7 +31,7 @@ public abstract class GamePlayerType implements Cloneable /*, Serializable*/
 //	 * chess game you might specify the string "edu.up.chess.ChessHumanPlayer"
 //	 * 
 //	 * IMPORTANT: All player classes (AI, human or remote) must be a subclass of
-//	 * Activity and must implement the GamePlayerOld interface and must be
+//	 * Activity and must implement the CCPlayerOld interface and must be
 //	 * registered in your AndroidManifest.xml file.
 //	 */
 //	public String playerClassName;
@@ -39,14 +39,14 @@ public abstract class GamePlayerType implements Cloneable /*, Serializable*/
     /**
      * ctor provided for convenience to initialize instance variables
      */
-    public GamePlayerType(String typeName)
+    public CCPlayerType(String typeName)
     {
         this.typeName = typeName;
     }
 
     /**
      * by making this class implement the Cloneable interface, we allow copies
-     * of it to be made. Since GamePlayerType is such a simple class, the
+     * of it to be made. Since CCPlayerType is such a simple class, the
      * default, shallow copy functionality in java.lang.Object is sufficient.
      */
     public Object clone()
@@ -65,7 +65,7 @@ public abstract class GamePlayerType implements Cloneable /*, Serializable*/
         return typeName;
     }
 
-    //	public abstract GamePlayer createPlayer(Game game, int playerNum);
-    public abstract GamePlayer createPlayer(String name);
+    //	public abstract CCPlayer createPlayer(CCGame game, int playerNum);
+    public abstract CCPlayer createPlayer(String name);
 
-}// class GamePlayerType
+}// class CCPlayerType

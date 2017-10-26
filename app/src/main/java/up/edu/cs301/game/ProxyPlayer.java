@@ -2,9 +2,9 @@ package up.edu.cs301.game;
 
 import android.util.Log;
 
-import up.edu.cs301.game.actionMsg.GameAction;
+import up.edu.cs301.game.actionMsg.CCAction;
 import up.edu.cs301.game.infoMsg.BindGameInfo;
-import up.edu.cs301.game.infoMsg.GameInfo;
+import up.edu.cs301.game.infoMsg.CCInfo;
 import up.edu.cs301.game.util.NetworkObjectPasser;
 
 /**
@@ -17,11 +17,11 @@ import up.edu.cs301.game.util.NetworkObjectPasser;
  * @author Steven R. Vegdahl
  * @version July 2013
  */
-public class ProxyPlayer implements GamePlayer
+public class ProxyPlayer implements CCPlayer
 {
 
     // the game object
-    private Game game;
+    private CCGame game;
 
     // the object that connects us to the network
     private NetworkObjectPasser networkPasser;
@@ -54,11 +54,11 @@ public class ProxyPlayer implements GamePlayer
                     // that has come across the network
                     public void onReceiveObject(Object obj)
                     {
-                        if(obj instanceof GameAction)
+                        if(obj instanceof CCAction)
                         {
                             // if it's a game action (which it should be), send
                             // the action to the game
-                            GameAction action = (GameAction) obj;
+                            CCAction action = (CCAction) obj;
                             action.setPlayer(ProxyPlayer.this);
                             game.sendAction(action);
                         }
@@ -88,11 +88,11 @@ public class ProxyPlayer implements GamePlayer
     }
 
     /**
-     * Used by the game to send a GameInfo object to this player
+     * Used by the game to send a CCInfo object to this player
      *
      * @param state The state to send
      */
-    public void sendInfo(GameInfo state)
+    public void sendInfo(CCInfo state)
     {
         if(game == null && state instanceof BindGameInfo)
         {
@@ -104,7 +104,7 @@ public class ProxyPlayer implements GamePlayer
             game = ((BindGameInfo) state).getGame();
         }
 
-        // Null out the game from the GameInfo object (if present),
+        // Null out the game from the CCInfo object (if present),
         // so that the entire game does not get passed across the
         // network
         state.setGame(null);
@@ -118,7 +118,7 @@ public class ProxyPlayer implements GamePlayer
      * Set this game as a GUI. (Should never be called because the
      * 'supportsGui' method returns false.)
      */
-    public final void gameSetAsGui(GameMainActivity a)
+    public final void gameSetAsGui(CCMainActivity a)
     {
     }
 
@@ -126,7 +126,7 @@ public class ProxyPlayer implements GamePlayer
      * Set this game as a GUI. (Should never be called because the
      * 'supportsGui' method returns false.)
      */
-    public void setAsGui(GameMainActivity a)
+    public void setAsGui(CCMainActivity a)
     {
     }
 

@@ -5,8 +5,8 @@ import android.util.Log;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import up.edu.cs301.game.actionMsg.GameAction;
-import up.edu.cs301.game.infoMsg.GameInfo;
+import up.edu.cs301.game.actionMsg.CCAction;
+import up.edu.cs301.game.infoMsg.CCInfo;
 import up.edu.cs301.game.util.IPCoder;
 import up.edu.cs301.game.util.NetworkObjectPasser;
 
@@ -21,15 +21,15 @@ import up.edu.cs301.game.util.NetworkObjectPasser;
  * @author Steven R. Vegdahl
  * @version July 2013
  */
-public class ProxyGame implements Game
+public class ProxyGame implements CCGame
 {
 
     // the player associated with this game
-    private GamePlayer player;
+    private CCPlayer player;
 
     // a queue of objects that are collected, which might have been sent over the
     // network before we are connected to a player
-    private Queue<GameInfo> queuedObjectsForPlayer = new LinkedList<GameInfo>();
+    private Queue<CCInfo> queuedObjectsForPlayer = new LinkedList<CCInfo>();
 
     // the network-connection object
     private NetworkObjectPasser networkPasser;
@@ -84,11 +84,11 @@ public class ProxyGame implements Game
                 Log.i("ProxyGame", "received object (" + obj.getClass() + ")");
                 try
                 {
-                    boolean b = obj instanceof GameInfo;
+                    boolean b = obj instanceof CCInfo;
                     if(b)
                     {
                         // object is a GameStae object
-                        GameInfo gs = (GameInfo) obj;
+                        CCInfo gs = (CCInfo) obj;
                         gs.setGame(ProxyGame.this);
                         synchronized (this)
                         {
@@ -109,7 +109,7 @@ public class ProxyGame implements Game
                         }
                     } else
                     {
-                        // ignore if the object is not a GameInfo object
+                        // ignore if the object is not a CCInfo object
                         Log.i("ProxyGame", "object NOT being sent to player");
                     }
                 } catch(Exception x)
@@ -126,7 +126,7 @@ public class ProxyGame implements Game
      *
      * @param action the action object to apply
      */
-    public final void sendAction(GameAction action)
+    public final void sendAction(CCAction action)
     {
         // Send the action across the socket, nulling out the player in
         // the action so that the entire player is not serialized.
@@ -141,7 +141,7 @@ public class ProxyGame implements Game
      * Starts the game. In this context, we know that the array will
      * contain exactly one player.
      */
-    public void start(GamePlayer[] players)
+    public void start(CCPlayer[] players)
     {
         Log.i("ProxyGame", "start() called");
 
@@ -168,7 +168,7 @@ public class ProxyGame implements Game
         // accumulated in the queue before the player was bound
         for(; ; )
         {
-            GameInfo unqueuedObject;
+            CCInfo unqueuedObject;
             synchronized (this)
             {
                 if(queuedObjectsForPlayer.isEmpty())

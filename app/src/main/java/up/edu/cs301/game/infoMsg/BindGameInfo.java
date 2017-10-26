@@ -1,6 +1,6 @@
 package up.edu.cs301.game.infoMsg;
 
-import up.edu.cs301.game.Game;
+import up.edu.cs301.game.CCGame;
 
 /**
  * A message from the game to a player that tells the player:
@@ -10,14 +10,14 @@ import up.edu.cs301.game.Game;
  * @author Steven R. Vegdahl
  * @version July 2013
  */
-public class BindGameInfo extends GameInfo
+public class BindGameInfo extends CCInfo
 {
 
     // to satisfy the Serializable interface
     private static final long serialVersionUID = 8819385408185187694L;
 
     // the game object
-    Game game;
+    CCGame game;
 
     // the player's ID number
     int playerNum;
@@ -28,7 +28,7 @@ public class BindGameInfo extends GameInfo
      * @param g  the game
      * @param pn the player number in the game
      */
-    public BindGameInfo(Game g, int pn)
+    public BindGameInfo(CCGame g, int pn)
     {
         game = g;
         playerNum = pn;
@@ -39,7 +39,7 @@ public class BindGameInfo extends GameInfo
      *
      * @return the game
      */
-    public Game getGame()
+    public CCGame getGame()
     {
         return game;
     }
@@ -60,7 +60,7 @@ public class BindGameInfo extends GameInfo
      *
      * @param g the game
      */
-    public void setGame(Game g)
+    public void setGame(CCGame g)
     {
         game = g;
     }

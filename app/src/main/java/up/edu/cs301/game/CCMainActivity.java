@@ -27,7 +27,7 @@ import java.util.ArrayList;
 
 import up.edu.cs301.chinese_checkers.R;
 import up.edu.cs301.game.config.GameConfig;
-import up.edu.cs301.game.config.GamePlayerType;
+import up.edu.cs301.game.config.CCPlayerType;
 import up.edu.cs301.game.util.IPCoder;
 import up.edu.cs301.game.util.MessageBox;
 
@@ -41,7 +41,7 @@ import up.edu.cs301.game.util.MessageBox;
  * @author Steven R. Vegdahl
  * @date Version 2013
  */
-public abstract class GameMainActivity extends Activity implements
+public abstract class CCMainActivity extends Activity implements
         View.OnClickListener
 {
 
@@ -54,13 +54,13 @@ public abstract class GameMainActivity extends Activity implements
     // A reference to the object representing the game itself. This is the
     // object that knows the rules of the game. This variable is initialized in
     // launchGame.
-    private Game game = null;
+    private CCGame game = null;
 
     // an array containing references to all the players that are playing the game
-    private GamePlayer[] players = null;
+    private CCPlayer[] players = null;
 
     // tells which player, if any, is running in the GUI
-    private GamePlayer guiPlayer = null;
+    private CCPlayer guiPlayer = null;
 
     // whether the game is over
     private boolean gameIsOver = false;
@@ -85,7 +85,7 @@ public abstract class GameMainActivity extends Activity implements
 	/*
 	 * ====================================================================
 	 * Abstract Methods
-	 * 
+	 *
 	 * To create a game using the game framework you must create a subclass of
 	 * GameMainActivity that implements the following methods.
 	 * --------------------------------------------------------------------
@@ -108,12 +108,12 @@ public abstract class GameMainActivity extends Activity implements
      * Creates a new game that runs on the server tablet. For example, if
      * you were creating tic-tac-toe, you would implement this method to return
      * an instance of your TTTLocalGame class which, in turn, would be a
-     * subclass of {@link LocalGame}.
+     * subclass of {@link CCLocalGame}.
      *
      * @return a new, game-specific instance of a sub-class of the LocalGame
      * class.
      */
-    public abstract LocalGame createLocalGame();
+    public abstract CCLocalGame createLocalGame();
 
     /**
      * Creates a "proxy" game that acts as an intermediary between a local
@@ -291,14 +291,14 @@ public abstract class GameMainActivity extends Activity implements
         //////////////////////////////////////
         int requiresGuiCount = 0; // the number of players that require a GUI
         guiPlayer = null; // the player that will be our GUI player
-        players = new GamePlayer[config.getNumPlayers()]; // the array to contains our players
+        players = new CCPlayer[config.getNumPlayers()]; // the array to contains our players
 
         // loop through each player
         for(int i = 0; i < players.length; i++)
         {
             String name = config.getSelName(i); // the player's name
-            GamePlayerType gpt = config.getSelType(i); // the player's type
-            GamePlayerType[] availTypes = config.getAvailTypes(); // the available player types
+            CCPlayerType gpt = config.getSelType(i); // the player's type
+            CCPlayerType[] availTypes = config.getAvailTypes(); // the available player types
             players[i] = gpt.createPlayer(name); // create the player
 
             // check that the player name is legal
@@ -407,8 +407,8 @@ public abstract class GameMainActivity extends Activity implements
             playerName.setText(config.getSelName(i));
 
             // Set the initial selection for the spinner
-            GamePlayerType[] selTypes = config.getSelTypes(); // the player types in the config
-            GamePlayerType[] availTypes = config.getAvailTypes(); // the available player types
+            CCPlayerType[] selTypes = config.getSelTypes(); // the player types in the config
+            CCPlayerType[] availTypes = config.getAvailTypes(); // the available player types
             Spinner typeSpinner = (Spinner) row
                     .findViewById(R.id.playerTypeSpinner); // the spinner for the current player
             // search through to find the one whose label matches; set it as the selection
@@ -439,8 +439,8 @@ public abstract class GameMainActivity extends Activity implements
         remoteNameEditText.setText(config.getRemoteName());
 
         // index of remote player type
-        GamePlayerType remotePlayerType = config.getRemoteSelType();
-        GamePlayerType[] availTypes = config.getAvailTypes();
+        CCPlayerType remotePlayerType = config.getRemoteSelType();
+        CCPlayerType[] availTypes = config.getAvailTypes();
         Spinner remoteTypeSpinner = (Spinner) findViewById(R.id.remote_player_spinner);
         for(int j = 0; j < availTypes.length; ++j)
         {
@@ -626,12 +626,12 @@ public abstract class GameMainActivity extends Activity implements
                 R.layout.game_player_list_row, playerTable, false);
 
         // Initialize the values in the Spinner control
-        //		GamePlayerType[] selTypes = config.getSelTypes();
-        GamePlayerType[] availTypes = config.getAvailTypes();
+        //		CCPlayerType[] selTypes = config.getSelTypes();
+        CCPlayerType[] availTypes = config.getAvailTypes();
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(
                 this, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        for(GamePlayerType gpt : availTypes)
+        for(CCPlayerType gpt : availTypes)
         {
             adapter.add(gpt.getTypeName());
         }

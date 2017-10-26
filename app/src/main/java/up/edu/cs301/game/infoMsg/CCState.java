@@ -9,7 +9,7 @@ package up.edu.cs301.game.infoMsg;
  * @author Steven R. Vegdahl
  * @version July 2013
  */
-public abstract class GameState extends GameInfo
+public abstract class CCState extends CCInfo
 {
 
     // to satisfy the Serializable interface

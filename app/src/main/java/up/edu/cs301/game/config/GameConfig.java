@@ -11,8 +11,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-import up.edu.cs301.game.GameMainActivity;
-import up.edu.cs301.game.GamePlayer;
+import up.edu.cs301.game.CCMainActivity;
+import up.edu.cs301.game.CCPlayer;
 import up.edu.cs301.game.ProxyPlayer;
 
 /**
@@ -28,7 +28,7 @@ import up.edu.cs301.game.ProxyPlayer;
  * @author Andrew Nuxoll
  * @author Steven R. Vegdahl
  * @version July 2013
- * @see GameMainActivity
+ * @see CCMainActivity
  */
 public class GameConfig
 {
@@ -36,7 +36,7 @@ public class GameConfig
     /**
      * a list of all valid player types that the user chooses
      */
-    private GamePlayerType[] availTypes;
+    private CCPlayerType[] availTypes;
 
     /**
      * a list of the names of each player
@@ -50,12 +50,12 @@ public class GameConfig
      * automatically via the {@link #addPlayer} and {@link #removePlayer}
      * methods.
      */
-    private ArrayList<GamePlayerType> selTypes = new ArrayList<GamePlayerType>();
+    private ArrayList<CCPlayerType> selTypes = new ArrayList<CCPlayerType>();
 
     /**
      * The player type selected in the remote player tab.
      */
-    private GamePlayerType remoteSelType;
+    private CCPlayerType remoteSelType;
 
     /**
      * if set to true, indicates the game will be run on the local computer
@@ -130,22 +130,22 @@ public class GameConfig
      * @param gameName   the name of the game
      * @param portNum    the port number used by this game for connecting over the network
      */
-    public GameConfig(ArrayList<GamePlayerType> availTypes, int minPlayers,
+    public GameConfig(ArrayList<CCPlayerType> availTypes, int minPlayers,
                       int maxPlayers, String gameName, int portNum)
     {
 
         // create an array to hold the available player types, including
         // the "Network Player" that will be added
         int arrayLength = availTypes.size() + 1;
-        GamePlayerType[] availArray = new GamePlayerType[arrayLength];
+        CCPlayerType[] availArray = new CCPlayerType[arrayLength];
 
         // add the player types passed in to the constructor
         availTypes.toArray(availArray);
 
         // add the network player
-        availArray[arrayLength - 1] = new GamePlayerType("Network Player")
+        availArray[arrayLength - 1] = new CCPlayerType("Network Player")
         {
-            public GamePlayer createPlayer(String name)
+            public CCPlayer createPlayer(String name)
             {
                 int portNum = getPortNum();
                 return new ProxyPlayer(portNum);
@@ -178,7 +178,7 @@ public class GameConfig
      * @param gameName   the name of the game
      * @param portNum    the port number used by this game for connecting over the network
      */
-    private GameConfig(GamePlayerType[] availTypes, int minPlayers,
+    private GameConfig(CCPlayerType[] availTypes, int minPlayers,
                        int maxPlayers, String gameName, int portNum)
     {
 
@@ -186,7 +186,7 @@ public class GameConfig
         initGameConfig(availTypes, minPlayers, maxPlayers, gameName, portNum);
     }
 
-    private void initGameConfig(GamePlayerType[] availTypes, int minPlayers,
+    private void initGameConfig(CCPlayerType[] availTypes, int minPlayers,
                                 int maxPlayers, String gameName, int portNum)
     {
 
@@ -241,7 +241,7 @@ public class GameConfig
      * @param activity the current activity
      * @return a boolean that denotes whether the operation was successful
      */
-    public boolean saveConfig(String fileName, GameMainActivity activity)
+    public boolean saveConfig(String fileName, CCMainActivity activity)
     {
 
         // if the player-name and player-type arrays are of different sizes, something
@@ -269,7 +269,7 @@ public class GameConfig
             oos.writeObject(selNames);
 
             // write out the names of the players' types
-            for(GamePlayerType gpt : selTypes)
+            for(CCPlayerType gpt : selTypes)
             {
                 oos.writeObject(gpt.getTypeName());
             }
@@ -295,7 +295,7 @@ public class GameConfig
      * @param activity the current activity
      * @return a boolean that denotes whether the operation was successful
      */
-    public boolean restoreSavedConfig(String fileName, GameMainActivity activity)
+    public boolean restoreSavedConfig(String fileName, CCMainActivity activity)
     {
 
         // the input stream from which we will read the objects
@@ -314,7 +314,7 @@ public class GameConfig
             String ipTemp = ois.readObject().toString();
 
             // map the player type name to the corresponding player type
-            GamePlayerType gpt = findPlayerType(typeNameTemp);
+            CCPlayerType gpt = findPlayerType(typeNameTemp);
             if(gpt == null)
             {
                 // if could not map the name to a player type, there is an
@@ -352,10 +352,10 @@ public class GameConfig
 
             // convert player type names to player types; abort if there is a
             // mapping failure
-            ArrayList<GamePlayerType> selTypesTemp = new ArrayList<GamePlayerType>();
+            ArrayList<CCPlayerType> selTypesTemp = new ArrayList<CCPlayerType>();
             for(String typeName : typeNames)
             {
-                GamePlayerType gpt2 = findPlayerType(typeName);
+                CCPlayerType gpt2 = findPlayerType(typeName);
                 if(gpt2 == null)
                 {
                     // mapping failure: abort
@@ -413,18 +413,18 @@ public class GameConfig
     }//restoreSavedConfig
 
     /**
-     * helper-method to convert a menu-item string to a GamePlayerType object in the
+     * helper-method to convert a menu-item string to a CCPlayerType object in the
      * available player list.
      *
      * @param menuString the string in the menu that corrsponds to the given player type
-     * @return the GamePlayerType object that corresponds to that string, or null
-     * if no such GamePlayerType object exists
+     * @return the CCPlayerType object that corresponds to that string, or null
+     * if no such CCPlayerType object exists
      */
-    private GamePlayerType findPlayerType(String menuString)
+    private CCPlayerType findPlayerType(String menuString)
     {
         // search/match the available-types array, returning the
-        // corresponding GamePlayerType object
-        for(GamePlayerType gpt : availTypes)
+        // corresponding CCPlayerType object
+        for(CCPlayerType gpt : availTypes)
         {
             if(menuString.equals(gpt.getTypeName()))
             {
@@ -440,7 +440,7 @@ public class GameConfig
     /**
      * @return the available player types
      */
-    public GamePlayerType[] getAvailTypes()
+    public CCPlayerType[] getAvailTypes()
     {
         return availTypes;
     }// getAvailTypes
@@ -554,19 +554,19 @@ public class GameConfig
     }// getSelName
 
     /**
-     * @return an array of GamePlayerType objects that correspond to whether
+     * @return an array of CCPlayerType objects that correspond to whether
      * a local or remote game was selected
      */
-    public GamePlayerType[] getSelTypes()
+    public CCPlayerType[] getSelTypes()
     {
         if(isLocal)
         {
             // local game: fill an array with copies of the objects in this.selTypes
-            GamePlayerType[] retVal = new GamePlayerType[selTypes.size()];
+            CCPlayerType[] retVal = new CCPlayerType[selTypes.size()];
             int index = 0;
-            for(GamePlayerType gpt : this.selTypes)
+            for(CCPlayerType gpt : this.selTypes)
             {
-                retVal[index] = (GamePlayerType) gpt.clone();
+                retVal[index] = (CCPlayerType) gpt.clone();
                 ++index;
             }
             return retVal;
@@ -574,7 +574,7 @@ public class GameConfig
         {
             // remote game: create a one-element array with a clone of the remote
             // player type
-            return new GamePlayerType[]{(GamePlayerType) remoteSelType.clone()};
+            return new CCPlayerType[]{(CCPlayerType) remoteSelType.clone()};
         }
     }// getSelTypes
 
@@ -584,7 +584,7 @@ public class GameConfig
      * @param index of the player whose type is wanted
      * @return the player's name or null if index is invalid
      */
-    public GamePlayerType getSelType(int index)
+    public CCPlayerType getSelType(int index)
     {
         if(isLocal)
         {
@@ -641,7 +641,7 @@ public class GameConfig
     /**
      * @return the type of the remote player
      */
-    public GamePlayerType getRemoteSelType()
+    public CCPlayerType getRemoteSelType()
     {
         return remoteSelType;
     }// getRemotePlayerType

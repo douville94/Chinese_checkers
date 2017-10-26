@@ -7,7 +7,7 @@ import up.edu.cs301.game.actionMsg.GameOverAckAction;
 import up.edu.cs301.game.actionMsg.MyNameIsAction;
 import up.edu.cs301.game.actionMsg.ReadyAction;
 import up.edu.cs301.game.infoMsg.BindGameInfo;
-import up.edu.cs301.game.infoMsg.GameInfo;
+import up.edu.cs301.game.infoMsg.CCInfo;
 import up.edu.cs301.game.infoMsg.GameOverInfo;
 import up.edu.cs301.game.infoMsg.StartGameInfo;
 import up.edu.cs301.game.infoMsg.TimerInfo;
@@ -24,19 +24,19 @@ import up.edu.cs301.game.util.Tickable;
  * @author Andrew Nuxoll
  * @version July 2013
  */
-public abstract class GameComputerPlayer implements GamePlayer, Tickable
+public abstract class CCComputerPlayer implements CCPlayer, Tickable
 {
     /**
      * the current game state
      */
-    protected Game game; // the game object
+    protected CCGame game; // the game object
     protected int playerNum; // which player number I am
     protected String name; // my name
     protected String[] allPlayerNames; // list of all player names, in ID order
     private Handler myHandler; // the handler for this player's thread
     private boolean running; // whether the player's thread is running
     private boolean gameOver = false; // whether the game is over
-    private GameMainActivity myActivity; // the game's main activity, set only
+    private CCMainActivity myActivity; // the game's main activity, set only
     // this game is connected to the GUI
     private GameTimer myTimer = new GameTimer(this); // my timer
 
@@ -61,7 +61,7 @@ public abstract class GameComputerPlayer implements GamePlayer, Tickable
 	/*
 	 * ====================================================================
 	 * Abstract Methods
-	 * 
+	 *
 	 * Create the game specific functionality for this human player by
 	 * sub-classing this class and implementing the following methods.
 	 * --------------------------------------------------------------------
@@ -78,7 +78,7 @@ public abstract class GameComputerPlayer implements GamePlayer, Tickable
      *
      * @param name the player's name (e.g., "John")
      */
-    public GameComputerPlayer(String name)
+    public CCComputerPlayer(String name)
     {
         this.name = name;
     }
@@ -90,7 +90,7 @@ public abstract class GameComputerPlayer implements GamePlayer, Tickable
      *
      * @param a the activity that is being run
      */
-    public final void gameSetAsGui(GameMainActivity a)
+    public final void gameSetAsGui(CCMainActivity a)
     {
         myActivity = a;
         setAsGui(a);
@@ -104,7 +104,7 @@ public abstract class GameComputerPlayer implements GamePlayer, Tickable
      *
      * @param activity the activity that is being run
      */
-    public void setAsGui(GameMainActivity activity)
+    public void setAsGui(CCMainActivity activity)
     {
         // default behavior is to do nothing
     }
@@ -123,7 +123,7 @@ public abstract class GameComputerPlayer implements GamePlayer, Tickable
      *
      * @param info the information message to send
      */
-    public final void sendInfo(GameInfo info)
+    public final void sendInfo(CCInfo info)
     {
         // post the state to the player's thread, waiting (if needed) until handler is there
         while(myHandler == null)
@@ -168,7 +168,7 @@ public abstract class GameComputerPlayer implements GamePlayer, Tickable
      *
      * @param info the object representing the information from the game
      */
-    protected abstract void receiveInfo(GameInfo info);
+    protected abstract void receiveInfo(CCInfo info);
 
     /**
      * Helper-class to post a message to this player's thread
@@ -197,9 +197,9 @@ public abstract class GameComputerPlayer implements GamePlayer, Tickable
             }
 
             // if it's a GameInfo object, process it
-            if(data instanceof GameInfo)
+            if(data instanceof CCInfo)
             { // ignore non GameInfo objects
-                GameInfo myInfo = (GameInfo) data;
+                CCInfo myInfo = (CCInfo) data;
                 if(game == null)
                 {
 
@@ -212,7 +212,7 @@ public abstract class GameComputerPlayer implements GamePlayer, Tickable
                         playerNum = bgs.getPlayerNum(); // set our player ID
 
                         // send a message to the game with our player's name
-                        game.sendAction(new MyNameIsAction(GameComputerPlayer.this, name));
+                        game.sendAction(new MyNameIsAction(CCComputerPlayer.this, name));
                     }
                 } else if(allPlayerNames == null)
                 {
@@ -226,7 +226,7 @@ public abstract class GameComputerPlayer implements GamePlayer, Tickable
                         // perform game-specific initialization
                         initAfterReady();
                         // tell game that we're ready to play
-                        game.sendAction(new ReadyAction(GameComputerPlayer.this));
+                        game.sendAction(new ReadyAction(CCComputerPlayer.this));
                     }
                 } else if(myInfo instanceof GameOverInfo)
                 {
@@ -242,7 +242,7 @@ public abstract class GameComputerPlayer implements GamePlayer, Tickable
                     }
 
                     // acknowledge to the game that we have receive the message
-                    game.sendAction(new GameOverAckAction(GameComputerPlayer.this));
+                    game.sendAction(new GameOverAckAction(CCComputerPlayer.this));
 
                     // mark game as being over
                     gameOver = true;

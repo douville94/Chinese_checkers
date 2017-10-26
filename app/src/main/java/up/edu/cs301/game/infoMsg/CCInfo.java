@@ -2,7 +2,7 @@ package up.edu.cs301.game.infoMsg;
 
 import java.io.Serializable;
 
-import up.edu.cs301.game.Game;
+import up.edu.cs301.game.CCGame;
 
 /**
  * An informational message that is sent from the game to a player.  The
@@ -17,7 +17,7 @@ import up.edu.cs301.game.Game;
  * @author Andrew M. Nuxoll
  * @version July 2013
  */
-public abstract class GameInfo implements Serializable
+public abstract class CCInfo implements Serializable
 {
     /**
      * satisfy the Serializable interface
@@ -31,7 +31,7 @@ public abstract class GameInfo implements Serializable
      *
      * @param g the game to which the objects 'game' attribute is to be set
      */
-    public void setGame(Game g)
+    public void setGame(CCGame g)
     {
         // the default behavior is to do nothing, as it is expected that most
         // GameInfo objects do not contain game information.

@@ -1,6 +1,6 @@
 package up.edu.cs301.game.actionMsg;
 
-import up.edu.cs301.game.GamePlayer;
+import up.edu.cs301.game.CCPlayer;
 
 /**
  * An action by which the player tells the game its name
@@ -9,7 +9,7 @@ import up.edu.cs301.game.GamePlayer;
  * @author Steven R. Vegdahl
  * @version July 2013
  */
-public class MyNameIsAction extends GameAction
+public class MyNameIsAction extends CCAction
 {
 
     // to satisfy the Serializable interface
@@ -24,7 +24,7 @@ public class MyNameIsAction extends GameAction
      * @param p    the player who sent the action
      * @param name the player's name
      */
-    public MyNameIsAction(GamePlayer p, String name)
+    public MyNameIsAction(CCPlayer p, String name)
     {
         super(p); // invoke superclass constructor
         this.name = name; // set the name

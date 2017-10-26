@@ -1,6 +1,6 @@
 package up.edu.cs301.game.actionMsg;
 
-import up.edu.cs301.game.GamePlayer;
+import up.edu.cs301.game.CCPlayer;
 
 /**
  * An action by which the player acknowledges that the game is over.
@@ -8,7 +8,7 @@ import up.edu.cs301.game.GamePlayer;
  * @author Steven R. Vegdahl
  * @version July 2013
  */
-public class GameOverAckAction extends GameAction
+public class GameOverAckAction extends CCAction
 {
 
     // to satisfy the Serializable interface
@@ -19,7 +19,7 @@ public class GameOverAckAction extends GameAction
      *
      * @param p the player to sent the action
      */
-    public GameOverAckAction(GamePlayer p)
+    public GameOverAckAction(CCPlayer p)
     {
         super(p);
     }
