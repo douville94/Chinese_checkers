@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.8">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/editText3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:gravity="center_horizontal"
+                        android:inputType="textMultiLine"
+                        android:text="Game manual \n  Overview   \nChinese checkers is a board game, that, while not actually originating from China, has been proven popular in the West for decades.  The objective is for one user to move his or her pieces to occupy the opponent’s side of the board.  The game is playable with two, three, four, or six players.  Five-player games are not possible because the fifth player would have no opponent.  In this manual, the reader will find all the instructions for playing our Chinese checkers Android application.      Launching the app   To open the app, tap the app icon on your Android device.  This will bring the user to the main menu (Figure 3).  The main menu is where the user can choose to start a new game, continue a saved game, or read the game rules.  Selecting “NEW GAME” will take the user to the setup menu.  Selecting “CONTINUE GAME” will take the player to the last game that was saved.  There is only one save slot.      Starting a new game   After selecting “new game” on the main menu, the user will be brought to the setup menu.  The setup menu will have a tab labeled “LOCAL GAME” and another labeled “REMOTE GAME”.  The LOCAL GAME tab allows the user to play a game on that specific tablet.  The REMOTE GAME tab allows the user to play another user over the network.   In the LOCAL GAME setup tab, select the number of desired players from a drop-down menu.  Select each button that subsequently appears to toggle between human player, dumb computer player, or smart computer player.  The Chinese checkers local game is configurable for two, three, four, and six players.   In the REMOTE GAME setup tab, enter in the IP address of the desired tablet to connect to.   After configuring the number and types of players in the game (for LOCAL GAME) or entering in the opponent’s IP address (for REMOTE GAME), click the button labeled “START GAME” to start a new game. The second graphical user interface (GUI), representing the game board, will appear.  The players will be color-coded.  Player one is blue, player two is green, player three is red, player four is purple, player five is yellow, and player six is purple.      Moving a piece   To move a piece, tap on it to select it, then tap on one of the highlighted circles.  The piece will now appear in the circle you just tapped. Pressing the confirm button will end the player's turn.      Saving the game   A user, if it is his or her turn, can save the game by tapping the “SAVE” button in the main game GUI (Figure 4). If the user closes the app and opens it again later and taps the “Continue” button, that user can resume the most recently saved game. However, there is only one save slot, so every save overwrites the previous one.      Ending the game   The game ends when either all of one player’s pieces are on the opposite end of the board.      Qutting the game   Selecting the “QUIT” button will return the player to the main menu. " />
+                </LinearLayout>
+            </ScrollView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:text="CONTINUE" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:text="LOAD GAME" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1" />
+    </LinearLayout>
+
+</LinearLayout>
