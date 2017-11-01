@@ -108,8 +108,6 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 //        c = boardSurfaceHolder.lockCanvas();
 //        super.onDraw(c);
 //        c = boardSurfaceHolder.lockCanvas();
-//        b = new Board();
-//        b.draw(c);
 //        boardSurfaceHolder = boardSurfaceView.getHolder();
 //        surfaceCreated(boardSurfaceHolder);
 //        boardSurfaceHolder.addCallback(this);

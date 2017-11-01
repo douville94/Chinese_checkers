@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import up.edu.cs301.chinese_checkers.BoardSurfaceView;
 import up.edu.cs301.chinese_checkers.R;
 import up.edu.cs301.game.config.GameConfig;
 import up.edu.cs301.game.config.CCPlayerType;
@@ -72,6 +73,9 @@ public abstract class CCMainActivity extends Activity implements
     // whether the game is in the "configuration" stage, before the actual game
     // has started
     private boolean doingConfiguration = true;
+
+    private TextView turnTextView, currentPlayerTextView;
+    private BoardSurfaceView bsf;
 
     /**
      * contains the game configuration this activity will be used to initialize
@@ -181,6 +185,23 @@ public abstract class CCMainActivity extends Activity implements
             }
         }
 
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        turnTextView = (TextView) findViewById(R.id.turnTextView);
+        currentPlayerTextView = (TextView) findViewById(R.id.currentPlayerTextView);
+//        boardSurfaceView = (SurfaceView)findViewById(R.id.boardSurfaceView);
+        bsf = (BoardSurfaceView) findViewById(R.id.boardSurfaceView);
+//        bsf = new BoardSurfaceView(this);
+//        setContentView(bsf);
+//        b = new Board();
+//        c = new Canvas();/*These two lines cause program to crash*/
+//        b.draw(c);
+//        boardSurfaceHolder = boardSurfaceView.getHolder();
+//        boardSurfaceHolder.addCallback(this);//this line only works if class implements SurfaceHolder.Callback interface
+//        boardSurfaceView.setWillNotDraw(false);
+//        boardSurfaceView.invalidate();
+//        bsf.invalidate();
+        /*Create a Bitmap object?*/
     }// onCreate
 
     /**
