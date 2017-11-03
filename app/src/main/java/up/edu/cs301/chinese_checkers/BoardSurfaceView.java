@@ -114,6 +114,8 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 //        boardSurfaceView.setWillNotDraw(false);
 //        boardSurfaceView.invalidate();
 //        c.drawColor(Color.WHITE);
+
+        /*Layout editor is unhappy if you instantiate boardPaint and boardPath in the init method.*/
         boardPaint = new Paint();
         boardPath = new Path();
 

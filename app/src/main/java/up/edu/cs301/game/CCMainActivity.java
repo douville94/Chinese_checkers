@@ -45,7 +45,6 @@ import up.edu.cs301.game.util.MessageBox;
 public abstract class CCMainActivity extends Activity implements
         View.OnClickListener
 {
-
 	/*
      * ====================================================================
 	 * Instance Variables
@@ -149,8 +148,11 @@ public abstract class CCMainActivity extends Activity implements
     {
         super.onCreate(savedInstanceState);
 
-        // Initialize the layout
-        setContentView(R.layout.game_config_main);
+        /*Initialize the layout*/
+        /*Use this line later*/
+//        setContentView(R.layout.game_config_main);
+
+        setContentView(R.layout.activity_main);
 
         // create the default configuration for this game
         this.config = createDefaultConfig();
@@ -186,7 +188,7 @@ public abstract class CCMainActivity extends Activity implements
         }
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+//        setContentView(R.layout.activity_main);
         turnTextView = (TextView) findViewById(R.id.turnTextView);
         currentPlayerTextView = (TextView) findViewById(R.id.currentPlayerTextView);
 //        boardSurfaceView = (SurfaceView)findViewById(R.id.boardSurfaceView);
