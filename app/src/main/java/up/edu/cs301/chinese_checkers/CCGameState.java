@@ -7,5 +7,5 @@ import up.edu.cs301.game.infoMsg.CCState;
  */
 
 public class CCGameState extends CCState {
-
+    
 }

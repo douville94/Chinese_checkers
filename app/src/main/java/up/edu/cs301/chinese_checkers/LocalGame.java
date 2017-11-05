@@ -10,6 +10,29 @@ import up.edu.cs301.game.infoMsg.CCState;
  */
 
 public class LocalGame extends CCLocalGame {
+
+    // the game's state
+    protected CCGameState state;
+
+    // the marks for player 0 and player 1, respectively
+    //private final static char[] mark = {'X','O'};
+
+    // the number of moves that have been played so far, used to
+    // determine whether the game is over
+    //protected int moveCount;
+
+    /**
+     * Constructor for the LocalGame.
+     */
+    public LocalGame() {
+
+        // perform superclass initialization
+        super();
+
+        // create a new, unfilled-in CCGameState object
+        state = new CCGameState();
+    }
+
     @Override
     protected void sendUpdatedStateTo(CCPlayer p) {
         
