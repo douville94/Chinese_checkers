@@ -3,6 +3,7 @@ package up.edu.cs301.chinese_checkers;
 import up.edu.cs301.game.CCLocalGame;
 import up.edu.cs301.game.CCPlayer;
 import up.edu.cs301.game.actionMsg.CCAction;
+import up.edu.cs301.game.infoMsg.CCState;
 
 /**
  * Created by qihangwu on 10/30/17.
@@ -11,7 +12,7 @@ import up.edu.cs301.game.actionMsg.CCAction;
 public class LocalGame extends CCLocalGame {
     @Override
     protected void sendUpdatedStateTo(CCPlayer p) {
-
+        
     }
 
     @Override
