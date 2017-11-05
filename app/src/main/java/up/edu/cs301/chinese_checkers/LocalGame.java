@@ -30,23 +30,22 @@ public class LocalGame extends CCLocalGame {
         super();
 
         // create a new, unfilled-in CCGameState object
-        state = new CCGameState();
+        state = new CCGameState(state);
     }
 
     @Override
     protected void sendUpdatedStateTo(CCPlayer p) {
-        
+        // make a copy of the state, and send it to the player
+        p.sendInfo(new CCGameState(state));
     }
 
     @Override
     protected boolean canMove(int playerIdx) {
-        return false;
+        return playerIdx == state.getWhoseMove();
     }
 
     @Override
-    protected String checkIfGameOver() {
-        return null;
-    }
+    protected String checkIfGameOver() {return null; }
 
     @Override
     protected boolean makeMove(CCAction action) {
