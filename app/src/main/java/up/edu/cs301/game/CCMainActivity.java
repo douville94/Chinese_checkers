@@ -158,32 +158,35 @@ public abstract class CCMainActivity extends Activity implements
         this.config = createDefaultConfig();
 
         // if there is a saved configuration, modify the default configuration accordingly
-        if(!this.config.restoreSavedConfig(saveFileName(), this))
+        if(this.config != null)
         {
-            MessageBox.popUpMessage("Error in attempting to read game configuration file.",
-                    this);
-        }
-
-        if(this.config.isUserModifiable())
-        { // normal run: user has chance to modify configuration
-
-            // initialize and show the GUI that allows the user to specify the game's
-            // configuration
-            initStarterGui();
-
-            // hide the soft keyboard, so the that user does not need to dismiss it (which
-            // he would often want to do)
-            hideSoftKeyboard();
-
-            // allow buttons to interact
-            justStarted = false;
-        } else
-        { // special run (during debugging?): use the given configuration, unmodified
-            String msg = launchGame(this.config);
-            if(msg != null)
+            if(!this.config.restoreSavedConfig(saveFileName(), this))
             {
-                // we have an error message
-                MessageBox.popUpMessage(msg, this);
+                MessageBox.popUpMessage("Error in attempting to read game configuration file.",
+                        this);
+            }
+
+            if(this.config.isUserModifiable())
+            { // normal run: user has chance to modify configuration
+
+                // initialize and show the GUI that allows the user to specify the game's
+                // configuration
+                initStarterGui();
+
+                // hide the soft keyboard, so the that user does not need to dismiss it (which
+                // he would often want to do)
+                hideSoftKeyboard();
+
+                // allow buttons to interact
+                justStarted = false;
+            } else
+            { // special run (during debugging?): use the given configuration, unmodified
+                String msg = launchGame(this.config);
+                if(msg != null)
+                {
+                    // we have an error message
+                    MessageBox.popUpMessage(msg, this);
+                }
             }
         }
 
