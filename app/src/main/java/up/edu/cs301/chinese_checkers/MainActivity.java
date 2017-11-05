@@ -11,43 +11,47 @@ import android.graphics.Path;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Bitmap;
+import up.edu.cs301.game.CCMainActivity;
+import up.edu.cs301.game.config.GameConfig;
+import up.edu.cs301.game.CCLocalGame;
 
-public class MainActivity extends AppCompatActivity// implements SurfaceHolder.Callback
+public class MainActivity extends CCMainActivity//AppCompatActivity// implements SurfaceHolder.Callback
 {
     private TextView turnTextView;
     private TextView currentPlayerTextView;
     //    private SurfaceView boardSurfaceView;
 //    private SurfaceHolder boardSurfaceHolder;
 //    private Path board;
-    private Board b;
-    private Canvas c;
+    private Canvas canvas;
     private BoardSurfaceView bsf;
     //    Path boardPath;//does not get assigned if "private" modifier used
 //    Paint boardPaint;
     private Bitmap bm;
     private int width, height;
+    private GameConfig g;
+    private CCLocalGame c;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        turnTextView = (TextView) findViewById(R.id.turnTextView);
-        currentPlayerTextView = (TextView) findViewById(R.id.currentPlayerTextView);
-//        boardSurfaceView = (SurfaceView)findViewById(R.id.boardSurfaceView);
-        bsf = (BoardSurfaceView) findViewById(R.id.boardSurfaceView);
-//        bsf = new BoardSurfaceView(this);
-//        setContentView(bsf);
-//        b = new Board();
-//        c = new Canvas();/*These two lines cause program to crash*/
-//        b.draw(c);
-//        boardSurfaceHolder = boardSurfaceView.getHolder();
-//        boardSurfaceHolder.addCallback(this);//this line only works if class implements SurfaceHolder.Callback interface
-//        boardSurfaceView.setWillNotDraw(false);
-//        boardSurfaceView.invalidate();
-//        bsf.invalidate();
-        /*Create a Bitmap object?*/
-    }
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState)
+//    {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_main);
+//        turnTextView = (TextView) findViewById(R.id.turnTextView);
+//        currentPlayerTextView = (TextView) findViewById(R.id.currentPlayerTextView);
+////        boardSurfaceView = (SurfaceView)findViewById(R.id.boardSurfaceView);
+//        bsf = (BoardSurfaceView) findViewById(R.id.boardSurfaceView);
+////        bsf = new BoardSurfaceView(this);
+////        setContentView(bsf);
+////        b = new Board();
+////        c = new Canvas();/*These two lines cause program to crash*/
+////        b.draw(c);
+////        boardSurfaceHolder = boardSurfaceView.getHolder();
+////        boardSurfaceHolder.addCallback(this);//this line only works if class implements SurfaceHolder.Callback interface
+////        boardSurfaceView.setWillNotDraw(false);
+////        boardSurfaceView.invalidate();
+////        bsf.invalidate();
+//        /*Create a Bitmap object?*/
+//    }
 
 //    protected void onDraw(Canvas c)
 //    {
@@ -84,4 +88,16 @@ public class MainActivity extends AppCompatActivity// implements SurfaceHolder.C
 //    {
 //
 //    }
+
+    @Override
+    public GameConfig createDefaultConfig()
+    {
+        return g;
+    }
+
+    @Override
+    public CCLocalGame createLocalGame()
+    {
+        return c;
+    }
 }
