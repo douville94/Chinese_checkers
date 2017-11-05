@@ -19,8 +19,7 @@
                 android:id="@+id/playerNameHeadingText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|left"
-                android:text="@string/player_name" />
+                android:layout_gravity="center_vertical|left"/>
 
             <TextView
                 android:id="@+id/textView1"

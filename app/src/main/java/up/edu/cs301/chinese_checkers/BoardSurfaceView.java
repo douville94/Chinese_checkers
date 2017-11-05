@@ -26,14 +26,14 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 //    private Board b;
     protected Path boardPath;
     protected Paint boardPaint;
-//    private Canvas tempCanvas;
-//    private LinearLayout boardSurfaceViewParent;
+    private Canvas tempCanvas;
+    private LinearLayout boardSurfaceViewParent;
 //    private Context context;
 
     public BoardSurfaceView(Context context)
     {
-
         super(context);
+        init();
     }
 
     public BoardSurfaceView(Context context, AttributeSet as)
@@ -68,9 +68,9 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
     private void init()//Context context)
     {
 //        this.context = context;
-        boardPaint = new Paint();
+//        boardPaint = new Paint();
 //        boardPaint.setColor(Color.BLUE);
-        boardPath = new Path();
+//        boardPath = new Path();
 //        boardSurfaceViewParent = (LinearLayout)findViewById(R.id.ll1);
 //        if(this.getHeight() == 0)
 //        {
@@ -108,23 +108,24 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 //        c = boardSurfaceHolder.lockCanvas();
 //        super.onDraw(c);
 //        c = boardSurfaceHolder.lockCanvas();
-//        b = new Board();
-//        b.draw(c);
 //        boardSurfaceHolder = boardSurfaceView.getHolder();
 //        surfaceCreated(boardSurfaceHolder);
 //        boardSurfaceHolder.addCallback(this);
 //        boardSurfaceView.setWillNotDraw(false);
 //        boardSurfaceView.invalidate();
 //        c.drawColor(Color.WHITE);
-//        boardPaint = new Paint();
+
+        /*Layout editor is unhappy if you instantiate boardPaint and boardPath in the init method.*/
+        boardPaint = new Paint();
+        boardPath = new Path();
 
         /*Working code*/
-//        boardPaint.setColor(Color.BLUE);
-//        /*Draw top triangle.*/
-//        boardPath.moveTo(500, 200);
-//        boardPath.lineTo(600, 100);
-//        boardPath.lineTo(700, 200);
-//        boardPath.lineTo(500, 200);
+        boardPaint.setColor(Color.BLUE);
+        /*Draw top triangle.*/
+        boardPath.moveTo(500, 200);
+        boardPath.lineTo(600, 100);
+        boardPath.lineTo(700, 200);
+        boardPath.lineTo(500, 200);
 
 //        boardSurfaceViewParent = (LinearLayout)findViewById(R.id.ll1);
 //        if(this.getHeight() == 0)
@@ -137,7 +138,7 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 //        }
 
         /*Working code*/
-//        c.drawPath(boardPath, boardPaint);
+        c.drawPath(boardPath, boardPaint);
     }
 
     /*Needed all three of these abstract methods or else the class wouldn't compile.*/
@@ -159,9 +160,9 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 //        boardPath.lineTo(600, 100);
 //        boardPath.lineTo(700, 200);
 //        boardPath.lineTo(500, 200);
-
+//
 //        tempCanvas = sh.lockCanvas();
-//        draw(tempCanvas);
+//        onDraw(tempCanvas);
 
 //        boardSurfaceHolder = boardSurfaceView.getHolder();
 //        boardSurfaceHolder.addCallback(this);
