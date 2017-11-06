@@ -419,37 +419,35 @@ public abstract class CCMainActivity extends Activity implements
         config.setLocal(true);
 
         // put a row in the table for each player in the config
-        this.playerTable = (TableLayout) findViewById(R.id.configTableLayout);
+        this.playerTable = (TableLayout) findViewById(R.id.localTabLayout);
         int numPlayers = config.getNumPlayers();
         for(int i = 0; i < numPlayers; ++i)
         {
 
-            // add the row
-            TableRow row = addPlayer();
 
             // Set the player name
-            TextView playerName = (TextView) row
-                    .findViewById(R.id.playerNameEditText);
-            playerName.setText(config.getSelName(i));
+//            TextView playerName = (TextView) row
+//                    .findViewById(R.id.playerNameEditText);
+//            playerName.setText(config.getSelName(i));
 
             // Set the initial selection for the spinner
             CCPlayerType[] selTypes = config.getSelTypes(); // the player types in the config
             CCPlayerType[] availTypes = config.getAvailTypes(); // the available player types
-            Spinner typeSpinner = (Spinner) row
-                    .findViewById(R.id.playerTypeSpinner); // the spinner for the current player
-            // search through to find the one whose label matches; set it as the selection
+//            Spinner typeSpinner = (Spinner) row
+//                    .findViewById(R.id.playerTypeSpinner); // the spinner for the current player
+//            // search through to find the one whose label matches; set it as the selection
             for(int j = 0; j < availTypes.length; ++j)
             {
                 if(selTypes[i].getTypeName().equals(availTypes[j].getTypeName()))
                 {
-                    typeSpinner.setSelection(j);
+//                    typeSpinner.setSelection(j);
                     break;
                 }
             }
 
             // set up our spinner so that when its last element ("Network Player") is selected,
             // the corresponding EditText (the player name) is disabled.
-            typeSpinner.setOnItemSelectedListener(new SpinnerListListener(playerName, availTypes.length - 1));
+//            typeSpinner.setOnItemSelectedListener(new SpinnerListListener(playerName, availTypes.length - 1));
 
         }// for
 
@@ -506,7 +504,17 @@ public abstract class CCMainActivity extends Activity implements
         initRemoteWidgets();
 
         // Set myself as the listener for the buttons
-        View v = findViewById(R.id.addPlayerButton);
+        View v = findViewById(R.id.player_config_1);
+        v.setOnClickListener(this);
+        v = findViewById(R.id.player_config_2);
+        v.setOnClickListener(this);
+        v = findViewById(R.id.player_config_3);
+        v.setOnClickListener(this);
+        v = findViewById(R.id.player_config_4);
+        v.setOnClickListener(this);
+        v = findViewById(R.id.player_config_5);
+        v.setOnClickListener(this);
+        v = findViewById(R.id.player_config_5);
         v.setOnClickListener(this);
         v = findViewById(R.id.saveConfigButton);
         v.setOnClickListener(this);
@@ -546,9 +554,8 @@ public abstract class CCMainActivity extends Activity implements
         }
 
         // Add Player Button
-        if(button.getId() == R.id.addPlayerButton)
+        if(button.getId() == R.id.player_config_1)
         {
-            addPlayer();
             this.playerTable.invalidate(); // show the user the change
         }
 
@@ -628,70 +635,6 @@ public abstract class CCMainActivity extends Activity implements
 
     }// removePlayer
 
-    /**
-     * addPlayer
-     * <p>
-     * adds a new, blank row to the player table and initializes instance
-     * variables and listeners appropriately
-     *
-     * @return a reference to the TableRow object that was created or null on
-     * failure
-     */
-    private TableRow addPlayer()
-    {
-        // first, make sure that we won't exceed the max number of players
-        if(this.tableRows.size() >= config.getMaxPlayers())
-        {
-            MessageBox.popUpMessage("Sorry, adding another player would exceed the maximum allowed.",
-                    this);
-            return null;
-        }
-
-        // add the row
-        TableRow row = (TableRow) getLayoutInflater().inflate(
-                R.layout.game_player_list_row, playerTable, false);
-
-        // Initialize the values in the Spinner control
-        //		CCPlayerType[] selTypes = config.getSelTypes();
-        CCPlayerType[] availTypes = config.getAvailTypes();
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(
-                this, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        for(CCPlayerType gpt : availTypes)
-        {
-            adapter.add(gpt.getTypeName());
-        }
-        Spinner typeSpinner = (Spinner) row
-                .findViewById(R.id.playerTypeSpinner);
-        typeSpinner.setAdapter(adapter);
-        // link player name field and spinner
-        TextView playerName = (TextView) row
-                .findViewById(R.id.playerNameEditText);
-        typeSpinner.setOnItemSelectedListener(new SpinnerListListener(playerName, availTypes.length - 1));
-        typeSpinner.setSelection(0);
-
-        ArrayAdapter<CharSequence> adapter2 = new ArrayAdapter<CharSequence>(
-                this, android.R.layout.simple_spinner_item);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        for(int j = 0; j < availTypes.length - 1; j++)
-        {
-            // leaves out the last item (network player)
-            adapter2.add(availTypes[j].getTypeName());
-        }
-        Spinner remoteTypeSpinner = (Spinner) findViewById(R.id.remote_player_spinner);
-        remoteTypeSpinner.setAdapter(adapter2);
-
-        // set myself up as the button listener for the button
-        ImageButton delButton = (ImageButton) row
-                .findViewById(R.id.delPlayerButton);
-        delButton.setOnClickListener(this);
-
-        // add the row to the right lists and layout
-        this.tableRows.add(row);
-        playerTable.addView(row);
-
-        return row;
-    }// addPlayer
 
     /**
      * scrapeData

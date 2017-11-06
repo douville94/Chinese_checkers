@@ -21,8 +21,8 @@ import android.widget.LinearLayout;
 
 public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callback
 {
-    protected Path boardPath;
-    protected Paint boardPaint;
+    protected Path tri1Path, tri2Path, tri3Path, tri4Path, tri5Path, tri6Path;
+    protected Paint tri1Paint, tri2Paint, tri3Paint, tri4Paint, tri5Paint, tri6Paint;
     private Canvas tempCanvas;
     private LinearLayout boardSurfaceViewParent;
 
@@ -61,19 +61,42 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
     public void onDraw(Canvas c)
     {
         /*Layout editor is unhappy if you instantiate boardPaint and boardPath in the init method.*/
-        boardPaint = new Paint();
-        boardPath = new Path();
+        tri1Paint = new Paint();
+        tri2Paint = new Paint();
+        tri3Paint = new Paint();
+        tri4Paint = new Paint();
+        tri5Paint = new Paint();
+        tri6Paint = new Paint();
+        tri1Path = new Path();
+        tri2Path = new Path();
+        tri3Path = new Path();
+        tri4Path = new Path();
+        tri5Path = new Path();
+        tri6Path = new Path();
 
-        /*Working code*/
-        boardPaint.setColor(Color.BLUE);
-        /*Draw top triangle.*/
-        boardPath.moveTo(500, 200);
-        boardPath.lineTo(600, 100);
-        boardPath.lineTo(700, 200);
-        boardPath.lineTo(500, 200);
+        /*Draw the top triangle.*/
+        tri1Paint.setColor(Color.BLUE);//set the color
+        tri1Path.moveTo(550, 400);
+        tri1Path.lineTo(750, 50);
+        tri1Path.lineTo(950, 400);
+        tri1Path.lineTo(550, 400);
+        c.drawPath(tri1Path, tri1Paint);
 
-        /*Working code*/
-        c.drawPath(boardPath, boardPaint);
+        /*Draw the top-right triangle.*/
+        tri2Paint.setColor(Color.GREEN);//set the color
+        tri2Path.moveTo(950, 400);
+        tri2Path.lineTo(1300, 200);
+        tri2Path.lineTo(1250, 624);
+        tri2Path.lineTo(950, 400);
+        c.drawPath(tri2Path, tri2Paint);
+
+        /*Draw the bottom-right triangle.*/
+        tri3Paint.setColor(Color.YELLOW);
+        tri3Path.moveTo(1250, 624);
+        tri3Path.lineTo(1350, 1000);
+        tri3Path.lineTo(950, 948);
+        tri2Path.lineTo(1250, 624);
+        c.drawPath(tri3Path, tri3Paint);
     }
 
     /*Needed all three of these abstract methods or else the class wouldn't compile.*/

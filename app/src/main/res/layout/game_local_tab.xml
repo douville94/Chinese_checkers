@@ -126,18 +126,18 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/player_config_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/local_player" />
+                    android:text="@string/local_player"/>
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/player_config_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/local_player" />
+                    android:text="@string/local_player"/>
             </LinearLayout>
 
             <LinearLayout
@@ -166,18 +166,18 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/player_config_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/local_player" />
+                    android:text="@string/local_player"/>
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/player_config_6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/local_player" />
+                    android:text="@string/local_player"/>
             </LinearLayout>
 
         </LinearLayout>
