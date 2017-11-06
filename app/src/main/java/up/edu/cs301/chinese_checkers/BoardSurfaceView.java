@@ -21,8 +21,8 @@ import android.widget.LinearLayout;
 
 public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callback
 {
-    protected Path tri1Path, tri2Path, tri3Path, tri4Path, tri5Path, tri6Path;
-    protected Paint tri1Paint, tri2Paint, tri3Paint, tri4Paint, tri5Paint, tri6Paint;
+    protected Path tri1Path, tri2Path, tri3Path, tri4Path, tri5Path, tri6Path, hexPath;
+    protected Paint tri1Paint, tri2Paint, tri3Paint, tri4Paint, tri5Paint, tri6Paint, hexPaint;
     private Canvas tempCanvas;
     private LinearLayout boardSurfaceViewParent;
 
@@ -67,12 +67,14 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         tri4Paint = new Paint();
         tri5Paint = new Paint();
         tri6Paint = new Paint();
+        hexPaint = new Paint();
         tri1Path = new Path();
         tri2Path = new Path();
         tri3Path = new Path();
         tri4Path = new Path();
         tri5Path = new Path();
         tri6Path = new Path();
+        hexPath = new Path();
 
         /*Draw the top triangle.*/
         tri1Paint.setColor(Color.BLUE);//set the color
@@ -97,6 +99,41 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         tri3Path.lineTo(950, 948);
         tri2Path.lineTo(1250, 624);
         c.drawPath(tri3Path, tri3Paint);
+
+        /*Draw the bottom triangle.*/
+        tri4Paint.setColor(Color.RED);
+        tri4Path.moveTo(950, 948);
+        tri4Path.lineTo(750, 1298);
+        tri4Path.lineTo(550, 948);
+        tri4Path.lineTo(950, 948);
+        c.drawPath(tri4Path, tri4Paint);
+
+        /*Draw the bottom-left triangle.*/
+        tri5Paint.setColor(Color.rgb(245, 120, 11));
+        tri5Path.moveTo(550, 948);
+        tri5Path.lineTo(150, 1000);
+        tri5Path.lineTo(350, 624);
+        tri5Path.lineTo(550, 948);
+        c.drawPath(tri5Path, tri5Paint);
+
+        /*Draw the top-left triangle.*/
+        tri6Paint.setColor(Color.rgb(159, 11, 245));
+        tri6Path.moveTo(350, 624);
+        tri6Path.lineTo(150, 248);
+        tri6Path.lineTo(550, 400);
+        tri6Path.lineTo(350, 624);
+        c.drawPath(tri6Path, tri6Paint);
+
+        /*Draw the central space.*/
+        hexPaint.setColor(Color.WHITE);
+        hexPath.moveTo(550, 400);
+        hexPath.lineTo(950, 400);
+        hexPath.lineTo(1250, 624);
+        hexPath.lineTo(950, 948);
+        hexPath.lineTo(550, 948);
+        hexPath.lineTo(350, 624);
+        hexPath.lineTo(550, 400);
+        c.drawPath(hexPath, hexPaint);
     }
 
     /*Needed all three of these abstract methods or else the class wouldn't compile.*/
