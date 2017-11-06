@@ -27,5 +27,9 @@
     <string name="player5">Player 5</string>
     <string name="player6">Player 6</string>
 
+    <string name="local_player">Local Player</string>
+    <string name="remote_player">Remote Player</string>
+    <string name="ai_easy">Easy AI</string>
+    <string name="ai_hard">Hard AI</string>
 
 </resources>

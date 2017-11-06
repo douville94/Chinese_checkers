@@ -18,7 +18,7 @@
         android:weightSum="1">
 
         <LinearLayout
-            android:layout_width="359dp"
+            android:layout_width="290dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -35,75 +35,146 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/edit_player_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Player Name" />
+
         </LinearLayout>
 
-        <TableLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <TableRow
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/editText5"
+                <TextView
+                    android:id="@+id/player1_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName"
+                    android:layout_weight="1"
                     android:text="@string/player1" />
 
-                <EditText
-                    android:id="@+id/editText4"
+                <TextView
+                    android:id="@+id/player2_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName"
+                    android:layout_weight="1"
                     android:text="@string/player2" />
-            </TableRow>
+            </LinearLayout>
 
-            <TableRow
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/player_config_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Button" />
+                    android:layout_weight="1"
+                    android:text="@string/local_player" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/player_config_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Button" />
-            </TableRow>
+                    android:layout_weight="1"
+                    android:text="@string/local_player" />
+            </LinearLayout>
 
-            <TableRow
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/editText7"
+                <TextView
+                    android:id="@+id/player3_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Name" />
+                    android:layout_weight="1"
+                    android:text="@string/player3" />
 
-                <EditText
-                    android:id="@+id/editText6"
+                <TextView
+                    android:id="@+id/player4_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Name" />
-            </TableRow>
+                    android:layout_weight="1"
+                    android:text="@string/player4" />
+            </LinearLayout>
 
-            <TableRow
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </TableLayout>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/local_player" />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/local_player" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/player5_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/player5" />
+
+                <TextView
+                    android:id="@+id/player6_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/player6" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/local_player" />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/local_player" />
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
