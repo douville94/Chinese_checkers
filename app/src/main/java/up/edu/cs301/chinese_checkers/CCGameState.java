@@ -19,16 +19,27 @@ public class CCGameState extends CCState {
     Marble[][] board;
     int id;
     Hashtable<Integer,Color> ColorPlayerTable;
-
+    public CCGameState() {
+        super();
+    }
     public CCGameState(CCGameState state) {
         super();
     }
     public Marble[][] getBoard(){
         return board;
     }
+    public Marble getMarble(int x, int y){
+        if(x > board.length){
+            if(y > board[0].length){
+                return null;
+            }
+        }
+        return board[x][y];
+    }
     public int getId(){
         return id;
     }
+
     public Hashtable<Integer,Color> getCPT(){
         return ColorPlayerTable;
     }
