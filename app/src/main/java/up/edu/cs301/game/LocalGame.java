@@ -31,7 +31,7 @@ import up.edu.cs301.game.util.Tickable;
  * @author Andrew Nuxoll
  * @version July 2013
  */
-public abstract class CCLocalGame implements CCGame, Tickable
+public abstract class LocalGame implements Game, Tickable
 {
 
     // the stage that the game is in
@@ -41,7 +41,7 @@ public abstract class CCLocalGame implements CCGame, Tickable
     private Handler myHandler;
 
     // the players in the game, in order of  player number
-    protected CCPlayer[] players;
+    protected Player[] players;
 
     // whether the game's thread is running
     private boolean running = false;
@@ -76,7 +76,7 @@ public abstract class CCLocalGame implements CCGame, Tickable
      *
      * @param players the list of players who are playing in the game
      */
-    public void start(CCPlayer[] players)
+    public void start(Player[] players)
     {
         // if the game has already started, don't restart
         if(this.players != null)
@@ -85,7 +85,7 @@ public abstract class CCLocalGame implements CCGame, Tickable
         }
 
         // create/store a copy of the player array
-        this.players = (CCPlayer[]) players.clone();
+        this.players = (Player[]) players.clone();
 
         // create an array for the players' names; these names will be
         // filled during the initial message-protocol between the game
@@ -109,7 +109,7 @@ public abstract class CCLocalGame implements CCGame, Tickable
                 public void run()
                 {
                     Looper.prepare();
-                    myHandler = new MyHandler(CCLocalGame.this);
+                    myHandler = new MyHandler(LocalGame.this);
                     Looper.loop();
                 }
             };
@@ -138,7 +138,7 @@ public abstract class CCLocalGame implements CCGame, Tickable
      *
      * @param p the player to notify
      */
-    protected abstract void sendUpdatedStateTo(CCPlayer p);
+    protected abstract void sendUpdatedStateTo(Player p);
 
     /**
      * Notify all players that the game's state has changed. Typically this simply
@@ -146,7 +146,7 @@ public abstract class CCLocalGame implements CCGame, Tickable
      */
     protected final void sendAllUpdatedState()
     {
-        for(CCPlayer p : players)
+        for(Player p : players)
         {
             sendUpdatedStateTo(p);
         }
@@ -158,7 +158,7 @@ public abstract class CCLocalGame implements CCGame, Tickable
      * @param p the player whose player ID we want
      * @return the player's ID, or -1 if the player is not a player in this game
      */
-    protected final int getPlayerIdx(CCPlayer p)
+    protected final int getPlayerIdx(Player p)
     {
         for(int i = 0; i < players.length; i++)
         {
@@ -209,7 +209,7 @@ public abstract class CCLocalGame implements CCGame, Tickable
                     Log.i("LocalGame", "broadcasting player names");
                     gameStage = GameStage.WAITING_FOR_READY;
                     playersReady = new boolean[players.length]; // array to keep track of players responding
-                    for(CCPlayer p : players)
+                    for(Player p : players)
                     {
                         p.sendInfo(
                                 new StartGameInfo((String[]) playerNames.clone()));
@@ -285,7 +285,7 @@ public abstract class CCLocalGame implements CCGame, Tickable
     {
 
         // get the player and player ID
-        CCPlayer player = action.getPlayer();
+        Player player = action.getPlayer();
         int playerId = getPlayerIdx(player);
 
         // if the player is NOT a player who is presently allowed to
@@ -352,7 +352,7 @@ public abstract class CCLocalGame implements CCGame, Tickable
         playerFinishedCount = 0;
 
         // send all players a "game over" message
-        for(CCPlayer p : players)
+        for(Player p : players)
         {
             p.sendInfo(new GameOverInfo(msg));
         }
@@ -412,10 +412,10 @@ public abstract class CCLocalGame implements CCGame, Tickable
     private static class MyHandler extends Handler
     {
         // the game
-        private CCLocalGame game;
+        private LocalGame game;
 
         // constructor; parameter is expected to be this game
-        public MyHandler(CCLocalGame game)
+        public MyHandler(LocalGame game)
         {
             this.game = game;
         }

@@ -13,9 +13,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
@@ -42,7 +40,7 @@ import up.edu.cs301.game.util.MessageBox;
  * @author Steven R. Vegdahl
  * @date Version 2013
  */
-public abstract class CCMainActivity extends Activity implements
+public abstract class MainActivity extends Activity implements
         View.OnClickListener
 {
 	/*
@@ -54,13 +52,13 @@ public abstract class CCMainActivity extends Activity implements
     // A reference to the object representing the game itself. This is the
     // object that knows the rules of the game. This variable is initialized in
     // launchGame.
-    private CCGame game = null;
+    private Game game = null;
 
     // an array containing references to all the players that are playing the game
-    private CCPlayer[] players = null;
+    private Player[] players = null;
 
     // tells which player, if any, is running in the GUI
-    private CCPlayer guiPlayer = null;
+    private Player guiPlayer = null;
 
     // whether the game is over
     private boolean gameIsOver = false;
@@ -111,12 +109,12 @@ public abstract class CCMainActivity extends Activity implements
      * Creates a new game that runs on the server tablet. For example, if
      * you were creating tic-tac-toe, you would implement this method to return
      * an instance of your TTTLocalGame class which, in turn, would be a
-     * subclass of {@link CCLocalGame}.
+     * subclass of {@link LocalGame}.
      *
      * @return a new, game-specific instance of a sub-class of the LocalGame
      * class.
      */
-    public abstract CCLocalGame createLocalGame();
+    public abstract LocalGame createLocalGame();
 
     /**
      * Creates a "proxy" game that acts as an intermediary between a local
@@ -317,7 +315,7 @@ public abstract class CCMainActivity extends Activity implements
         //////////////////////////////////////
         int requiresGuiCount = 0; // the number of players that require a GUI
         guiPlayer = null; // the player that will be our GUI player
-        players = new CCPlayer[config.getNumPlayers()]; // the array to contains our players
+        players = new Player[config.getNumPlayers()]; // the array to contains our players
 
         // loop through each player
         for(int i = 0; i < players.length; i++)

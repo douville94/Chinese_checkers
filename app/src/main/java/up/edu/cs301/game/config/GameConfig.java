@@ -11,8 +11,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-import up.edu.cs301.game.CCMainActivity;
-import up.edu.cs301.game.CCPlayer;
+import up.edu.cs301.game.MainActivity;
+import up.edu.cs301.game.Player;
 import up.edu.cs301.game.ProxyPlayer;
 
 /**
@@ -28,7 +28,7 @@ import up.edu.cs301.game.ProxyPlayer;
  * @author Andrew Nuxoll
  * @author Steven R. Vegdahl
  * @version July 2013
- * @see CCMainActivity
+ * @see MainActivity
  */
 public class GameConfig
 {
@@ -145,7 +145,7 @@ public class GameConfig
         // add the network player
         availArray[arrayLength - 1] = new CCPlayerType("Network Player")
         {
-            public CCPlayer createPlayer(String name)
+            public Player createPlayer(String name)
             {
                 int portNum = getPortNum();
                 return new ProxyPlayer(portNum);
@@ -241,7 +241,7 @@ public class GameConfig
      * @param activity the current activity
      * @return a boolean that denotes whether the operation was successful
      */
-    public boolean saveConfig(String fileName, CCMainActivity activity)
+    public boolean saveConfig(String fileName, MainActivity activity)
     {
 
         // if the player-name and player-type arrays are of different sizes, something
@@ -279,7 +279,7 @@ public class GameConfig
         } catch(IOException e)
         {
             // return false if there was a problem
-            Log.i("MainActivity", "File writing problem.");
+            Log.i("CCMainActivity", "File writing problem.");
             return false;
         }
 
@@ -295,7 +295,7 @@ public class GameConfig
      * @param activity the current activity
      * @return a boolean that denotes whether the operation was successful
      */
-    public boolean restoreSavedConfig(String fileName, CCMainActivity activity)
+    public boolean restoreSavedConfig(String fileName, MainActivity activity)
     {
 
         // the input stream from which we will read the objects
@@ -388,13 +388,13 @@ public class GameConfig
         } catch(IOException e)
         {
             // abort if I/O exception
-            Log.i("MainActivity", "File reading problem.");
+            Log.i("CCMainActivity", "File reading problem.");
             return false;
         } catch(ClassNotFoundException cnfx)
         {
             // abort of there if one of the serialized objects somehow was (or contained)
             // an object in a class that we do not know about.
-            Log.i("MainActivity", "Object/class reading problem.");
+            Log.i("CCMainActivity", "Object/class reading problem.");
             return false;
         } finally
         {

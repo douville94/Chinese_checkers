@@ -24,19 +24,19 @@ import up.edu.cs301.game.util.Tickable;
  * @author Andrew Nuxoll
  * @version July 2013
  */
-public abstract class CCComputerPlayer implements CCPlayer, Tickable
+public abstract class ComputerPlayer implements Player, Tickable
 {
     /**
      * the current game state
      */
-    protected CCGame game; // the game object
+    protected Game game; // the game object
     protected int playerNum; // which player number I am
     protected String name; // my name
     protected String[] allPlayerNames; // list of all player names, in ID order
     private Handler myHandler; // the handler for this player's thread
     private boolean running; // whether the player's thread is running
     private boolean gameOver = false; // whether the game is over
-    private CCMainActivity myActivity; // the game's main activity, set only
+    private MainActivity myActivity; // the game's main activity, set only
     // this game is connected to the GUI
     private GameTimer myTimer = new GameTimer(this); // my timer
 
@@ -78,7 +78,7 @@ public abstract class CCComputerPlayer implements CCPlayer, Tickable
      *
      * @param name the player's name (e.g., "John")
      */
-    public CCComputerPlayer(String name)
+    public ComputerPlayer(String name)
     {
         this.name = name;
     }
@@ -90,7 +90,7 @@ public abstract class CCComputerPlayer implements CCPlayer, Tickable
      *
      * @param a the activity that is being run
      */
-    public final void gameSetAsGui(CCMainActivity a)
+    public final void gameSetAsGui(MainActivity a)
     {
         myActivity = a;
         setAsGui(a);
@@ -104,7 +104,7 @@ public abstract class CCComputerPlayer implements CCPlayer, Tickable
      *
      * @param activity the activity that is being run
      */
-    public void setAsGui(CCMainActivity activity)
+    public void setAsGui(MainActivity activity)
     {
         // default behavior is to do nothing
     }
@@ -212,7 +212,7 @@ public abstract class CCComputerPlayer implements CCPlayer, Tickable
                         playerNum = bgs.getPlayerNum(); // set our player ID
 
                         // send a message to the game with our player's name
-                        game.sendAction(new MyNameIsAction(CCComputerPlayer.this, name));
+                        game.sendAction(new MyNameIsAction(ComputerPlayer.this, name));
                     }
                 } else if(allPlayerNames == null)
                 {
@@ -226,7 +226,7 @@ public abstract class CCComputerPlayer implements CCPlayer, Tickable
                         // perform game-specific initialization
                         initAfterReady();
                         // tell game that we're ready to play
-                        game.sendAction(new ReadyAction(CCComputerPlayer.this));
+                        game.sendAction(new ReadyAction(ComputerPlayer.this));
                     }
                 } else if(myInfo instanceof GameOverInfo)
                 {
@@ -242,7 +242,7 @@ public abstract class CCComputerPlayer implements CCPlayer, Tickable
                     }
 
                     // acknowledge to the game that we have receive the message
-                    game.sendAction(new GameOverAckAction(CCComputerPlayer.this));
+                    game.sendAction(new GameOverAckAction(ComputerPlayer.this));
 
                     // mark game as being over
                     gameOver = true;

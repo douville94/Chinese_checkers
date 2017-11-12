@@ -21,11 +21,11 @@ import up.edu.cs301.game.util.NetworkObjectPasser;
  * @author Steven R. Vegdahl
  * @version July 2013
  */
-public class ProxyGame implements CCGame
+public class ProxyGame implements Game
 {
 
     // the player associated with this game
-    private CCPlayer player;
+    private Player player;
 
     // a queue of objects that are collected, which might have been sent over the
     // network before we are connected to a player
@@ -141,7 +141,7 @@ public class ProxyGame implements CCGame
      * Starts the game. In this context, we know that the array will
      * contain exactly one player.
      */
-    public void start(CCPlayer[] players)
+    public void start(Player[] players)
     {
         Log.i("ProxyGame", "start() called");
 

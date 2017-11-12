@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 /**
  * Created by sion18 on 11/9/2017.
  */
-public class CCLocalGameTest {
+public class CCCCLocalGameTest {
     @Test
     public void getTimer() throws Exception {
 

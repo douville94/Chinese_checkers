@@ -20,7 +20,7 @@ public class Board
 
     }
 
-    /*Maybe put all this info in the constructor and call the onDraw method in the MainActivity class?*/
+    /*Maybe put all this info in the constructor and call the onDraw method in the CCMainActivity class?*/
     public void draw(Canvas c)
     {
         myPaint.setColor(Color.BLUE);

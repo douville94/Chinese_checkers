@@ -1,21 +1,13 @@
 package up.edu.cs301.chinese_checkers;
 
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.SurfaceHolder;
 import android.widget.TextView;
-import android.view.SurfaceView;
-import android.graphics.Path;
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.graphics.Bitmap;
-import up.edu.cs301.game.CCMainActivity;
-import up.edu.cs301.game.config.GameConfig;
-import up.edu.cs301.game.CCLocalGame;
 
-public class MainActivity extends CCMainActivity//AppCompatActivity// implements SurfaceHolder.Callback
+import up.edu.cs301.game.LocalGame;
+import up.edu.cs301.game.config.GameConfig;
+
+public class CCMainActivity extends up.edu.cs301.game.MainActivity//AppCompatActivity// implements SurfaceHolder.Callback
 {
     private TextView turnTextView;
     private TextView currentPlayerTextView;
@@ -29,7 +21,7 @@ public class MainActivity extends CCMainActivity//AppCompatActivity// implements
     private Bitmap bm;
     private int width, height;
     private GameConfig g;
-    private CCLocalGame c;
+    private LocalGame c;
 
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState)
@@ -96,7 +88,7 @@ public class MainActivity extends CCMainActivity//AppCompatActivity// implements
     }
 
     @Override
-    public CCLocalGame createLocalGame()
+    public LocalGame createLocalGame()
     {
         return c;
     }

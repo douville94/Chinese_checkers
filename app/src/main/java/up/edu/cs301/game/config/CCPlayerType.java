@@ -1,6 +1,6 @@
 package up.edu.cs301.game.config;
 
-import up.edu.cs301.game.CCPlayer;
+import up.edu.cs301.game.Player;
 
 /**
  * class CCPlayerType
@@ -65,7 +65,7 @@ public abstract class CCPlayerType implements Cloneable /*, Serializable*/
         return typeName;
     }
 
-    //	public abstract CCPlayer createPlayer(CCGame game, int playerNum);
-    public abstract CCPlayer createPlayer(String name);
+    //	public abstract Player createPlayer(Game game, int playerNum);
+    public abstract Player createPlayer(String name);
 
 }// class CCPlayerType

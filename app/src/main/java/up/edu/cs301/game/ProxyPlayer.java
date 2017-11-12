@@ -17,11 +17,11 @@ import up.edu.cs301.game.util.NetworkObjectPasser;
  * @author Steven R. Vegdahl
  * @version July 2013
  */
-public class ProxyPlayer implements CCPlayer
+public class ProxyPlayer implements Player
 {
 
     // the game object
-    private CCGame game;
+    private Game game;
 
     // the object that connects us to the network
     private NetworkObjectPasser networkPasser;
@@ -118,7 +118,7 @@ public class ProxyPlayer implements CCPlayer
      * Set this game as a GUI. (Should never be called because the
      * 'supportsGui' method returns false.)
      */
-    public final void gameSetAsGui(CCMainActivity a)
+    public final void gameSetAsGui(MainActivity a)
     {
     }
 
@@ -126,7 +126,7 @@ public class ProxyPlayer implements CCPlayer
      * Set this game as a GUI. (Should never be called because the
      * 'supportsGui' method returns false.)
      */
-    public void setAsGui(CCMainActivity a)
+    public void setAsGui(MainActivity a)
     {
     }
 

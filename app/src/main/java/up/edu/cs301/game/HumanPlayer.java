@@ -30,17 +30,17 @@ import up.edu.cs301.game.util.Tickable;
  * @author Andrew Nuxoll
  * @version July 2013
  */
-public abstract class CCHumanPlayer implements CCPlayer, Tickable
+public abstract class HumanPlayer implements Player, Tickable
 {
     /**
      * instance variables
      */
-    protected CCGame game; // the game
+    protected Game game; // the game
     protected int playerNum; // my player ID
     protected String name; // my player's name
     protected String[] allPlayerNames; // the names of all the player
     private Handler myHandler; // my thread's handler
-    private CCMainActivity myActivity; // the current activity
+    private MainActivity myActivity; // the current activity
     private GameTimer myTimer = new GameTimer(this); // my player's timer
     private boolean gameOver; // whether the game is over
 
@@ -50,7 +50,7 @@ public abstract class CCHumanPlayer implements CCPlayer, Tickable
      * @param name the name of the player
      */
 
-    public CCHumanPlayer(String name)
+    public HumanPlayer(String name)
     {
         // set the name via the argument
 
@@ -112,7 +112,7 @@ public abstract class CCHumanPlayer implements CCPlayer, Tickable
      * Sets this player as the one attached to the GUI. Saves the
      * activity, then invokes subclass-specific method.
      */
-    public final void gameSetAsGui(CCMainActivity a)
+    public final void gameSetAsGui(MainActivity a)
     {
 
         myActivity = a;
@@ -181,7 +181,7 @@ public abstract class CCHumanPlayer implements CCPlayer, Tickable
         // back to the original
         public void run()
         {
-            View top = CCHumanPlayer.this.getTopView();
+            View top = HumanPlayer.this.getTopView();
             if(top == null)
             {
                 return;
@@ -273,7 +273,7 @@ public abstract class CCHumanPlayer implements CCPlayer, Tickable
                     playerNum = bgs.getPlayerNum(); // set our player id
 
                     // respond to the game, telling it our name
-                    game.sendAction(new MyNameIsAction(CCHumanPlayer.this, name));
+                    game.sendAction(new MyNameIsAction(HumanPlayer.this, name));
                 }
             } else if(allPlayerNames == null)
             {
@@ -290,7 +290,7 @@ public abstract class CCHumanPlayer implements CCPlayer, Tickable
                     initAfterReady();
 
                     // tell the game we're ready to play the game
-                    game.sendAction(new ReadyAction(CCHumanPlayer.this));
+                    game.sendAction(new ReadyAction(HumanPlayer.this));
                 }
             } else if(myInfo instanceof GameOverInfo)
             {
@@ -306,7 +306,7 @@ public abstract class CCHumanPlayer implements CCPlayer, Tickable
                 }
 
                 // acknowledge to the game that the game is over
-                game.sendAction(new GameOverAckAction(CCHumanPlayer.this));
+                game.sendAction(new GameOverAckAction(HumanPlayer.this));
 
                 // set our instance variable, to indicate the game as over
                 gameOver = true;

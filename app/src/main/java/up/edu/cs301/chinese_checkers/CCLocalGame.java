@@ -1,15 +1,14 @@
 package up.edu.cs301.chinese_checkers;
 
-import up.edu.cs301.game.CCLocalGame;
-import up.edu.cs301.game.CCPlayer;
+import up.edu.cs301.game.LocalGame;
+import up.edu.cs301.game.Player;
 import up.edu.cs301.game.actionMsg.CCAction;
-import up.edu.cs301.game.infoMsg.CCState;
 
 /**
  * Created by qihangwu on 10/30/17.
  */
 
-public class LocalGame extends CCLocalGame {
+public class CCLocalGame extends LocalGame {
 
     // the game's state
     protected CCGameState state;
@@ -24,7 +23,7 @@ public class LocalGame extends CCLocalGame {
     /**
      * Constructor for the LocalGame.
      */
-    public LocalGame() {
+    public CCLocalGame() {
 
         // perform superclass initialization
         super();
@@ -34,7 +33,7 @@ public class LocalGame extends CCLocalGame {
     }
 
     @Override
-    protected void sendUpdatedStateTo(CCPlayer p) {
+    protected void sendUpdatedStateTo(Player p) {
         // make a copy of the state, and send it to the player
         p.sendInfo(new CCGameState(state));
     }

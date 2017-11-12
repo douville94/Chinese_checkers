@@ -1,6 +1,6 @@
 package up.edu.cs301.chinese_checkers;
 
-import up.edu.cs301.game.CCPlayer;
+import up.edu.cs301.game.Player;
 import up.edu.cs301.game.actionMsg.CCAction;
 
 /**
@@ -9,9 +9,9 @@ import up.edu.cs301.game.actionMsg.CCAction;
 
 public class JumpAction extends CCAction
 {
-    private CCPlayer player;
+    private Player player;
 
-    public JumpAction(CCPlayer p)
+    public JumpAction(Player p)
     {
         super(p);
         this.player = p;

@@ -1,7 +1,7 @@
 package up.edu.cs301.chinese_checkers;
 
 import up.edu.cs301.game.actionMsg.CCAction;
-import up.edu.cs301.game.CCPlayer;
+import up.edu.cs301.game.Player;
 
 /**
  * Created by Luke D. Douville on 10/25/17.
@@ -9,9 +9,9 @@ import up.edu.cs301.game.CCPlayer;
 
 public class QuitAction extends CCAction
 {
-    private CCPlayer player;
+    private Player player;
 
-    public QuitAction(CCPlayer p)
+    public QuitAction(Player p)
     {
         super(p);
         this.player = p;

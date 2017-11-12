@@ -11,15 +11,15 @@ import up.edu.cs301.game.infoMsg.CCInfo;
  * @version July 2013
  */
 
-public interface CCPlayer
+public interface Player
 {
 
     // sets this player as the GUI player (implemented as final in the
     // major player classes)
-    public abstract void gameSetAsGui(CCMainActivity activity);
+    public abstract void gameSetAsGui(MainActivity activity);
 
     // sets this player as the GUI player (overrideable)
-    public abstract void setAsGui(CCMainActivity activity);
+    public abstract void setAsGui(MainActivity activity);
 
     // sends a message to the player
     public abstract void sendInfo(CCInfo info);
