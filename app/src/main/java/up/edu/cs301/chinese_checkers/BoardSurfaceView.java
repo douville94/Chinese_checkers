@@ -21,14 +21,10 @@ import android.widget.LinearLayout;
 
 public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callback
 {
-    //    private SurfaceView boardSurfaceView;
-//    private SurfaceHolder boardSurfaceHolder;
-//    private Board b;
-    protected Path boardPath;
-    protected Paint boardPaint;
+    protected Path tri1Path, tri2Path, tri3Path, tri4Path, tri5Path, tri6Path, hexPath;
+    protected Paint tri1Paint, tri2Paint, tri3Paint, tri4Paint, tri5Paint, tri6Paint, hexPaint;
     private Canvas tempCanvas;
     private LinearLayout boardSurfaceViewParent;
-//    private Context context;
 
     public BoardSurfaceView(Context context)
     {
@@ -43,17 +39,6 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         {
             init();//context);
         }
-
-//        TypedArray ta = context.getTheme().obtainStyledAttributes(as, R.styleable.BoardSurfaceView, 0, 0);
-//        try
-//        {
-//
-//        }
-
-//        boardSurfaceHolder = boardSurfaceView.getHolder();
-//        boardSurfaceHolder.addCallback(this);
-//        boardSurfaceView.setWillNotDraw(false);
-//        boardSurfaceView.invalidate();
     }
 
     public BoardSurfaceView(Context context, AttributeSet as, int defStyle)
@@ -67,78 +52,100 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 
     private void init()//Context context)
     {
-//        this.context = context;
-//        boardPaint = new Paint();
-//        boardPaint.setColor(Color.BLUE);
-//        boardPath = new Path();
-//        boardSurfaceViewParent = (LinearLayout)findViewById(R.id.ll1);
-//        if(this.getHeight() == 0)
-//        {
-//            this.setMinimumHeight(boardSurfaceViewParent.getHeight());
-//        }
-//        if(boardSurfaceView.getWidth() == 0)
-//        {
-//            boardSurfaceView.setMinimumWidth(boardSurfaceViewParent.getWidth());
-//        }
-        /*Draw top triangle.*/
-//        boardPath.moveTo(100, 200);
-//        boardPath.lineTo(200, 100);
-//        boardPath.lineTo(300, 200);
-//        boardPath.lineTo(100, 200);
-//        boardSurfaceHolder = boardSurfaceView.getHolder();
-//        boardSurfaceHolder.addCallback(this);
-//        boardSurfaceView.setWillNotDraw(false);
-////        boardSurfaceView.invalidate();
-//        tempCanvas = boardSurfaceHolder.lockCanvas();
-    }
 
-//    @Override
-//    public void onSizeChanged(int currWidth, int currHeight, int oldWidth, int oldHeight)
-//    {
-//        currWidth = oldWidth;
-//        currHeight = oldHeight;
-//    }
+    }
 
     /*Have to clean project after project is built with draw instead of onDraw.*/
     /*XML layout builder throws a NullPointerException at the first line of code in the onDraw method.*/
     @Override
     public void onDraw(Canvas c)
-//    public void draw(Canvas c)
     {
-//        c = boardSurfaceHolder.lockCanvas();
-//        super.onDraw(c);
-//        c = boardSurfaceHolder.lockCanvas();
-//        boardSurfaceHolder = boardSurfaceView.getHolder();
-//        surfaceCreated(boardSurfaceHolder);
-//        boardSurfaceHolder.addCallback(this);
-//        boardSurfaceView.setWillNotDraw(false);
-//        boardSurfaceView.invalidate();
-//        c.drawColor(Color.WHITE);
-
         /*Layout editor is unhappy if you instantiate boardPaint and boardPath in the init method.*/
-        boardPaint = new Paint();
-        boardPath = new Path();
+        tri1Paint = new Paint();
+        tri2Paint = new Paint();
+        tri3Paint = new Paint();
+        tri4Paint = new Paint();
+        tri5Paint = new Paint();
+        tri6Paint = new Paint();
+        hexPaint = new Paint();
+        tri1Path = new Path();
+        tri2Path = new Path();
+        tri3Path = new Path();
+        tri4Path = new Path();
+        tri5Path = new Path();
+        tri6Path = new Path();
+        hexPath = new Path();
 
-        /*Working code*/
-        boardPaint.setColor(Color.BLUE);
-        /*Draw top triangle.*/
-        boardPath.moveTo(500, 200);
-        boardPath.lineTo(600, 100);
-        boardPath.lineTo(700, 200);
-        boardPath.lineTo(500, 200);
+        /*Draw the top triangle.*/
+        tri1Paint.setColor(Color.BLUE);//set the color
+        tri1Path.moveTo(550, 400);
+        tri1Path.lineTo(750, 50);
+        tri1Path.lineTo(950, 400);
+        tri1Path.lineTo(550, 400);
 
-//        boardSurfaceViewParent = (LinearLayout)findViewById(R.id.ll1);
-//        if(this.getHeight() == 0)
-//        {
-//            this.setMinimumHeight(boardSurfaceViewParent.getHeight());
-//        }
-//        if(boardSurfaceView.getWidth() == 0)
-//        {
-//            boardSurfaceView.setMinimumWidth(boardSurfaceViewParent.getWidth());
-//        }
+        /*For larger top triangle.*/
+//        tri1Path.moveTo(500, 400);
+//        tri1Path.lineTo(750, 46);
+//        tri1Path.lineTo(1000, 400);
+//        tri1Path.lineTo(500, 400);
+        c.drawPath(tri1Path, tri1Paint);
 
-        /*Working code*/
-        c.drawPath(boardPath, boardPaint);
+        /*Draw the top-right triangle.*/
+        tri2Paint.setColor(Color.GREEN);//set the color
+        tri2Path.moveTo(950, 400);
+        tri2Path.lineTo(1450, 400);
+        tri2Path.lineTo(1100, 700);
+        tri2Path.lineTo(950, 400);
+        c.drawPath(tri2Path, tri2Paint);
+
+        /*Draw the bottom-right triangle.*/
+        tri3Paint.setColor(Color.YELLOW);
+        tri3Path.moveTo(1100, 700);
+        tri3Path.lineTo(1450, 948);
+        tri3Path.lineTo(950, 973);
+        tri2Path.lineTo(1100, 700);
+        c.drawPath(tri3Path, tri3Paint);
+
+        /*Draw the bottom triangle.*/
+        tri4Paint.setColor(Color.RED);
+        tri4Path.moveTo(950, 973);
+        tri4Path.lineTo(750, 1323);
+        tri4Path.lineTo(550, 973);
+        tri4Path.lineTo(950, 973);
+
+        /*For larger bottom triangle*/
+//        tri4Path.moveTo(1000, 948);
+//        tri4Path.lineTo(750, 1298);
+//        tri4Path.lineTo(500, 948);
+//        tri4Path.lineTo(1000, 948);
+        c.drawPath(tri4Path, tri4Paint);
+
+        /*Draw the bottom-left triangle.*/
+        tri5Paint.setColor(Color.rgb(245, 120, 11));
+        tri5Path.moveTo(550, 973);
+        tri5Path.lineTo(150, 1000);
+        tri5Path.lineTo(400, 700);
+        tri5Path.lineTo(550, 973);
+        c.drawPath(tri5Path, tri5Paint);
+
+        /*Draw the top-left triangle.*/
+        tri6Paint.setColor(Color.rgb(159, 11, 245));
+        tri6Path.moveTo(400, 700);
+        tri6Path.lineTo(50, 400);
+        tri6Path.lineTo(550, 400);
+        tri6Path.lineTo(400, 700);
+        c.drawPath(tri6Path, tri6Paint);
+
+        /*Draw the central space.*/
+//        hexPaint.setColor(Color.WHITE);
+//        hexPath.moveTo(550, 400);
+//        hexPath.lineTo(950, 400);
+//        hexPath.lineTo(1250, 624);
+//        hexPath.lineTo(950, 948);
+//        hexPath.lineTo(550, 948);
+//        hexPath.lineTo(350, 624);
+//        hexPath.lineTo(550, 400);
+//        c.drawPath(hexPath, hexPaint);
     }
 
     /*Needed all three of these abstract methods or else the class wouldn't compile.*/
@@ -154,21 +161,6 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 
     public void surfaceCreated(SurfaceHolder sh)
     {
-//        boardPaint.setColor(Color.BLUE);
-//        /*Draw top triangle.*/
-//        boardPath.moveTo(500, 200);
-//        boardPath.lineTo(600, 100);
-//        boardPath.lineTo(700, 200);
-//        boardPath.lineTo(500, 200);
-//
-//        tempCanvas = sh.lockCanvas();
-//        onDraw(tempCanvas);
 
-//        boardSurfaceHolder = boardSurfaceView.getHolder();
-//        boardSurfaceHolder.addCallback(this);
-//        boardSurfaceView.setWillNotDraw(false);
-//        tempCanvas = boardSurfaceHolder.lockCanvas();
-//        onDraw(tempCanvas);//error:  suspicious call; should probably call "draw" rather than "onDraw"
-//        boardSurfaceView.invalidate();
     }
 }
