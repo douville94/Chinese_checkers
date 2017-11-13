@@ -145,9 +145,14 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 //        hexPath.lineTo(550, 948);
 //        hexPath.lineTo(350, 624);
 //        hexPath.lineTo(550, 400);
-
-
-//        c.drawPath(hexPath, hexPaint);
+        hexPath.moveTo(550, 400);
+        hexPath.lineTo(950, 400);
+        hexPath.lineTo(1100, 700);
+        hexPath.lineTo(950, 1000);
+        hexPath.lineTo(550, 1000);
+        hexPath.lineTo(400, 700);
+        hexPath.lineTo(550, 400);
+        c.drawPath(hexPath, hexPaint);
     }
 
     /*Needed all three of these abstract methods or else the class wouldn't compile.*/
