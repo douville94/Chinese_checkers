@@ -6,7 +6,7 @@ import up.edu.cs301.game.actionMsg.CCAction;
 import up.edu.cs301.game.infoMsg.CCState;
 
 /**
- * Created by qihangwu on 10/30/17.
+ * Created by Charlie Wu on 10/30/17.
  */
 
 public class LocalGame extends CCLocalGame {
@@ -53,10 +53,22 @@ public class LocalGame extends CCLocalGame {
     }
 
     protected boolean confirmMove(CCAction action) {
+        //still need the confirm action.
         return false;
     }
 
     protected boolean cancelMove(CCAction action) {
+        //still need the cancel action
+        return false;
+    }
+
+    protected boolean saveMove(CCAction action) {
+        //still need the save action be modified.
+        return false;
+    }
+
+    protected boolean quitAction(CCAction action) {
+        //still need the quit action be modified.
         return false;
     }
 }

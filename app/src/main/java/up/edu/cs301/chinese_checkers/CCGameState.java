@@ -10,7 +10,7 @@ import up.edu.cs301.game.infoMsg.CCInfo;
 import up.edu.cs301.game.infoMsg.CCState;
 
 /**
- * Created by qihangwu on 11/5/17.
+ * Created by Charlie Wu on 11/5/17.
  */
 
 public class CCGameState extends CCState {
