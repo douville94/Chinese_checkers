@@ -15,6 +15,10 @@ import static org.junit.Assert.*;
  * Created by sion18 on 11/9/2017.
  */
 public class LocalGameTest {
+    private JumpAction ja;
+    private MoveAction ma;
+    private QuitAction qa;
+    private SaveAction sa;
     @Test
     public void sendUpdatedStateTo() throws Exception {
         CCGameState cgs = new CCGameState();
@@ -42,9 +46,9 @@ public class LocalGameTest {
     public void makeMove() throws Exception {
         CCGameState cgs = new CCGameState();
         LocalGame lg = new LocalGame();
-        assertTrue("unable to move piece", lg.makeMove(JumpAction));
-        assertTrue("unable to move piece", lg.makeMove(MoveAction));
-        assertTrue("unable to reset", lg.makeMove(QuitAction ));
+        assertTrue("unable to move piece", lg.makeMove(ja));
+        assertTrue("unable to move piece", lg.makeMove(ma));
+        assertTrue("unable to reset", lg.makeMove(qa));
         //checks to see if if able to move
     }
 
@@ -52,7 +56,7 @@ public class LocalGameTest {
     public void confirmMove() throws Exception {
         CCGameState cgs = new CCGameState();
         LocalGame lg = new LocalGame();
-        assertTrue("unable to move piece", lg.makeMove(SaveAction));
+        assertTrue("unable to move piece", lg.makeMove(sa));
         //checks to see if if able to confirm move
         //check game state if player id changed
     }

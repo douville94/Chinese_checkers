@@ -91,7 +91,7 @@ public class HumanPlayer extends CCHumanPlayer implements View.OnTouchListener {
      */
     @Override
     public View getTopView() {
-        return myActivity.findViewById(R.id.top_gui_layout);
+        return myActivity.findViewById(R.id.activity_main);
     }
 
     /**

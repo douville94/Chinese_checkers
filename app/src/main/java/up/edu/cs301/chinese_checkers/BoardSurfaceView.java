@@ -101,17 +101,17 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         /*Draw the bottom-right triangle.*/
         tri3Paint.setColor(Color.YELLOW);
         tri3Path.moveTo(1100, 700);
-        tri3Path.lineTo(1450, 948);
-        tri3Path.lineTo(950, 973);
+        tri3Path.lineTo(1450, 1000);
+        tri3Path.lineTo(950, 1000);
         tri2Path.lineTo(1100, 700);
         c.drawPath(tri3Path, tri3Paint);
 
         /*Draw the bottom triangle.*/
         tri4Paint.setColor(Color.RED);
-        tri4Path.moveTo(950, 973);
-        tri4Path.lineTo(750, 1323);
-        tri4Path.lineTo(550, 973);
-        tri4Path.lineTo(950, 973);
+        tri4Path.moveTo(950, 1000);
+        tri4Path.lineTo(750, 1350);
+        tri4Path.lineTo(550, 1000);
+        tri4Path.lineTo(950, 1000);
 
         /*For larger bottom triangle*/
 //        tri4Path.moveTo(1000, 948);
@@ -122,10 +122,10 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 
         /*Draw the bottom-left triangle.*/
         tri5Paint.setColor(Color.rgb(245, 120, 11));
-        tri5Path.moveTo(550, 973);
-        tri5Path.lineTo(150, 1000);
+        tri5Path.moveTo(550, 1000);
+        tri5Path.lineTo(50, 1000);
         tri5Path.lineTo(400, 700);
-        tri5Path.lineTo(550, 973);
+        tri5Path.lineTo(550, 1000);
         c.drawPath(tri5Path, tri5Paint);
 
         /*Draw the top-left triangle.*/
@@ -137,7 +137,7 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         c.drawPath(tri6Path, tri6Paint);
 
         /*Draw the central space.*/
-//        hexPaint.setColor(Color.WHITE);
+        hexPaint.setColor(Color.WHITE);
 //        hexPath.moveTo(550, 400);
 //        hexPath.lineTo(950, 400);
 //        hexPath.lineTo(1250, 624);
@@ -145,6 +145,8 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 //        hexPath.lineTo(550, 948);
 //        hexPath.lineTo(350, 624);
 //        hexPath.lineTo(550, 400);
+
+
 //        c.drawPath(hexPath, hexPaint);
     }
 
