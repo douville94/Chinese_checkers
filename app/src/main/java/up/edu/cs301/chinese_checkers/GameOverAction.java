@@ -16,4 +16,6 @@ public class GameOverAction extends CCAction
         super(p);
         this.player = p;
     }
+
+    //get other variables for the state of the game
 }

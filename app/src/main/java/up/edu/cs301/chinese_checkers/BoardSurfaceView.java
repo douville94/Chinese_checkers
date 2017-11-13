@@ -82,12 +82,6 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         tri1Path.lineTo(750, 50);
         tri1Path.lineTo(950, 400);
         tri1Path.lineTo(550, 400);
-
-        /*For larger top triangle.*/
-//        tri1Path.moveTo(500, 400);
-//        tri1Path.lineTo(750, 46);
-//        tri1Path.lineTo(1000, 400);
-//        tri1Path.lineTo(500, 400);
         c.drawPath(tri1Path, tri1Paint);
 
         /*Draw the top-right triangle.*/
@@ -112,12 +106,6 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         tri4Path.lineTo(750, 1350);
         tri4Path.lineTo(550, 1000);
         tri4Path.lineTo(950, 1000);
-
-        /*For larger bottom triangle*/
-//        tri4Path.moveTo(1000, 948);
-//        tri4Path.lineTo(750, 1298);
-//        tri4Path.lineTo(500, 948);
-//        tri4Path.lineTo(1000, 948);
         c.drawPath(tri4Path, tri4Paint);
 
         /*Draw the bottom-left triangle.*/
@@ -138,13 +126,6 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 
         /*Draw the central space.*/
         hexPaint.setColor(Color.WHITE);
-//        hexPath.moveTo(550, 400);
-//        hexPath.lineTo(950, 400);
-//        hexPath.lineTo(1250, 624);
-//        hexPath.lineTo(950, 948);
-//        hexPath.lineTo(550, 948);
-//        hexPath.lineTo(350, 624);
-//        hexPath.lineTo(550, 400);
         hexPath.moveTo(550, 400);
         hexPath.lineTo(950, 400);
         hexPath.lineTo(1100, 700);

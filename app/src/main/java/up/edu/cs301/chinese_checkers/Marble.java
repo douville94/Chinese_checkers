@@ -6,4 +6,27 @@ package up.edu.cs301.chinese_checkers;
 
 public class Marble
 {
+    int color, position, playerNum;
+
+    public Marble(int color, int position, int playerNum)
+    {
+        this.color = color;
+        this.position = position;
+        this.playerNum = playerNum;
+    }
+
+    public int getColor()
+    {
+        return color;
+    }
+
+    public int getPosition()
+    {
+        return position;
+    }
+
+    public int getPlayerNum()
+    {
+        return playerNum;
+    }
 }
