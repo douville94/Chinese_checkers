@@ -4,17 +4,13 @@ import android.graphics.Color;
 
 import java.util.Hashtable;
 
+import up.edu.cs301.game.CCMainActivity;
+import up.edu.cs301.game.CCPlayer;
+import up.edu.cs301.game.infoMsg.CCInfo;
 import up.edu.cs301.game.infoMsg.CCState;
 
 /**
- *  This CCGameState keeps track of the official state of the game.
- *
- *  Instance Variables
- *  board - stores
- *  id - tells whose turn it is
- *  ColorPlayerTable - stores a table that corresponds to the player with their color
- *
- *
+ * Created by Charlie Wu on 11/5/17.
  */
 
 public class CCGameState extends CCState {
@@ -22,16 +18,16 @@ public class CCGameState extends CCState {
     //instance variables
     Marble[][] board;
     int id;
-
     Hashtable<Integer,Color> ColorPlayerTable;
-
 
     public CCGameState() {
         super();
     }
+
     public CCGameState(CCGameState state) {
         super();
     }
+
     public Marble[][] getBoard(){
         return board;
     }
@@ -45,17 +41,14 @@ public class CCGameState extends CCState {
         return board[x][y];
     }
 
-    // returns current player
     public int getId(){
         return id;
     }
 
-    // returns ColorPlayerTable
     public Hashtable<Integer,Color> getCPT(){
         return ColorPlayerTable;
     }
 
-    //
     public void setBoard(Marble[][] b){
         board = b;
     }

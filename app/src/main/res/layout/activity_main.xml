@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:custom="http://schemas.android.com/apk/up.edu.cs301.chinese_checkers"
-
+    android:id="@+id/activity_main"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -28,14 +28,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Turn"
-                android:textSize="24sp"/>
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/currentPlayerTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="24sp"/>
+                android:textSize="24sp" />
 
         </LinearLayout>
 
@@ -44,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@android:color/darker_gray"/>
+            android:background="@android:color/darker_gray" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/holo_blue_bright"
-                android:text="CONFIRM"/>
+                android:text="CONFIRM" />
 
             <Button
                 android:id="@+id/cancel"
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/holo_red_light"
-                android:text="CANCEL"/>
+                android:text="CANCEL" />
         </LinearLayout>
 
     </LinearLayout>
