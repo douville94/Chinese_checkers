@@ -4,8 +4,8 @@ import android.graphics.Color;
 
 import java.util.Hashtable;
 
-import up.edu.cs301.game.CCMainActivity;
-import up.edu.cs301.game.CCPlayer;
+import up.edu.cs301.chinese_checkers.CCMainActivity;
+import up.edu.cs301.game.HumanPlayer;
 import up.edu.cs301.game.infoMsg.CCInfo;
 import up.edu.cs301.game.infoMsg.CCState;
 
