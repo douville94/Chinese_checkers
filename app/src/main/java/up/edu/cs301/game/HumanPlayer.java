@@ -114,10 +114,8 @@ public abstract class HumanPlayer implements Player, Tickable
      */
     public final void gameSetAsGui(MainActivity a)
     {
-
         myActivity = a;
         setAsGui(a);
-
     }
 
 	/*

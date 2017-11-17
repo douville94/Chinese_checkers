@@ -6,6 +6,8 @@ import android.graphics.Point;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import up.edu.cs301.game.HumanPlayer;
 import up.edu.cs301.game.MainActivity;
@@ -27,6 +29,10 @@ public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
 
     // the ID for the layout to use
     private int layoutId;
+
+    private TextView turnTextView, currentPlayerTextView;
+    private BoardSurfaceView bsf;
+    private Button confirm, cancel;
 
     /**
      * constructor
@@ -82,6 +88,13 @@ public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
         // set the surfaceView instance variable
         //surfaceView = (CCSurfaceView)myActivity.findViewById(R.id.surfaceView);
         Log.i("set listener","OnTouch");
+        turnTextView = (TextView)myActivity.findViewById(R.id.turnTextView);
+        currentPlayerTextView = (TextView)myActivity.findViewById(R.id.currentPlayerTextView);
+        bsf = (BoardSurfaceView)myActivity.findViewById(R.id.boardSurfaceView);
+        confirm = (Button)myActivity.findViewById(R.id.confirm);
+        confirm.setOnClickListener(new confirmButtonListener());
+        cancel = (Button)myActivity.findViewById(R.id.cancel);
+        cancel.setOnClickListener(new cancelButtonListener());
         //surfaceView.setOnTouchListener(this);
     }
 
@@ -139,5 +152,21 @@ public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
 
     }
 
+    private class confirmButtonListener implements View.OnClickListener
+    {
+        @Override
+        public void onClick(View v)
+        {
 
+        }
+    }
+
+    private class cancelButtonListener implements View.OnClickListener
+    {
+        @Override
+        public void onClick(View v)
+        {
+
+        }
+    }
 }

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TabHost;
@@ -73,6 +74,7 @@ public abstract class MainActivity extends Activity implements
 
     private TextView turnTextView, currentPlayerTextView;
     private BoardSurfaceView bsf;
+    private Button confirm, cancel;
 
     /**
      * contains the game configuration this activity will be used to initialize
@@ -190,21 +192,7 @@ public abstract class MainActivity extends Activity implements
 
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_main);
-        turnTextView = (TextView) findViewById(R.id.turnTextView);
-        currentPlayerTextView = (TextView) findViewById(R.id.currentPlayerTextView);
-//        boardSurfaceView = (SurfaceView)findViewById(R.id.boardSurfaceView);
-        bsf = (BoardSurfaceView) findViewById(R.id.boardSurfaceView);
-//        bsf = new BoardSurfaceView(this);
-//        setContentView(bsf);
-//        b = new Board();
-//        c = new Canvas();/*These two lines cause program to crash*/
-//        b.draw(c);
-//        boardSurfaceHolder = boardSurfaceView.getHolder();
-//        boardSurfaceHolder.addCallback(this);//this line only works if class implements SurfaceHolder.Callback interface
-//        boardSurfaceView.setWillNotDraw(false);
-//        boardSurfaceView.invalidate();
-//        bsf.invalidate();
-        /*Create a Bitmap object?*/
+
     }// onCreate
 
     /**
@@ -398,6 +386,23 @@ public abstract class MainActivity extends Activity implements
         remoteTabSpec.setIndicator(remoteTabString());
         tabHost.addTab(localTabSpec);
         tabHost.addTab(remoteTabSpec);
+
+//        View v = findViewById(R.id.player_config_1);
+//        v.setOnClickListener(this);
+//        v = findViewById(R.id.player_config_2);
+//        v.setOnClickListener(this);
+//        v = findViewById(R.id.player_config_3);
+//        v.setOnClickListener(this);
+//        v = findViewById(R.id.player_config_4);
+//        v.setOnClickListener(this);
+//        v = findViewById(R.id.player_config_5);
+//        v.setOnClickListener(this);
+//        v = findViewById(R.id.player_config_5);
+//        v.setOnClickListener(this);
+//        v = findViewById(R.id.saveConfigButton);
+//        v.setOnClickListener(this);
+//        v = findViewById(R.id.playGameButton);
+//        v.setOnClickListener(this);
 
         // make sure the current tab is the right one
         tabHost.setCurrentTab(config.isLocal() ? 0 : 1);
