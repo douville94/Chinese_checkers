@@ -7,8 +7,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import up.edu.cs301.game.CCHumanPlayer;
-import up.edu.cs301.game.CCMainActivity;
+import up.edu.cs301.game.HumanPlayer;
+import up.edu.cs301.game.MainActivity;
 import up.edu.cs301.game.infoMsg.CCInfo;
 import up.edu.cs301.game.infoMsg.CCState;
 
@@ -16,7 +16,7 @@ import up.edu.cs301.game.infoMsg.CCState;
  * Created by sizhecao on 11/12/17.
  */
 
-public class HumanPlayer extends CCHumanPlayer implements View.OnTouchListener {
+public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
 
 
     // the current activity
@@ -36,7 +36,7 @@ public class HumanPlayer extends CCHumanPlayer implements View.OnTouchListener {
      * @param layoutId
      *      the id of the layout to use
      */
-    public HumanPlayer(String name, int layoutId) {
+    public CCHumanPlayer(String name, int layoutId) {
         super(name);
         this.layoutId = layoutId;
     }
@@ -69,7 +69,9 @@ public class HumanPlayer extends CCHumanPlayer implements View.OnTouchListener {
     /**
      * sets the current player as the activity's GUI
      */
-    public void setAsGui(CCMainActivity activity) {
+//    public void setAsGui(CCMainActivity activity) {
+    @Override
+    public void setAsGui(MainActivity activity) {
 
         // remember our activitiy
         myActivity = activity;
