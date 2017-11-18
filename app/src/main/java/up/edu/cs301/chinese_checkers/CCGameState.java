@@ -93,6 +93,7 @@ public class CCGameState extends CCState {
      * @param x x-coordinate
      * @param y y-coordinate
      * @param b Marble object to put into the board. !!!!!!!!!!!!!!!!!!!!!!!!!!! WILL WE ABLE TO TAKE INT NULL OBJECTS?
+     * @return returns true if added succesfully and false if it did not add the object.
      */
     public boolean add2Board(int x, int y, Marble b){
         if(x > board.length){
