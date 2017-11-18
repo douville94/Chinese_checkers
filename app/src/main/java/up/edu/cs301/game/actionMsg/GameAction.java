@@ -21,7 +21,7 @@ import up.edu.cs301.game.Player;
  * @author Andrew M. Nuxoll
  * @version July 2013
  */
-public abstract class CCAction implements Serializable
+public abstract class GameAction implements Serializable
 {
 
     // to support the Serializable interface
@@ -31,11 +31,11 @@ public abstract class CCAction implements Serializable
     private Player player;
 
     /**
-     * constructor for CCAction
+     * constructor for GameAction
      *
      * @param player the player who created the action
      */
-    public CCAction(Player player)
+    public GameAction(Player player)
     {
         this.player = player;
     }

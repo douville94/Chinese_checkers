@@ -1,6 +1,6 @@
 package up.edu.cs301.game;
 
-import up.edu.cs301.game.actionMsg.CCAction;
+import up.edu.cs301.game.actionMsg.GameAction;
 
 /**
  * To support remote play, this game framework has two types of Games: local
@@ -29,6 +29,6 @@ public interface Game
      *
      * @param action the action to send
      */
-    public abstract void sendAction(CCAction action);
+    public abstract void sendAction(GameAction action);
 
 }

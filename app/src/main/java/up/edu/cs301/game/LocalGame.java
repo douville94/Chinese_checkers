@@ -5,7 +5,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
-import up.edu.cs301.game.actionMsg.CCAction;
+import up.edu.cs301.game.actionMsg.GameAction;
 import up.edu.cs301.game.actionMsg.GameOverAckAction;
 import up.edu.cs301.game.actionMsg.MyNameIsAction;
 import up.edu.cs301.game.actionMsg.ReadyAction;
@@ -178,9 +178,9 @@ public abstract class LocalGame implements Game, Tickable
      */
     private void receiveMessage(Message msg)
     {
-        if(msg.obj instanceof CCAction)
-        { // ignore if not CCAction
-            CCAction action = (CCAction) msg.obj;
+        if(msg.obj instanceof GameAction)
+        { // ignore if not GameAction
+            GameAction action = (GameAction) msg.obj;
 
             // CASE 1: the game is at the stage where we we waiting for
             // players to tell us their names. In this case, we expect
@@ -255,7 +255,7 @@ public abstract class LocalGame implements Game, Tickable
                 {
                     this.checkAndHandleAction(action);
                 }
-            } else if(action instanceof CCAction && gameStage == GameStage.DURING_GAME)
+            } else if(action instanceof GameAction && gameStage == GameStage.DURING_GAME)
             {
 
                 // CASE 4: it's during the game, and we get an action from a player
@@ -281,7 +281,7 @@ public abstract class LocalGame implements Game, Tickable
      *
      * @param action the action that was sent
      */
-    private final void checkAndHandleAction(CCAction action)
+    private final void checkAndHandleAction(GameAction action)
     {
 
         // get the player and player ID
@@ -364,14 +364,14 @@ public abstract class LocalGame implements Game, Tickable
      * @param action The move that the player has sent to the game
      * @return Tells whether the move was a legal one.
      */
-    protected abstract boolean makeMove(CCAction action);
+    protected abstract boolean makeMove(GameAction action);
 
     /**
      * sends a given action to the Game object
      *
      * @param action the action to send
      */
-    public final void sendAction(CCAction action)
+    public final void sendAction(GameAction action)
     {
         // wait until handler is set
         while(myHandler == null)

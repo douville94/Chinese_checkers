@@ -2,7 +2,7 @@ package up.edu.cs301.game;
 
 import android.util.Log;
 
-import up.edu.cs301.game.actionMsg.CCAction;
+import up.edu.cs301.game.actionMsg.GameAction;
 import up.edu.cs301.game.infoMsg.BindGameInfo;
 import up.edu.cs301.game.infoMsg.CCInfo;
 import up.edu.cs301.game.util.NetworkObjectPasser;
@@ -54,11 +54,11 @@ public class ProxyPlayer implements Player
                     // that has come across the network
                     public void onReceiveObject(Object obj)
                     {
-                        if(obj instanceof CCAction)
+                        if(obj instanceof GameAction)
                         {
                             // if it's a game action (which it should be), send
                             // the action to the game
-                            CCAction action = (CCAction) obj;
+                            GameAction action = (GameAction) obj;
                             action.setPlayer(ProxyPlayer.this);
                             game.sendAction(action);
                         }

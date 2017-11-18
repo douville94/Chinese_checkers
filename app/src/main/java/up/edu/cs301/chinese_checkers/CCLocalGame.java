@@ -2,7 +2,7 @@ package up.edu.cs301.chinese_checkers;
 
 import up.edu.cs301.game.LocalGame;
 import up.edu.cs301.game.Player;
-import up.edu.cs301.game.actionMsg.CCAction;
+import up.edu.cs301.game.actionMsg.GameAction;
 
 /**
  * Created by Charlie Wu on 10/30/17.
@@ -47,26 +47,26 @@ public class CCLocalGame extends LocalGame {
     protected String checkIfGameOver() {return null; }
 
     @Override
-    protected boolean makeMove(CCAction action) {
+    protected boolean makeMove(GameAction action) {
         return false;
     }
 
-    protected boolean confirmMove(CCAction action) {
+    protected boolean confirmMove(GameAction action) {
         //still need the confirm action.
         return false;
     }
 
-    protected boolean cancelMove(CCAction action) {
+    protected boolean cancelMove(GameAction action) {
         //still need the cancel action
         return false;
     }
 
-    protected boolean saveMove(CCAction action) {
+    protected boolean saveMove(GameAction action) {
         //still need the save action be modified.
         return false;
     }
 
-    protected boolean quitAction(CCAction action) {
+    protected boolean quitAction(GameAction action) {
         //still need the quit action be modified.
         return false;
     }
