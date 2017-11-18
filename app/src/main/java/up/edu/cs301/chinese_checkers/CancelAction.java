@@ -4,14 +4,14 @@ import up.edu.cs301.game.actionMsg.GameAction;
 import up.edu.cs301.game.Player;
 
 /**
- * Created by Luke D. Douville on 10/25/17.
+ * Created by Luke Douville on 11/18/17.
  */
 
-public class QuitAction extends GameAction
+public class CancelAction extends GameAction
 {
-    private Player player;
+    Player player;
 
-    public QuitAction(Player p)
+    public CancelAction(Player p)
     {
         super(p);
         this.player = p;

@@ -4,14 +4,14 @@ import up.edu.cs301.game.Player;
 import up.edu.cs301.game.actionMsg.GameAction;
 
 /**
- * Created by Luke D. Douville on 10/25/17.
+ * Created by Luke Douville on 11/18/17.
  */
 
-public class SaveAction extends GameAction
+public class ConfirmAction extends GameAction
 {
-    private Player player;
+    Player player;
 
-    public SaveAction(Player p)
+    public ConfirmAction(Player p)
     {
         super(p);
         this.player = p;

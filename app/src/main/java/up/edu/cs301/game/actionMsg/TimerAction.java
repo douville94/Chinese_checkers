@@ -9,7 +9,7 @@ import up.edu.cs301.game.util.GameTimer;
  * @author Steven R. Vegdahl
  * @version July 2013
  */
-public class TimerAction extends CCAction
+public class TimerAction extends GameAction
 {
 
     // to satisfy the Serializable interface

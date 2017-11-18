@@ -8,7 +8,7 @@ import up.edu.cs301.game.Player;
  * @author Steven R. Vegdahl
  * @version July 2013
  */
-public class GameOverAckAction extends CCAction
+public class GameOverAckAction extends GameAction
 {
 
     // to satisfy the Serializable interface

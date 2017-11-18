@@ -5,7 +5,7 @@ import android.util.Log;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import up.edu.cs301.game.actionMsg.CCAction;
+import up.edu.cs301.game.actionMsg.GameAction;
 import up.edu.cs301.game.infoMsg.CCInfo;
 import up.edu.cs301.game.util.IPCoder;
 import up.edu.cs301.game.util.NetworkObjectPasser;
@@ -126,7 +126,7 @@ public class ProxyGame implements Game
      *
      * @param action the action object to apply
      */
-    public final void sendAction(CCAction action)
+    public final void sendAction(GameAction action)
     {
         // Send the action across the socket, nulling out the player in
         // the action so that the entire player is not serialized.

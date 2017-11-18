@@ -9,7 +9,7 @@ import up.edu.cs301.game.Player;
  * @author Steven R. Vegdahl
  * @version July 2013
  */
-public class MyNameIsAction extends CCAction
+public class MyNameIsAction extends GameAction
 {
 
     // to satisfy the Serializable interface
