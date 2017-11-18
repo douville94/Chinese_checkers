@@ -63,7 +63,7 @@ public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
             surfaceView.flash(Color.RED, 50);
         }
         else if (!(info instanceof CCState))
-            // if we do not have a TTTState, ignore
+            // if we do not have a CCState, ignore
             return;
         else {
             surfaceView.setState((CCState)info);
