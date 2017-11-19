@@ -11,7 +11,10 @@ import up.edu.cs301.game.infoMsg.NotYourTurnInfo;
 public class DumbAI extends ComputerPlayer
 {
     private CCInfo info;
-    private Marble m;
+//    private Marble m;
+    /*MoveAction needs to have a Marble object but then we have initialize a Marble object in this class
+    so that we can pass it in.
+     */
 
     public DumbAI(String name) {
         super(name);
@@ -23,7 +26,7 @@ public class DumbAI extends ComputerPlayer
         // if it was a "not your turn" message, just ignore it
         if (info instanceof NotYourTurnInfo) return;
         sleep(1000);
-        game.sendAction(new MoveAction(this, m));
-
+        game.sendAction(new MoveAction(this));
+//        game.sendAction(new MoveAction(this, m));
     }
 }

@@ -11,17 +11,17 @@ public class MoveAction extends GameAction
 {
     private Player player;
     private int row;
-    private int col;
+    private int column;
 
-    public MoveAction(Player player, Marble marble)
+    public MoveAction(Player player)//, Marble marble)
     {
         super(player);
         this.player = player;
         // set the row and column as passed to us
-//        this.row = Math.max(0, Math.min(2, row));
-//        this.col = Math.max(0, Math.min(2, col));
-        this.row = marble.getRow();
-        this.col = marble.getCol();
+        row = Math.max(0, Math.min(2, row));
+        column = Math.max(0, Math.min(2, column));
+//        this.row = marble.getRow();
+//        this.col = marble.getCol();
     }
 
     /**
@@ -29,13 +29,15 @@ public class MoveAction extends GameAction
      *
      * @param marble
      */
-//    public boolean getMarble(Marble marble) {
-//        int colorMarble = marble.getColor();
-//        int rowMarble = marble.getRow();
-//        int colMarble = marble.getCol();
-//        int playerMarble = marble.getPlayerNum();
-//        return true;
-//    }
+    public boolean getMarble(Marble marble) {
+        int colorMarble = marble.getColor();
+        int rowMarble = marble.getRow();
+        int colMarble = marble.getCol();
+//        row = marble.getRow();
+//        column = marble.getCol();
+        int playerMarble = marble.getPlayerNum();
+        return true;
+    }
 
     /**
      * get the object's row
@@ -49,6 +51,6 @@ public class MoveAction extends GameAction
      *
      * @return the column selected
      */
-    public int getCol() {return col;}
+    public int getCol() {return column;}
 
 }

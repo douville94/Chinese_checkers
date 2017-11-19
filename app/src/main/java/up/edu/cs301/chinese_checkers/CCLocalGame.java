@@ -1,5 +1,6 @@
 package up.edu.cs301.chinese_checkers;
 
+import up.edu.cs301.game.Game;
 import up.edu.cs301.game.LocalGame;
 import up.edu.cs301.game.Player;
 import up.edu.cs301.game.actionMsg.GameAction;
@@ -21,6 +22,7 @@ public class CCLocalGame extends LocalGame {
     protected int moveCount;
 
     private CCHumanPlayer chp;
+//    private Game game;
 
     /**
      * Constructor for the LocalGame.
@@ -103,28 +105,6 @@ public class CCLocalGame extends LocalGame {
         // place the player's piece on the selected square
 //        state.setBoard(row, col, whoseMove);
 
-        return false;
-    }
-
-    protected boolean confirmMove(ConfirmAction action) {
-        //still need the confirm action.
-//        ConfirmAction confirmMove = new ConfirmAction(chp);
-        ConfirmAction confirmMove = action;
-        return true;
-    }
-
-    protected boolean cancelMove(CancelAction action) {
-        //still need the cancel action
-        return false;
-    }
-
-    protected boolean saveMove(SaveAction action) {
-        //still need the save action be modified.
-        return false;
-    }
-
-    protected boolean quitAction(QuitAction action) {
-        //still need the quit action be modified.
         return false;
     }
 }
