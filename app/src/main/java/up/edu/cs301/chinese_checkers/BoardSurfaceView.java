@@ -150,12 +150,12 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         c.drawPath(tri4Path, tri4Paint);
 //        c.drawPath(tri4Path, boardPaint);
 
-        c.drawCircle((float)width,(height+750)+range,radius,boardPaint);           //row 1
-        c.drawCircle((float)width+50,(height+750)+3*range,radius,boardPaint);  //row 2
-        c.drawCircle((float)width-50,(height+750)+3*range,radius,boardPaint);  //row 2
-        c.drawCircle((float)width-100,(height+750)+5*range,radius,boardPaint); //row 3
-        c.drawCircle((float)width,(height-750)+5*range,radius,boardPaint);         //row 3
-        c.drawCircle((float)width+100,(height+750)+5*range,radius,boardPaint); //row 3
+        c.drawCircle((float)width, (height+600), radius, boardPaint);           //row 1
+        c.drawCircle(width+50,(height+500), radius, boardPaint);  //row 2
+        c.drawCircle(width-50,(height+500), radius, boardPaint);  //row 2
+        c.drawCircle((float)width-100,(height+425), radius, boardPaint); //row 3
+        c.drawCircle((float)width,(height+425),radius,boardPaint);   //row 3
+        c.drawCircle((float)width+100,(height+425),radius,boardPaint); //row 3
         c.drawCircle((float)width-150,(height+400)-range,radius,boardPaint);   //row 4
         c.drawCircle((float)width-50,(height+400)-range,radius,boardPaint);    //row 4
         c.drawCircle((float)width+50,(height+400)-range,radius,boardPaint);    //row 4
@@ -180,6 +180,17 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         tri6Path.lineTo(width-400, height-50);
         c.drawPath(tri6Path, tri6Paint);
 //        c.drawPath(tri6Path, boardPaint);
+
+        c.drawCircle((float)width-300,(height-400)+range,radius,boardPaint);    //row 5
+        c.drawCircle((float)width-400,(height-400)+range,radius,boardPaint);  //row 5
+        c.drawCircle((float)width-500,(height-400)+range,radius,boardPaint);  //row 5
+        c.drawCircle((float)width-600,(height-400)+range,radius,boardPaint);  //row 5
+        c.drawCircle((float)width-350,(height-400)+3*range,radius,boardPaint);         //row 3
+        c.drawCircle((float)width-450,(height-400)+3*range,radius,boardPaint); //row 3
+        c.drawCircle((float)width-550,(height-400)+3*range,radius,boardPaint);   //row 4
+        c.drawCircle((float)width-400,(height-400)+5*range,radius,boardPaint);    //row 4
+        c.drawCircle((float)width-500,(height-400)+5*range,radius,boardPaint);    //row 4
+        c.drawCircle((float)width-450,(height)-range,radius,boardPaint);   //row 4
 
         /*Draw the central space.*/
         hexPaint.setColor(Color.WHITE);
