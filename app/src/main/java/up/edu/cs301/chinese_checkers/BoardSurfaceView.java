@@ -77,7 +77,8 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         hexPath = new Path();
         int width = c.getWidth()/2;
         int height = c.getHeight()/2;
-        float radius = 350/8;
+        float radius = (50/3)*(float)Math.sqrt(3.0);
+        float range = 350/8;
         boardPaint = new Paint();
         boardPaint.setColor(Color.BLACK);
 
@@ -91,16 +92,16 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         tri1Path.lineTo(width, height-750);
         c.drawPath(tri1Path, tri1Paint);
 
-        c.drawCircle((float)width,(height-750)+radius,radius,boardPaint);           //row 1
-        c.drawCircle((float)width+50,(height-750)+3*radius,radius,boardPaint);  //row 2
-        c.drawCircle((float)width-50,(height-750)+3*radius,radius,boardPaint);  //row 2
-        c.drawCircle((float)width-100,(height-750)+5*radius,radius,boardPaint); //row 3
-        c.drawCircle((float)width,(height-750)+5*radius,radius,boardPaint);         //row 3
-        c.drawCircle((float)width+100,(height-750)+5*radius,radius,boardPaint); //row 3
-        c.drawCircle((float)width-150,(height-400)-radius,radius,boardPaint);   //row 4
-        c.drawCircle((float)width-50,(height-400)-radius,radius,boardPaint);    //row 4
-        c.drawCircle((float)width+50,(height-400)-radius,radius,boardPaint);    //row 4
-        c.drawCircle((float)width+150,(height-400)-radius,radius,boardPaint);   //row 4
+        c.drawCircle((float)width,(height-750)+range,radius,boardPaint);           //row 1
+        c.drawCircle((float)width+50,(height-750)+3*range,radius,boardPaint);  //row 2
+        c.drawCircle((float)width-50,(height-750)+3*range,radius,boardPaint);  //row 2
+        c.drawCircle((float)width-100,(height-750)+5*range,radius,boardPaint); //row 3
+        c.drawCircle((float)width,(height-750)+5*range,radius,boardPaint);         //row 3
+        c.drawCircle((float)width+100,(height-750)+5*range,radius,boardPaint); //row 3
+        c.drawCircle((float)width-150,(height-400)-range,radius,boardPaint);   //row 4
+        c.drawCircle((float)width-50,(height-400)-range,radius,boardPaint);    //row 4
+        c.drawCircle((float)width+50,(height-400)-range,radius,boardPaint);    //row 4
+        c.drawCircle((float)width+150,(height-400)-range,radius,boardPaint);   //row 4
 
 
 
@@ -113,6 +114,17 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         tri2Path.lineTo(width+400, height-50);
         tri2Path.lineTo(width+200, height-400);
         c.drawPath(tri2Path, tri2Paint);
+
+        c.drawCircle((float)width+300,(height-400)+range,radius,boardPaint);    //row 5
+        c.drawCircle((float)width+400,(height-400)+range,radius,boardPaint);  //row 5
+        c.drawCircle((float)width+500,(height-400)+range,radius,boardPaint);  //row 5
+        c.drawCircle((float)width+600,(height-400)+range,radius,boardPaint);  //row 5
+        c.drawCircle((float)width+350,(height-400)+3*range,radius,boardPaint);         //row 3
+        c.drawCircle((float)width+450,(height-400)+3*range,radius,boardPaint); //row 3
+        c.drawCircle((float)width+550,(height-400)+3*range,radius,boardPaint);   //row 4
+        c.drawCircle((float)width+400,(height-400)+5*range,radius,boardPaint);    //row 4
+        c.drawCircle((float)width+500,(height-400)+5*range,radius,boardPaint);    //row 4
+        c.drawCircle((float)width+450,(height)-range,radius,boardPaint);   //row 4
 
         /*Draw the bottom-right triangle.*/
         tri3Paint.setColor(Color.YELLOW);
