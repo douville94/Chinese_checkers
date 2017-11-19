@@ -9,7 +9,7 @@ import android.graphics.Bitmap;
 import up.edu.cs301.game.LocalGame;
 import up.edu.cs301.game.config.GameConfig;
 
-public class CCMainActivity extends up.edu.cs301.game.MainActivity//AppCompatActivity
+public class CCMainActivity extends up.edu.cs301.game.MainActivity //AppCompatActivity
 {
     private TextView turnTextView;
     private TextView currentPlayerTextView;
