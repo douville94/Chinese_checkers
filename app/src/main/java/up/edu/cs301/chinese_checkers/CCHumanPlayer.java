@@ -1,6 +1,7 @@
 package up.edu.cs301.chinese_checkers;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.util.Log;
@@ -32,7 +33,13 @@ public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
 
     private TextView turnTextView, currentPlayerTextView;
     private BoardSurfaceView bsf;
-    private Button confirm, cancel;
+    private Button confirm, cancel, save, quit;
+
+    private ConfirmAction conf;
+    private CancelAction canc;
+    private QuitAction quitAction;
+
+    private Intent myIntent;
 
     /**
      * constructor
@@ -95,6 +102,8 @@ public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
         confirm.setOnClickListener(new confirmButtonListener());
         cancel = (Button)myActivity.findViewById(R.id.cancel);
         cancel.setOnClickListener(new cancelButtonListener());
+        quit = (Button)myActivity.findViewById(R.id.quit);
+        quit.setOnClickListener(new quitButtonListener());
         //surfaceView.setOnTouchListener(this);
     }
 
@@ -158,6 +167,8 @@ public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
         public void onClick(View v)
         {
             //if confirm button is clicked,
+            conf = new ConfirmAction(CCHumanPlayer.this);
+            game.sendAction(conf);
         }
     }
 
@@ -166,6 +177,27 @@ public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
         @Override
         public void onClick(View v)
         {
+            canc = new CancelAction(CCHumanPlayer.this);
+            game.sendAction(canc);
+        }
+    }
+
+    //save button listener
+
+    private class quitButtonListener implements View.OnClickListener
+    {
+        @Override
+        public void onClick(View v)
+        {
+            /*This quits the entire app, which isn't what we want.  Still including this, may be useful later.*/
+//            android.os.Process.killProcess(android.os.Process.myPid());
+//            System.exit(1);
+
+            /*Return to main menu*/
+            quitAction = new QuitAction(CCHumanPlayer.this);//, marble);
+            game.sendAction(quitAction);
+            layoutId = R.layout.main_menu;
+            myActivity.setContentView(layoutId);
 
         }
     }

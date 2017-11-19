@@ -5,12 +5,17 @@ import up.edu.cs301.game.infoMsg.CCInfo;
 import up.edu.cs301.game.infoMsg.NotYourTurnInfo;
 
 /**
- * Created by douvillionaire on 10/25/17.
+ * Created by Luke Douville on 10/25/17.
  */
 
 public class DumbAI extends ComputerPlayer
 {
     private CCInfo info;
+//    private Marble m;
+    /*MoveAction needs to have a Marble object but then we have initialize a Marble object in this class
+    so that we can pass it in.
+     */
+
     public DumbAI(String name) {
         super(name);
     }
@@ -22,6 +27,6 @@ public class DumbAI extends ComputerPlayer
         if (info instanceof NotYourTurnInfo) return;
         sleep(1000);
         game.sendAction(new MoveAction(this));
-
+//        game.sendAction(new MoveAction(this, m));
     }
 }

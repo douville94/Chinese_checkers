@@ -12,12 +12,12 @@ public class JumpAction extends GameAction
     private Player player;
     private int playerNum;
     private Marble m;
-    private int currPos;
-    private int goalPos;
+    private int[][] currPos;
+    private int[][] goalPos;
     private int colorMarble, rowMarble, columnMarble, playerMarble;
     private int row, column;
 
-    public JumpAction(Player p, int playerNum, Marble m, int currPos, int goalPos)
+    public JumpAction(Player p, int playerNum, Marble m, int[][] currPos, int[][] goalPos)
     {
         super(p);
         this.player = p;
@@ -25,15 +25,19 @@ public class JumpAction extends GameAction
         this.m = m;
         this.currPos = currPos;
         this.goalPos = goalPos;
+
+        row = m.getRow();
+        column = m.getCol();
+
     }
 
-    public boolean getMarble(Marble marble) {
-        colorMarble = marble.getColor();
-        rowMarble = marble.getRow();
-        columnMarble = marble.getCol();
-        playerMarble = marble.getPlayerNum();
-        return true;
-    }
+//    public boolean getMarble(Marble marble) {
+//        colorMarble = marble.getColor();
+//        rowMarble = marble.getRow();
+//        columnMarble = marble.getCol();
+//        playerMarble = marble.getPlayerNum();
+//        return true;
+//    }
 
     public int getRow()
     {
@@ -45,12 +49,12 @@ public class JumpAction extends GameAction
         return column;
     }
 
-    public int getCurrentPosition()
+    public int[][] getCurrentPosition()
     {
         return currPos;
     }
 
-    public int getGoalPosition()
+    public int[][] getGoalPosition()
     {
         return goalPos;
     }

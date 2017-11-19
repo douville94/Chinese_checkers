@@ -10,10 +10,24 @@ import up.edu.cs301.game.actionMsg.GameAction;
 public class SaveAction extends GameAction
 {
     private Player player;
+    private int x, y;
 
-    public SaveAction(Player p)
+    public SaveAction(Player p)//, Marble m)
     {
         super(p);
         this.player = p;
+
+//        x = m.getRow();
+//        y = m.getCol();
     }
+
+//    public int getXPosition()
+//    {
+//        return x;
+//    }
+//
+//    public int getYPosition()
+//    {
+//        return y;
+//    }
 }

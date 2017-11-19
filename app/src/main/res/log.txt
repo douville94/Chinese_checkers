@@ -1,2 +1,4 @@
 1.  Consulted for learning how to draw on a SurfaceView:  https://stackoverflow.com/questions/10931419/android-drawing-on-surfaceview-and-canvas
 2.  Consulted for learning how to add custom attributes to XML file:  https://developer.android.com/training/custom-views/create-view.html
+3.  Consulted for learning how to implement quit game button.  https://stackoverflow.com/questions/17719634/how-to-exit-an-android-app-using-code
+4.  Consulted for learning how to implement quit game button.  https://stackoverflow.com/questions/7991393/how-to-switch-between-screens

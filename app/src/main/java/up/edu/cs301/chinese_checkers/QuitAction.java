@@ -10,10 +10,24 @@ import up.edu.cs301.game.Player;
 public class QuitAction extends GameAction
 {
     private Player player;
+    private int x, y;
 
-    public QuitAction(Player p)
+    public QuitAction(Player p)//, Marble m)
     {
         super(p);
         this.player = p;
+
+//        x = m.getRow();
+//        y = m.getCol();
     }
+
+//    public int getXPosition()
+//    {
+//        return x;
+//    }
+//
+//    public int getYPosition()
+//    {
+//        return y;
+//    }
 }
