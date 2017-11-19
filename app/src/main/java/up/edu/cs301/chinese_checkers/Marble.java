@@ -1,22 +1,25 @@
 package up.edu.cs301.chinese_checkers;
 
+import android.graphics.Color;
+
 /**
  * Created by Luke D. Douville on 10/25/17.
  */
 
 public class Marble
 {
-    int color, row, col, playerNum;
+    int row, col, id;
+    Color color;
 
-    public Marble(int color, int row, int col, int playerNum)
+    public Marble(Color color, int row, int col, int id)
     {
         this.color = color;
         this.row = row;
         this.col = col;
-        this.playerNum = playerNum;
+        this.id = id;
     }
 
-    public int getColor()
+    public Color getColor()
     {
         return color;
     }
@@ -30,6 +33,16 @@ public class Marble
 
     public int getPlayerNum()
     {
-        return playerNum;
+        return id;
     }
+
+    public void setColor(Color c){
+
+    }
+
+    public void setRow(int i ){row = i;}
+
+    public void setCol(int i ){col = i;}
+
+    public void setId(int i ){id = i;}
 }

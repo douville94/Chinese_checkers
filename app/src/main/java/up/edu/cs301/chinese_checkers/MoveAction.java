@@ -2,6 +2,7 @@ package up.edu.cs301.chinese_checkers;
 
 import up.edu.cs301.game.Player;
 import up.edu.cs301.game.actionMsg.GameAction;
+import android.graphics.Color;
 
 /**
  * Created by Luke D. Douville on 10/25/17.
@@ -30,7 +31,7 @@ public class MoveAction extends GameAction
      * @param marble
      */
     public boolean getMarble(Marble marble) {
-        int colorMarble = marble.getColor();
+        Color colorMarble = marble.getColor();
         int rowMarble = marble.getRow();
         int colMarble = marble.getCol();
 //        row = marble.getRow();
