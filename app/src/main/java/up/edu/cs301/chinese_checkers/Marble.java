@@ -6,12 +6,13 @@ package up.edu.cs301.chinese_checkers;
 
 public class Marble
 {
-    int color, position, playerNum;
+    int color, row, col, playerNum;
 
-    public Marble(int color, int position, int playerNum)
+    public Marble(int color, int row, int col, int playerNum)
     {
         this.color = color;
-        this.position = position;
+        this.row = row;
+        this.col = col;
         this.playerNum = playerNum;
     }
 
@@ -20,10 +21,12 @@ public class Marble
         return color;
     }
 
-    public int getPosition()
+    public int getRow()
     {
-        return position;
+        return row;
     }
+
+    public int getCol() { return col; }
 
     public int getPlayerNum()
     {
