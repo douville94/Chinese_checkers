@@ -9,17 +9,30 @@ import up.edu.cs301.game.actionMsg.GameAction;
 
 public class MoveAction extends GameAction
 {
-    //private Player player;
+    private Player player;
     private int row;
     private int col;
 
     public MoveAction(Player player)
     {
         super(player);
-
+        this.player = player;
         // set the row and column as passed to us
-        this.row = Math.max(0, Math.min(2, row));
-        this.col = Math.max(0, Math.min(2, col));
+//        this.row = Math.max(0, Math.min(2, row));
+//        this.col = Math.max(0, Math.min(2, col));
+    }
+
+    /**
+     * get the the location of the marble
+     *
+     * @param marble
+     */
+    public boolean getMarble(Marble marble) {
+        int colorMarble = marble.getColor();
+        int rowMarble = marble.getRow();
+        int colMarble = marble.getCol();
+        int playerMarble = marble.getPlayerNum();
+        return true;
     }
 
     /**

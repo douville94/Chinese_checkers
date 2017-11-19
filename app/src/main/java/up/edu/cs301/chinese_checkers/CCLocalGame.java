@@ -99,7 +99,7 @@ public class CCLocalGame extends LocalGame {
         int whoseMove = state.getWhoseMove();
 
         // place the player's piece on the selected square
-        //state.setBoard(row, col, mark[playerId]);
+//        state.setBoard(row, col, whoseMove);
 
         return false;
     }
