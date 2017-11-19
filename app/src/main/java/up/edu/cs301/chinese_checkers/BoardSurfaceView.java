@@ -22,7 +22,7 @@ import android.widget.LinearLayout;
 public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callback
 {
     protected Path tri1Path, tri2Path, tri3Path, tri4Path, tri5Path, tri6Path, hexPath;
-    protected Paint tri1Paint, tri2Paint, tri3Paint, tri4Paint, tri5Paint, tri6Paint, hexPaint;
+    protected Paint tri1Paint, tri2Paint, tri3Paint, tri4Paint, tri5Paint, tri6Paint, hexPaint, boardPaint;
     private Canvas tempCanvas;
     private LinearLayout boardSurfaceViewParent;
 
@@ -75,66 +75,88 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         tri5Path = new Path();
         tri6Path = new Path();
         hexPath = new Path();
+        int width = c.getWidth()/2;
+        int height = c.getHeight()/2;
+        float radius = 350/8;
+        boardPaint = new Paint();
+        boardPaint.setColor(Color.BLACK);
+
+
 
         /*Draw the top triangle.*/
         tri1Paint.setColor(Color.BLUE);//set the color
-        tri1Path.moveTo(550, 400);
-        tri1Path.lineTo(750, 50);
-        tri1Path.lineTo(950, 400);
-        tri1Path.lineTo(550, 400);
+        tri1Path.moveTo(width, height-750);
+        tri1Path.lineTo(width+200, height-400);
+        tri1Path.lineTo(width-200, height-400);
+        tri1Path.lineTo(width, height-750);
         c.drawPath(tri1Path, tri1Paint);
+
+        c.drawCircle((float)width,(height-750)+radius,radius,boardPaint);           //row 1
+        c.drawCircle((float)width+50,(height-750)+3*radius,radius,boardPaint);  //row 2
+        c.drawCircle((float)width-50,(height-750)+3*radius,radius,boardPaint);  //row 2
+        c.drawCircle((float)width-100,(height-750)+5*radius,radius,boardPaint); //row 3
+        c.drawCircle((float)width,(height-750)+5*radius,radius,boardPaint);         //row 3
+        c.drawCircle((float)width+100,(height-750)+5*radius,radius,boardPaint); //row 3
+        c.drawCircle((float)width-150,(height-400)-radius,radius,boardPaint);   //row 4
+        c.drawCircle((float)width-50,(height-400)-radius,radius,boardPaint);    //row 4
+        c.drawCircle((float)width+50,(height-400)-radius,radius,boardPaint);    //row 4
+        c.drawCircle((float)width+150,(height-400)-radius,radius,boardPaint);   //row 4
+
+
+
+
 
         /*Draw the top-right triangle.*/
         tri2Paint.setColor(Color.GREEN);//set the color
-        tri2Path.moveTo(950, 400);
-        tri2Path.lineTo(1350, 400);
-        tri2Path.lineTo(1150, 750);
-        tri2Path.lineTo(950, 400);
+        tri2Path.moveTo(width+200, height-400);
+        tri2Path.lineTo(width+600, height-400);
+        tri2Path.lineTo(width+400, height-50);
+        tri2Path.lineTo(width+200, height-400);
         c.drawPath(tri2Path, tri2Paint);
 
         /*Draw the bottom-right triangle.*/
         tri3Paint.setColor(Color.YELLOW);
-        tri3Path.moveTo(1150, 750);
-        tri3Path.lineTo(1350, 1100);
-        tri3Path.lineTo(950, 1100);
-        tri2Path.lineTo(1150, 750);
+        tri3Path.moveTo(width+400, height-50);
+        tri3Path.lineTo(width+600, height+300);
+        tri3Path.lineTo(width+200, height+300);
+        tri2Path.lineTo(width+400, height-50);
         c.drawPath(tri3Path, tri3Paint);
 
         /*Draw the bottom triangle.*/
         tri4Paint.setColor(Color.RED);
-        tri4Path.moveTo(950, 1100);
-        tri4Path.lineTo(750, 1450);
-        tri4Path.lineTo(550, 1100);
-        tri4Path.lineTo(950, 1100);
+        tri4Path.moveTo(width+200, height+300);
+        tri4Path.lineTo(width, height+650);
+        tri4Path.lineTo(width-200, height+300);
+        tri4Path.lineTo(width+200, height+300);
         c.drawPath(tri4Path, tri4Paint);
 
         /*Draw the bottom-left triangle.*/
         int orange = Color.rgb(245, 120, 11);
         tri5Paint.setColor(orange);
-        tri5Path.moveTo(550, 1100);
-        tri5Path.lineTo(150, 1100);
-        tri5Path.lineTo(350, 750);
-        tri5Path.lineTo(550, 1100);
+        tri5Path.moveTo(width-200, height+300);
+        tri5Path.lineTo(width-600, height+300);
+        tri5Path.lineTo(width-400, height-50);
+        tri5Path.lineTo(width-200, height+300);
         c.drawPath(tri5Path, tri5Paint);
 
         /*Draw the top-left triangle.*/
         int purple = Color.rgb(159, 11, 245);
         tri6Paint.setColor(purple);
-        tri6Path.moveTo(350, 750);
-        tri6Path.lineTo(150, 400);
-        tri6Path.lineTo(550, 400);
-        tri6Path.lineTo(350, 750);
+        tri6Path.moveTo(width-400, height-50);
+        tri6Path.lineTo(width-600, height-400);
+        tri6Path.lineTo(width-200, height-400);
+        tri6Path.lineTo(width-400, height-50);
         c.drawPath(tri6Path, tri6Paint);
 
         /*Draw the central space.*/
         hexPaint.setColor(Color.WHITE);
-        hexPath.moveTo(550, 400);
-        hexPath.lineTo(950, 400);
-        hexPath.lineTo(1150, 750);
-        hexPath.lineTo(950, 1100);
-        hexPath.lineTo(550, 1100);
-        hexPath.lineTo(350, 750);
-        hexPath.lineTo(550, 400);
+        hexPath.moveTo(width-200, height-400);
+        hexPath.lineTo(width+200, height-400);
+        hexPath.lineTo(width+400, height-50);
+        hexPath.lineTo(width+200, height+300);
+        hexPath.lineTo(width-200, height+300);
+        hexPath.lineTo(width-400, height-50);
+        hexPath.lineTo(width-200, height-400);
         c.drawPath(hexPath, hexPaint);
     }
 
