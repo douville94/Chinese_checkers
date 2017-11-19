@@ -10,50 +10,50 @@ import android.view.SurfaceView;
  */
 
 public class CCBoardSurfaceView {//extends SurfaceView {
-    public boolean[][] CCBoard;
-//    public int[][] CCBoard;
+//    public boolean[][] CCBoard;
+    public int[][] CCBoard;
 
     public CCBoardSurfaceView()
     {
-        CCBoard = new boolean[][]{
-                { false, false, false, false, false, false, true, false, false, false, false, false, false }, // row 0
+        CCBoard = new int[][]{
+                { -1, -1, -1, -1, -1, -1,  0, -1, -1, -1, -1, -1, -1 }, // row 0
 
-                { false, false, false, false, false,  true, true, false, false, false, false, false, false }, // row 1
+                { -1, -1, -1, -1, -1,  0,  0, -1, -1, -1, -1, -1, -1 }, // row 1
 
-                { false, false, false, false, false,  true, true,  true, false, false, false, false, false }, // row 2
+                { -1, -1, -1, -1, -1,  0,  0,  0, -1, -1, -1, -1, -1 }, // row 2
 
-                { false, false, false, false,  true,  true, true,  true, false, false, false, false, false }, // row 3
+                { -1, -1, -1, -1,  0,  0,  0,  0, -1, -1, -1, -1, -1 }, // row 3
 
-                {  true,  true,  true,  true,  true,  true, true,  true,  true,  true,  true,  true,  true }, // row 4
+                {  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }, // row 4
 
-                {  true,  true,  true,  true,  true,  true, true,  true,  true,  true,  true,  true, false }, // row 5
+                {  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1 }, // row 5
 
-                { false,  true,  true,  true,  true,  true, true,  true,  true,  true,  true,  true, false }, // row 6
+                { -1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1 }, // row 6
 
-                { false,  true,  true,  true,  true,  true, true,  true,  true,  true,  true, false, false }, // row 7
+                { -1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1, -1 }, // row 7
 
-                { false, false,  true,  true,  true,  true, true,  true,  true,  true,  true, false, false }, // row 8 -----
+                { -1, -1,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1, -1 }, // row 8 -----
 
-                { false,  true,  true,  true,  true,  true, true,  true,  true,  true,  true, false, false }, // row 7
+                { -1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1, -1 }, // row 9
 
-                { false,  true,  true,  true,  true,  true, true,  true,  true,  true,  true,  true, false }, // row 6
+                { -1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1 }, // row 10
 
-                {  true,  true,  true,  true,  true,  true, true,  true,  true,  true,  true,  true, false }, // row 5
+                {  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1 }, // row 11
 
-                {  true,  true,  true,  true,  true,  true, true,  true,  true,  true,  true,  true,  true }, // row 4
+                {  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }, // row 12
 
-                { false, false, false, false,  true,  true, true,  true, false, false, false, false, false }, // row 3
+                { -1, -1, -1, -1,  0,  0,  0,  0, -1, -1, -1, -1, -1 }, // row 13
 
-                { false, false, false, false, false,  true, true,  true, false, false, false, false, false }, // row 2
+                { -1, -1, -1, -1, -1,  0,  0,  0, -1, -1, -1, -1, -1 }, // row 14
 
-                { false, false, false, false, false,  true, true, false, false, false, false, false, false }, // row 1
+                { -1, -1, -1, -1, -1,  0,  0, -1, -1, -1, -1, -1, -1 }, // row 15
 
-                { false, false, false, false, false, false, true, false, false, false, false, false, false }, // row 0
+                { -1, -1, -1, -1, -1, -1,  0, -1, -1, -1, -1, -1, -1 }, // row 16
         };
     }
 
 //    public void setCCBoard(boolean[][] argBoard, Marble argMarble)
-    public void setCCBoard(int x, int y, Marble argMarble) {
+    public void setTopCorner(Marble argMarble) {
         //set a Marble to a true position on the CCBoard (defined above)
         //we need a distinction between false and empty
 //        for(int i = x; i < 13; i++)
@@ -66,16 +66,64 @@ public class CCBoardSurfaceView {//extends SurfaceView {
 //            }
 //        }
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 13; i++)
         {
             for(int j = 0; j < 4; j++)
             {
-//                if(CCBoard[i][j] == true)
-//                {
-//
-//                }
+                if(i != -1 && j != -1)
+                {
+                    argMarble.setRow(i);
+                    argMarble.setCol(j);
+                    CCBoard[i][j] = 1;
+                }
             }
         }
+    }
+
+    public void setTopRightCorner(Marble argMarble)
+    {
+        for (int i = 9; i < 13; i++)
+        {
+            for(int j = 4; j < 8; j++)
+            {
+                if(i != -1 && j != -1)
+                {
+                    argMarble.setRow(i);
+                    argMarble.setCol(j);
+                    CCBoard[i][j] = 1;
+                }
+            }
+        }
+    }
+
+    public void setBottomRightCorner(Marble argMarble)
+    {
+        for (int i = 9; i < 13; i++)
+        {
+            for(int j = 13; j < 17; j++)
+            {
+                if(i != -1 && j != -1)
+                {
+                    argMarble.setRow(i);
+                    argMarble.setCol(j);
+                }
+            }
+        }
+    }
+
+    public void setBottomCorner(Marble argMarble)
+    {
+
+    }
+
+    public void setBottomLeftCorner(Marble argMarble)
+    {
+
+    }
+
+    public void setTopLeftCorner(Marble argMarble)
+    {
+
     }
 
 //    public CCBoardSurfaceView(Context context){
