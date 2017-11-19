@@ -22,6 +22,8 @@ public class DumbAI extends ComputerPlayer
         if (info instanceof NotYourTurnInfo) return;
 
 
+
+
         sleep(1000);
         game.sendAction(new MoveAction(this));
 

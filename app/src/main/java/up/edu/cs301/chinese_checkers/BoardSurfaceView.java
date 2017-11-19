@@ -87,51 +87,53 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         /*Draw the top-right triangle.*/
         tri2Paint.setColor(Color.GREEN);//set the color
         tri2Path.moveTo(950, 400);
-        tri2Path.lineTo(1450, 400);
-        tri2Path.lineTo(1100, 700);
+        tri2Path.lineTo(1350, 400);
+        tri2Path.lineTo(1150, 750);
         tri2Path.lineTo(950, 400);
         c.drawPath(tri2Path, tri2Paint);
 
         /*Draw the bottom-right triangle.*/
         tri3Paint.setColor(Color.YELLOW);
-        tri3Path.moveTo(1100, 700);
-        tri3Path.lineTo(1450, 1000);
-        tri3Path.lineTo(950, 1000);
-        tri2Path.lineTo(1100, 700);
+        tri3Path.moveTo(1150, 750);
+        tri3Path.lineTo(1350, 1100);
+        tri3Path.lineTo(950, 1100);
+        tri2Path.lineTo(1150, 750);
         c.drawPath(tri3Path, tri3Paint);
 
         /*Draw the bottom triangle.*/
         tri4Paint.setColor(Color.RED);
-        tri4Path.moveTo(950, 1000);
-        tri4Path.lineTo(750, 1350);
-        tri4Path.lineTo(550, 1000);
-        tri4Path.lineTo(950, 1000);
+        tri4Path.moveTo(950, 1100);
+        tri4Path.lineTo(750, 1450);
+        tri4Path.lineTo(550, 1100);
+        tri4Path.lineTo(950, 1100);
         c.drawPath(tri4Path, tri4Paint);
 
         /*Draw the bottom-left triangle.*/
-        tri5Paint.setColor(Color.rgb(245, 120, 11));
-        tri5Path.moveTo(550, 1000);
-        tri5Path.lineTo(50, 1000);
-        tri5Path.lineTo(400, 700);
-        tri5Path.lineTo(550, 1000);
+        int orange = Color.rgb(245, 120, 11);
+        tri5Paint.setColor(orange);
+        tri5Path.moveTo(550, 1100);
+        tri5Path.lineTo(150, 1100);
+        tri5Path.lineTo(350, 750);
+        tri5Path.lineTo(550, 1100);
         c.drawPath(tri5Path, tri5Paint);
 
         /*Draw the top-left triangle.*/
-        tri6Paint.setColor(Color.rgb(159, 11, 245));
-        tri6Path.moveTo(400, 700);
-        tri6Path.lineTo(50, 400);
+        int purple = Color.rgb(159, 11, 245);
+        tri6Paint.setColor(purple);
+        tri6Path.moveTo(350, 750);
+        tri6Path.lineTo(150, 400);
         tri6Path.lineTo(550, 400);
-        tri6Path.lineTo(400, 700);
+        tri6Path.lineTo(350, 750);
         c.drawPath(tri6Path, tri6Paint);
 
         /*Draw the central space.*/
         hexPaint.setColor(Color.WHITE);
         hexPath.moveTo(550, 400);
         hexPath.lineTo(950, 400);
-        hexPath.lineTo(1100, 700);
-        hexPath.lineTo(950, 1000);
-        hexPath.lineTo(550, 1000);
-        hexPath.lineTo(400, 700);
+        hexPath.lineTo(1150, 750);
+        hexPath.lineTo(950, 1100);
+        hexPath.lineTo(550, 1100);
+        hexPath.lineTo(350, 750);
         hexPath.lineTo(550, 400);
         c.drawPath(hexPath, hexPaint);
     }

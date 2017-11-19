@@ -139,7 +139,7 @@ public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
         // the screen; otherwise, create and send an action to
         // the game
         /*if (p == null) {
-            surfaceView.flash(Color.RED, 50);
+            //surfaceView.flash(Color.RED, 50);
         } else {
             TTTMoveAction action = new TTTMoveAction(this, p.y, p.x);
             Log.i("onTouch", "Human player sending TTTMA ...");
@@ -157,7 +157,7 @@ public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
         @Override
         public void onClick(View v)
         {
-
+            //if confirm button is clicked,
         }
     }
 
