@@ -20,6 +20,8 @@ public class CCLocalGame extends LocalGame {
     // determine whether the game is over
     protected int moveCount;
 
+    private CCHumanPlayer chp;
+
     /**
      * Constructor for the LocalGame.
      */
@@ -106,8 +108,9 @@ public class CCLocalGame extends LocalGame {
 
     protected boolean confirmMove(ConfirmAction action) {
         //still need the confirm action.
-        //ConfirmAction confirmMove = new ConfirmAction();
-        return false;
+//        ConfirmAction confirmMove = new ConfirmAction(chp);
+        ConfirmAction confirmMove = action;
+        return true;
     }
 
     protected boolean cancelMove(CancelAction action) {

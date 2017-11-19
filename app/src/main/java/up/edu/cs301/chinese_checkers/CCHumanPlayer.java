@@ -34,6 +34,9 @@ public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
     private BoardSurfaceView bsf;
     private Button confirm, cancel;
 
+    private ConfirmAction conf;
+    private CancelAction canc;
+
     /**
      * constructor
      *
@@ -158,6 +161,7 @@ public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
         public void onClick(View v)
         {
             //if confirm button is clicked,
+            conf = new ConfirmAction(CCHumanPlayer.this);
         }
     }
 
@@ -166,7 +170,7 @@ public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
         @Override
         public void onClick(View v)
         {
-
+            canc = new CancelAction(CCHumanPlayer.this);
         }
     }
 }
