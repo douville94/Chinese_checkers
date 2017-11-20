@@ -68,12 +68,50 @@ public class CCGameState extends GameState
         height = 1742 / 2;
         range = 350 / 8;
 //        myXYs = new int[13][17];
+        //min x coord = width - 300
+        //max x coord = width + 600
+        //min y coord = (height - 750) + range
+        //max y coord = (height + 500) + range
         myXYs = new int[][]
                 {
-                        //top corner
+                        //row 1
+                        {width-600, height-750},
+                        {width-500, height-750},
+                        {width-400, height-750},
+                        {width-300, height-750},
+                        {width-200, height-750},
+                        {width-100, height-750},
                         {width, height - 750},
-                        {width + 50, (height - 750) + 3 * range},
-                        {width - 50, (height - 750) + 3 * range},
+                        {width+100, height-750},
+                        {width+200, height-750},
+                        {width+300, height-750},
+                        {width+400, height-750},
+                        {width+500, height-750},
+                        {width+600, height-750},
+
+                        //row 2
+                        {width-600, (height-750)+3*range},
+                        {width-500, (height-750)+3*range},
+                        {width-400, (height-750)+3*range},
+                        {width-300, (height-750)+3*range},
+                        {width-200, (height-750)+3*range},
+//                        {width-100, (height-750)+3*range},
+                        {width-50, (height-750)+3*range},
+                        {width+50, (height-750)+3*range},
+//                        {width+100, (height-750)+3*range},
+                        {width+200, (height-750)+3*range},
+                        {width+300, (height-750)+3*range},
+                        {width+400, (height-750)+3*range},
+                        {width+500, (height-750)+3*range},
+                        {width+600, (height-750)+3*range},
+
+                        //row 3
+
+
+                        //top corner
+//                        {width, height - 750},
+//                        {width + 50, (height - 750) + 3 * range},
+//                        {width - 50, (height - 750) + 3 * range},
                         {width - 100, (height - 750) + 5 * range},
                         {width, (height - 750) + 5 * range},
                         {width + 100, (height - 750) + 5 * range},
