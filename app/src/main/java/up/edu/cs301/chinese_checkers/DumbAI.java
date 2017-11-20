@@ -1,5 +1,7 @@
 package up.edu.cs301.chinese_checkers;
 
+import java.util.Random;
+
 import up.edu.cs301.game.ComputerPlayer;
 import up.edu.cs301.game.infoMsg.GameInfo;
 import up.edu.cs301.game.infoMsg.NotYourTurnInfo;
@@ -25,6 +27,10 @@ public class DumbAI extends ComputerPlayer
     {
         // if it was a "not your turn" message, just ignore it
         if (info instanceof NotYourTurnInfo) return;
+
+        Random random = new Random();
+
+
         sleep(1000);
         game.sendAction(new MoveAction(this));
 //        game.sendAction(new MoveAction(this, m));
