@@ -104,6 +104,7 @@ public class CCLocalGame extends LocalGame {
 
         // place the player's piece on the selected square
 //        state.setBoard(row, col, whoseMove);
+        state.setBoard();
 
         return false;
     }

@@ -37,6 +37,7 @@ public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
 
     private ConfirmAction conf;
     private CancelAction canc;
+    private SaveAction saveAction;
     private QuitAction quitAction;
 
     private Intent myIntent;
@@ -102,6 +103,8 @@ public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
         confirm.setOnClickListener(new confirmButtonListener());
         cancel = (Button)myActivity.findViewById(R.id.cancel);
         cancel.setOnClickListener(new cancelButtonListener());
+        save = (Button)myActivity.findViewById(R.id.save);
+        save.setOnClickListener(new saveButtonListener());
         quit = (Button)myActivity.findViewById(R.id.quit);
         quit.setOnClickListener(new quitButtonListener());
         //surfaceView.setOnTouchListener(this);
@@ -182,7 +185,15 @@ public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
         }
     }
 
-    //save button listener
+    private class saveButtonListener implements View.OnClickListener
+    {
+        @Override
+        public void onClick(View v)
+        {
+            saveAction = new SaveAction(CCHumanPlayer.this);
+            game.sendAction(saveAction);
+        }
+    }
 
     private class quitButtonListener implements View.OnClickListener
     {

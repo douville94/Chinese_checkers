@@ -1,12 +1,5 @@
 package up.edu.cs301.chinese_checkers;
 
-import android.graphics.Color;
-
-import java.util.Hashtable;
-
-import up.edu.cs301.chinese_checkers.CCMainActivity;
-import up.edu.cs301.game.HumanPlayer;
-import up.edu.cs301.game.infoMsg.CCInfo;
 import up.edu.cs301.game.infoMsg.CCState;
 
 /**
@@ -18,6 +11,7 @@ public class CCGameState extends CCState {
     //instance variables
     Marble[][] board;
     int id;
+    IntArray cbsf;
 //    Hashtable<Integer,Color> colorPlayerTable;
 
     /**
@@ -58,8 +52,71 @@ public class CCGameState extends CCState {
     /**
      * Standard setter method for instance variable board
      */
-    public void setBoard(Marble[][] b){
-        board = b;
+//    public void setBoard(Marble[][] b){
+    public void setBoard() {
+//        board = b;
+        cbsf = new IntArray();
+
+//        for(int i = 0; i < 13; i++)
+//        {
+//            for(int j = 0; j < 17; j++)
+//            {
+//                if(i > 3 && i < 9 && j > 0 && j < 4)
+//                {
+//                    cbsf.setTopCorner(board[i][j]);
+//                }
+//                else if(i > 8 && i < 13 && j > 3 && j < 8)
+//                {
+//                    cbsf.setTopRightCorner(board[i][j]);
+//                }
+//                else if(i > 8 && i < 13 && j > 7 && j < 13)
+//                {
+//                    cbsf.setBottomRightCorner(board[i][j]);
+//                }
+//                else if(i > 3 && i < 9 && j > 12 && j < 17)
+//                {
+//                    cbsf.setBottomCorner(board[i][j]);
+//                }
+//                else if(i > 0 && i < 4 && j > 7 && j < 13)
+//                {
+//                    cbsf.setBottomLeftCorner(board[i][j]);
+//                }
+//                else if(i > 0 && i < 4 && j > 3 && j < 8)
+//                {
+//                    cbsf.setTopLeftCorner(board[i][j]);
+//                }
+//            }
+//        }
+
+        for(int i = 0; i < 13; i++)
+        {
+            for(int j = 0; j < 17; j++)
+            {
+                /*If configuration is two players*/
+                cbsf.setTopCorner(board[i][j]);
+                cbsf.setBottomCorner(board[i][j]);
+
+                /*If configuration is three players*/
+                cbsf.setTopCorner(board[i][j]);
+                cbsf.setBottomRightCorner(board[i][j]);
+                cbsf.setBottomLeftCorner(board[i][j]);
+
+                /*If configuration is four players*/
+                cbsf.setTopRightCorner(board[i][j]);
+                cbsf.setBottomRightCorner(board[i][j]);
+                cbsf.setBottomLeftCorner(board[i][j]);
+                cbsf.setTopLeftCorner(board[i][j]);
+
+                /*If configuration is six players*/
+                cbsf.setTopCorner(board[i][j]);
+                cbsf.setTopRightCorner(board[i][j]);
+                cbsf.setBottomRightCorner(board[i][j]);
+                cbsf.setBottomCorner(board[i][j]);
+                cbsf.setBottomLeftCorner(board[i][j]);
+                cbsf.setTopLeftCorner(board[i][j]);
+            }
+        }
+
     }
 
     /**

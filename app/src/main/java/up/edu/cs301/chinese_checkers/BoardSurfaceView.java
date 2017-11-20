@@ -1,18 +1,13 @@
 package up.edu.cs301.chinese_checkers;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.Paint;
-import android.icu.text.DisplayContext;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
 import android.widget.LinearLayout;
 
 /**
@@ -25,6 +20,7 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
     protected Paint tri1Paint, tri2Paint, tri3Paint, tri4Paint, tri5Paint, tri6Paint, hexPaint, boardPaint;
     private Canvas tempCanvas;
     private LinearLayout boardSurfaceViewParent;
+    private IntArray cbsf;
 
     public BoardSurfaceView(Context context)
     {
@@ -60,20 +56,20 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
     public void onDraw(Canvas c)
     {
         /*Layout editor is unhappy if you instantiate boardPaint and boardPath in the init method.*/
-        tri1Paint = new Paint();
-        tri2Paint = new Paint();
-        tri3Paint = new Paint();
-        tri4Paint = new Paint();
-        tri5Paint = new Paint();
-        tri6Paint = new Paint();
-        hexPaint = new Paint();
-        tri1Path = new Path();
-        tri2Path = new Path();
-        tri3Path = new Path();
-        tri4Path = new Path();
-        tri5Path = new Path();
-        tri6Path = new Path();
-        hexPath = new Path();
+//        tri1Paint = new Paint();
+//        tri2Paint = new Paint();
+//        tri3Paint = new Paint();
+//        tri4Paint = new Paint();
+//        tri5Paint = new Paint();
+//        tri6Paint = new Paint();
+//        hexPaint = new Paint();
+//        tri1Path = new Path();
+//        tri2Path = new Path();
+//        tri3Path = new Path();
+//        tri4Path = new Path();
+//        tri5Path = new Path();
+//        tri6Path = new Path();
+//        hexPath = new Path();
         int width = c.getWidth()/2;
         int height = c.getHeight()/2;
         float radius = (50/3)*(float)Math.sqrt(3.0);
@@ -99,6 +95,7 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         c.drawCircle((float)width-50,(height-400)-range,radius,boardPaint);    //row 3
         c.drawCircle((float)width+50,(height-400)-range,radius,boardPaint);    //row 3
         c.drawCircle((float)width+150,(height-400)-range,radius,boardPaint);   //row 3
+
 
         /*Draw the top-right triangle.*/
         /*tri2Paint.setColor(Color.GREEN);//set the color
@@ -207,7 +204,7 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         hexPath.lineTo(width-200, height+300);
         hexPath.lineTo(width-400, height-50);
         hexPath.lineTo(width-200, height-400);*/
-        c.drawPath(hexPath, hexPaint);
+//        c.drawPath(hexPath, hexPaint);
 
         c.drawCircle((float)width+100,(height+200)+range,radius,boardPaint);     //row 12
         c.drawCircle((float)width+200,(height+200)+range,radius,boardPaint);     //row 12
