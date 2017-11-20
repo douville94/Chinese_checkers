@@ -172,6 +172,18 @@ public class CCGameState extends GameState
     }
 
     /**
+     * Standard getter method for instance variable intArray
+     * @return intArray
+     */
+    public int[][] getIntArray(){return intArray;}
+
+    /**
+     * Standard setter method for instance variable intArray
+     * @param args an int array to set to intArray
+     */
+    public void setIntArray(int[][] args){intArray = args;}
+
+    /**
      * Standard setter method for instance variable id
      * @param i takes an int. Sets id to i
      */
@@ -229,6 +241,7 @@ public class CCGameState extends GameState
         }
         return board[x][y];
     }
+
 
 
     public int getWhoseMove(){
