@@ -101,10 +101,10 @@ public class CCGameState extends GameState
 //    public void setBoard(Marble[][] b){
     public void setBoard() {
 //        board = b;
-        ia = new IntArray();
-        width = 1536 / 2;
-        height = 1742 / 2;
-        range = 350 / 8;
+//        ia = new IntArray();
+//        width = 1536 / 2;
+//        height = 1742 / 2;
+//        range = 350 / 8;
 
 
 
