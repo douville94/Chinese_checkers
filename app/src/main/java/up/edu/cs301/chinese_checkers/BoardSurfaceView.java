@@ -78,7 +78,7 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         float range = 350/8;
         centerBoardPaint = new Paint();
         centerBoardPaint.setColor(Color.BLACK);
-        
+
         /*myXYs is an array of all possible positions on the board, including invalid positions.*/
         //min x coord = width - 300
         //max x coord = width + 600
