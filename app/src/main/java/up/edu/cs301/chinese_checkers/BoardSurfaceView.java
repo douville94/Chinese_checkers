@@ -17,11 +17,12 @@ import android.widget.LinearLayout;
 public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callback
 {
     protected Path tri1Path, tri2Path, tri3Path, tri4Path, tri5Path, tri6Path, hexPath;
-    protected Paint tri1Paint, tri2Paint, tri3Paint, tri4Paint, tri5Paint, tri6Paint, hexPaint, boardPaint;
+    protected Paint tri1Paint, tri2Paint, tri3Paint, tri4Paint, tri5Paint, tri6Paint, hexPaint, centerBoardPaint;
     private Canvas tempCanvas;
     private LinearLayout boardSurfaceViewParent;
     private IntArray ia;
     private CCGameState cgs;
+    private int[][] myXYs;
 
     public BoardSurfaceView(Context context)
     {
@@ -56,7 +57,7 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
     @Override
     public void onDraw(Canvas c)
     {
-        /*Layout editor is unhappy if you instantiate boardPaint and boardPath in the init method.*/
+        /*Layout editor is unhappy if you instantiate centerBoardPaint and boardPath in the init method.*/
 //        tri1Paint = new Paint();
 //        tri2Paint = new Paint();
 //        tri3Paint = new Paint();
@@ -75,8 +76,225 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         int height = c.getHeight()/2;
         float radius = (50/3)*(float)Math.sqrt(3.0);
         float range = 350/8;
-        boardPaint = new Paint();
-        boardPaint.setColor(Color.BLACK);
+        centerBoardPaint = new Paint();
+        centerBoardPaint.setColor(Color.BLACK);
+        
+        /*myXYs is an array of all possible positions on the board, including invalid positions.*/
+        //min x coord = width - 300
+        //max x coord = width + 600
+        //min y coord = (height - 750) + (int)range
+        //max y coord = (height + 500) + (int)range
+        myXYs = new int[][]
+                {
+                        //row 1
+                        {width - 600, height - 750},
+                        {width - 500, height - 750},
+                        {width - 400, height - 750},
+                        {width - 300, height - 750},
+                        {width - 200, height - 750},
+                        {width - 100, height - 750},
+                        {width, height - 750},
+                        {width + 100, height - 750},
+                        {width + 200, height - 750},
+                        {width + 300, height - 750},
+                        {width + 400, height - 750},
+                        {width + 500, height - 750},
+                        {width + 600, height - 750},
+
+                        //row 2
+                        {width - 600, (height - 750) + (int)(3 * range)},
+                        {width - 500, (height - 750) + (int)(3 * range)},
+                        {width - 400, (height - 750) + (int)(3 * range)},
+                        {width - 300, (height - 750) + (int)(3 * range)},
+                        {width - 200, (height - 750) + (int)(3 * range)},
+                        {width - 50, (height - 750) + (int)(3 * range)},
+                        {width + 50, (height - 750) + (int)(3 * range)},
+                        {width + 200, (height - 750) + (int)(3 * range)},
+                        {width + 300, (height - 750) + (int)(3 * range)},
+                        {width + 400, (height - 750) + (int)(3 * range)},
+                        {width + 500, (height - 750) + (int)(3 * range)},
+                        {width + 600, (height - 750) + (int)(3 * range)},
+
+                        //row 3
+                        {width - 600, (height - 750) + (int)(5 * range)},
+                        {width - 500, (height - 750) + (int)(5 * range)},
+                        {width - 400, (height - 750) + (int)(5 * range)},
+                        {width - 300, (height - 750) + (int)(5 * range)},
+                        {width - 200, (height - 750) + (int)(5 * range)},
+                        {width - 100, (height - 750) + (int)(5 * range)},
+                        {width, (height - 750) + (int)(5 * range)},
+                        {width + 100, (height - 750) + (int)(5 * range)},
+                        {width + 200, (height - 750) + (int)(5 * range)},
+                        {width + 300, (height - 750) + (int)(5 * range)},
+                        {width + 400, (height - 750) + (int)(5 * range)},
+                        {width + 500, (height - 750) + (int)(5 * range)},
+                        {width + 600, (height - 750) + (int)(5 * range)},
+
+                        //row 4
+                        {width - 600, (height - 400) - (int)range},
+                        {width - 500, (height - 400) - (int)range},
+                        {width - 400, (height - 400) - (int)range},
+                        {width - 300, (height - 400) - (int)range},
+                        {width - 150, (height - 400) - (int)range},
+                        {width - 50, (height - 400) - (int)range},
+                        {width + 50, (height - 400) - (int)range},
+                        {width + 150, (height - 400) - (int)range},
+                        {width + 300, (height - 400) - (int)range},
+                        {width + 400, (height - 400) - (int)range},
+                        {width + 500, (height - 400) - (int)range},
+                        {width + 600, (height - 400) - (int)range},
+
+                        //row 5
+                        {width - 600, (height - 400) + (int)range},
+                        {width - 500, (height - 400) + (int)range},
+                        {width - 400, (height - 400) + (int)range},
+                        {width - 300, (height - 400) + (int)range},
+                        {width - 200, (height - 400) + (int)range},
+                        {width - 100, (height - 400) + (int)range},
+                        {width, (height - 400) + (int)range},
+                        {width + 100, (height - 400) + (int)range},
+                        {width + 200, (height - 400) + (int)range},
+                        {width + 300, (height - 400) + (int)range},
+                        {width + 400, (height - 400) + (int)range},
+                        {width + 500, (height - 400) + (int)range},
+                        {width + 600, (height - 400) + (int)range},
+
+                        //row 6
+                        {width - 600, (height - 325) + (int)range},
+                        {width - 550, (height - 325) + (int)range},
+                        {width - 450, (height - 325) + (int)range},
+                        {width - 350, (height - 325) + (int)range},
+                        {width - 200, (height - 325) + (int)range},
+                        {width - 100, (height - 325) + (int)range},
+                        {width, (height - 325) + (int)range},
+                        {width + 100, (height - 325) + (int)range},
+                        {width + 200, (height - 325) + (int)range},
+                        {width + 350, (height - 325) + (int)range},
+                        {width + 450, (height - 325) + (int)range},
+                        {width + 550, (height - 325) + (int)range},
+                        {width + 600, (height - 325) + (int)range},
+
+                        //row 7
+                        {width - 600, (height - 250) + (int)range},
+                        {width - 500, (height - 250) + (int)range},
+                        {width - 400, (height - 250) + (int)range},
+                        {width - 300, (height - 250) + (int)range},
+                        {width - 200, (height - 250) + (int)range},
+                        {width - 100, (height - 250) + (int)range},
+                        {width, (height - 250) + (int)range},
+                        {width + 100, (height - 250) + (int)range},
+                        {width + 200, (height - 250) + (int)range},
+                        {width + 300, (height - 250) + (int)range},
+                        {width + 400, (height - 250) + (int)range},
+                        {width + 500, (height - 250) + (int)range},
+                        {width + 600, (height - 250) + (int)range},
+
+                        //row 8
+                        {width - 600, (height + 200) + (int)range},
+                        {width - 500, (height + 200) + (int)range},
+                        {width - 400, (height + 200) + (int)range},
+                        {width - 300, (height + 200) + (int)range},
+                        {width - 200, (height + 200) + (int)range},
+                        {width - 100, (height + 200) + (int)range},
+                        {width, (height + 200) + (int)range},
+                        {width + 100, (height + 200) + (int)range},
+                        {width + 200, (height + 200) + (int)range},
+                        {width + 300, (height + 200) + (int)range},
+                        {width + 400, (height + 200) + (int)range},
+                        {width + 500, (height + 200) + (int)range},
+                        {width + 600, (height + 200) + (int)range},
+
+                        //row 9
+                        {width - 600, (height + 125) + (int)range},
+                        {width - 550, (height + 125) + (int)range},
+                        {width - 450, (height + 125) + (int)range},
+                        {width - 350, (height + 125) + (int)range},
+                        {width - 200, (height + 125) + (int)range},
+                        {width - 100, (height + 125) + (int)range},
+                        {width, (height + 125) + (int)range},
+                        {width + 100, (height + 125) + (int)range},
+                        {width + 200, (height + 125) + (int)range},
+                        {width + 350, (height + 125) + (int)range},
+                        {width + 450, (height + 125) + (int)range},
+                        {width + 550, (height + 125) + (int)range},
+                        {width + 600, (height + 125) + (int)range},
+
+                        //row 10
+                        {width - 600, (height - 50) + (int)range},
+                        {width - 500, (height - 50) + (int)range},
+                        {width - 400, (height - 50) + (int)range},
+                        {width - 300, (height - 50) + (int)range},
+                        {width - 200, (height - 50) + (int)range},
+                        {width - 100, (height - 50) + (int)range},
+                        {width, (height - 50) + (int)range},
+                        {width + 100, (height - 50) + (int)range},
+                        {width + 200, (height - 50) + (int)range},
+                        {width + 300, (height - 50) + (int)range},
+                        {width + 400, (height - 50) + (int)range},
+                        {width + 500, (height - 50) + (int)range},
+                        {width + 600, (height - 50) + (int)range},
+
+                        //row 11
+                        {width - 600, (height - 20) + (int)range},
+                        {width - 500, (height - 20) + (int)range},
+                        {width - 450, (height - 20) + (int)range},
+                        {width - 300, (height - 20) + (int)range},
+                        {width - 200, (height - 20) + (int)range},
+                        {width - 100, (height - 20) + (int)range},
+                        {width, (height - 20) + (int)range},
+                        {width + 100, (height - 20) + (int)range},
+                        {width + 200, (height - 20) + (int)range},
+                        {width + 300, (height - 20) + (int)range},
+                        {width + 450, (height - 20) + (int)range},
+                        {width + 500, (height - 20) + (int)range},
+                        {width + 600, (height - 20) + (int)range},
+
+                        //row 12
+                        {width - 600, (height + 275) + (int)range},
+                        {width - 500, (height + 275) + (int)range},
+                        {width - 400, (height + 275) + (int)range},
+                        {width - 300, (height + 275) + (int)range},
+                        {width - 200, (height + 275) + (int)range},
+                        {width - 150, (height + 275) + (int)range},
+                        {width - 50, (height + 275) + (int)range},
+                        {width + 50, (height + 275) + (int)range},
+                        {width + 150, (height + 275) + (int)range},
+                        {width + 200, (height + 275) + (int)range},
+                        {width + 300, (height + 275) + (int)range},
+                        {width + 400, (height + 275) + (int)range},
+                        {width + 500, (height + 275) + (int)range},
+                        {width + 600, (height + 275) + (int)range},
+
+                        //row 13
+                        {width - 600, (height + 350) + (int)range},
+                        {width - 500, (height + 350) + (int)range},
+                        {width - 400, (height + 350) + (int)range},
+                        {width - 300, (height + 350) + (int)range},
+                        {width - 200, (height + 350) + (int)range},
+                        {width - 100, (height + 350) + (int)range},
+                        {width, (height + 350) + (int)range},
+                        {width + 100, (height + 350) + (int)range},
+                        {width + 200, (height + 350) + (int)range},
+                        {width + 300, (height + 350) + (int)range},
+                        {width + 400, (height + 350) + (int)range},
+                        {width + 500, (height + 350) + (int)range},
+                        {width + 600, (height + 350) + (int)range},
+
+                        //row 14
+                        {width - 600, (height + 500) + (int)range},
+                        {width - 500, (height + 500) + (int)range},
+                        {width - 300, (height + 500) + (int)range},
+                        {width - 200, (height + 500) + (int)range},
+                        {width - 50, (height + 500) + (int)range},
+                        {width, (height + 500) + (int)range},
+                        {width+50, (height + 500) + (int)range},
+                        {width+200, (height + 500) + (int)range},
+                        {width+300, (height + 500) + (int)range},
+                        {width+400, (height + 500) + (int)range},
+                        {width+500, (height + 500) + (int)range},
+                        {width+600, (height + 500) + (int)range},
+
+                };
 
         /*Draw the top triangle.*/
         /*tri1Paint.setColor(Color.BLUE);//set the color
@@ -86,16 +304,16 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         tri1Path.lineTo(width, height-750);
         c.drawPath(tri1Path, tri1Paint);*/
 
-        c.drawCircle((float)width,(height-750)+range,radius,boardPaint);           //row 0
-        c.drawCircle((float)width+50,(height-750)+3*range,radius,boardPaint);  //row 1
-        c.drawCircle((float)width-50,(height-750)+3*range,radius,boardPaint);  //row 1
-        c.drawCircle((float)width-100,(height-750)+5*range,radius,boardPaint); //row 2
-        c.drawCircle((float)width,(height-750)+5*range,radius,boardPaint);         //row 2
-        c.drawCircle((float)width+100,(height-750)+5*range,radius,boardPaint); //row 2
-        c.drawCircle((float)width-150,(height-400)-range,radius,boardPaint);   //row 3
-        c.drawCircle((float)width-50,(height-400)-range,radius,boardPaint);    //row 3
-        c.drawCircle((float)width+50,(height-400)-range,radius,boardPaint);    //row 3
-        c.drawCircle((float)width+150,(height-400)-range,radius,boardPaint);   //row 3
+        c.drawCircle((float)width,(height-750)+range,radius,centerBoardPaint);           //row 0
+        c.drawCircle((float)width+50,(height-750)+3*range,radius,centerBoardPaint);  //row 1
+        c.drawCircle((float)width-50,(height-750)+3*range,radius,centerBoardPaint);  //row 1
+        c.drawCircle((float)width-100,(height-750)+5*range,radius,centerBoardPaint); //row 2
+        c.drawCircle((float)width,(height-750)+5*range,radius,centerBoardPaint);         //row 2
+        c.drawCircle((float)width+100,(height-750)+5*range,radius,centerBoardPaint); //row 2
+        c.drawCircle((float)width-150,(height-400)-range,radius,centerBoardPaint);   //row 3
+        c.drawCircle((float)width-50,(height-400)-range,radius,centerBoardPaint);    //row 3
+        c.drawCircle((float)width+50,(height-400)-range,radius,centerBoardPaint);    //row 3
+        c.drawCircle((float)width+150,(height-400)-range,radius,centerBoardPaint);   //row 3
 
 
         /*Draw the top-right triangle.*/
@@ -106,16 +324,16 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         tri2Path.lineTo(width+200, height-400);
         c.drawPath(tri2Path, tri2Paint);*/
 
-        c.drawCircle((float)width+300,(height-400)+range,radius,boardPaint);   //row 4
-        c.drawCircle((float)width+400,(height-400)+range,radius,boardPaint);   //row 4
-        c.drawCircle((float)width+500,(height-400)+range,radius,boardPaint);   //row 4
-        c.drawCircle((float)width+600,(height-400)+range,radius,boardPaint);   //row 4
-        c.drawCircle((float)width+350,(height-325)+range,radius,boardPaint);   //row 5
-        c.drawCircle((float)width+450,(height-325)+range,radius,boardPaint);   //row 5
-        c.drawCircle((float)width+550,(height-325)+range,radius,boardPaint);   //row 5
-        c.drawCircle((float)width+400,(height-250)+range,radius,boardPaint);   //row 6
-        c.drawCircle((float)width+500,(height-250)+range,radius,boardPaint);   //row 6
-        c.drawCircle((float)width+450,(height-175)+range,radius,boardPaint);   //row 7
+        c.drawCircle((float)width+300,(height-400)+range,radius,centerBoardPaint);   //row 4
+        c.drawCircle((float)width+400,(height-400)+range,radius,centerBoardPaint);   //row 4
+        c.drawCircle((float)width+500,(height-400)+range,radius,centerBoardPaint);   //row 4
+        c.drawCircle((float)width+600,(height-400)+range,radius,centerBoardPaint);   //row 4
+        c.drawCircle((float)width+350,(height-325)+range,radius,centerBoardPaint);   //row 5
+        c.drawCircle((float)width+450,(height-325)+range,radius,centerBoardPaint);   //row 5
+        c.drawCircle((float)width+550,(height-325)+range,radius,centerBoardPaint);   //row 5
+        c.drawCircle((float)width+400,(height-250)+range,radius,centerBoardPaint);   //row 6
+        c.drawCircle((float)width+500,(height-250)+range,radius,centerBoardPaint);   //row 6
+        c.drawCircle((float)width+450,(height-175)+range,radius,centerBoardPaint);   //row 7
 
         /*Draw the bottom-right triangle.*/
         /*tri3Paint.setColor(Color.YELLOW);
@@ -125,16 +343,16 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         tri2Path.lineTo(width+400, height-50);
         c.drawPath(tri3Path, tri3Paint);*/
 
-        c.drawCircle((float)width+450, (height-25)+range, radius, boardPaint);   //row 9
-        c.drawCircle((float)width+400,(height+50)+range,radius,boardPaint);     //row 10
-        c.drawCircle((float)width+500,(height+50)+range,radius,boardPaint);     //row 10
-        c.drawCircle((float)width+350,(height+125)+range,radius,boardPaint);    //row 11
-        c.drawCircle((float)width+450,(height+125)+range,radius,boardPaint);    //row 11
-        c.drawCircle((float)width+550,(height+125)+range,radius,boardPaint);    //row 11
-        c.drawCircle((float)width+300,(height+200)+range,radius,boardPaint);    //row 12
-        c.drawCircle((float)width+400,(height+200)+range,radius,boardPaint);    //row 12
-        c.drawCircle((float)width+500,(height+200)+range,radius,boardPaint);    //row 12
-        c.drawCircle((float)width+600,(height+200)+range,radius,boardPaint);    //row 12
+        c.drawCircle((float)width+450, (height-25)+range, radius, centerBoardPaint);   //row 9
+        c.drawCircle((float)width+400,(height+50)+range,radius,centerBoardPaint);     //row 10
+        c.drawCircle((float)width+500,(height+50)+range,radius,centerBoardPaint);     //row 10
+        c.drawCircle((float)width+350,(height+125)+range,radius,centerBoardPaint);    //row 11
+        c.drawCircle((float)width+450,(height+125)+range,radius,centerBoardPaint);    //row 11
+        c.drawCircle((float)width+550,(height+125)+range,radius,centerBoardPaint);    //row 11
+        c.drawCircle((float)width+300,(height+200)+range,radius,centerBoardPaint);    //row 12
+        c.drawCircle((float)width+400,(height+200)+range,radius,centerBoardPaint);    //row 12
+        c.drawCircle((float)width+500,(height+200)+range,radius,centerBoardPaint);    //row 12
+        c.drawCircle((float)width+600,(height+200)+range,radius,centerBoardPaint);    //row 12
 
         /*Draw the bottom triangle.*/
         /*tri4Paint.setColor(Color.RED);
@@ -144,16 +362,16 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         tri4Path.lineTo(width+200, height+300);
         c.drawPath(tri4Path, tri4Paint);*/
 
-        c.drawCircle((float)width, (height+500)+range, radius, boardPaint);        //row 16
-        c.drawCircle(width+50,(height+425)+range, radius, boardPaint);         //row 15
-        c.drawCircle(width-50,(height+425)+range, radius, boardPaint);         //row 15
-        c.drawCircle((float)width-100,(height+350)+range, radius, boardPaint); //row 14
-        c.drawCircle((float)width,(height+350)+range,radius,boardPaint);           //row 14
-        c.drawCircle((float)width+100,(height+350)+range,radius,boardPaint);   //row 14
-        c.drawCircle((float)width-150,(height+275)+range,radius,boardPaint);   //row 13
-        c.drawCircle((float)width-50,(height+275)+range,radius,boardPaint);    //row 13
-        c.drawCircle((float)width+50,(height+275)+range,radius,boardPaint);    //row 13
-        c.drawCircle((float)width+150,(height+275)+range,radius,boardPaint);   //row 13
+        c.drawCircle((float)width, (height+500)+range, radius, centerBoardPaint);        //row 16
+        c.drawCircle(width+50,(height+425)+range, radius, centerBoardPaint);         //row 15
+        c.drawCircle(width-50,(height+425)+range, radius, centerBoardPaint);         //row 15
+        c.drawCircle((float)width-100,(height+350)+range, radius, centerBoardPaint); //row 14
+        c.drawCircle((float)width,(height+350)+range,radius,centerBoardPaint);           //row 14
+        c.drawCircle((float)width+100,(height+350)+range,radius,centerBoardPaint);   //row 14
+        c.drawCircle((float)width-150,(height+275)+range,radius,centerBoardPaint);   //row 13
+        c.drawCircle((float)width-50,(height+275)+range,radius,centerBoardPaint);    //row 13
+        c.drawCircle((float)width+50,(height+275)+range,radius,centerBoardPaint);    //row 13
+        c.drawCircle((float)width+150,(height+275)+range,radius,centerBoardPaint);   //row 13
 
         /*Draw the bottom-left triangle.*/
         /*int orange = Color.rgb(245, 120, 11);
@@ -164,16 +382,16 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         tri5Path.lineTo(width-200, height+300);
         c.drawPath(tri5Path, tri5Paint);*/
 
-        c.drawCircle((float)width-450,(height-20)+range, radius, boardPaint);   //row 9
-        c.drawCircle((float)width-500,(height+50)+range,radius,boardPaint);     //row 10
-        c.drawCircle((float)width-400,(height+50)+range,radius,boardPaint);     //row 10
-        c.drawCircle((float)width-550,(height+125)+range,radius,boardPaint);    //row 11
-        c.drawCircle((float)width-450,(height+125)+range,radius,boardPaint);    //row 11
-        c.drawCircle((float)width-350,(height+125)+range,radius,boardPaint);    //row 11
-        c.drawCircle((float)width-300,(height+200)+range,radius,boardPaint);    //row 12
-        c.drawCircle((float)width-400,(height+200)+range,radius,boardPaint);    //row 12
-        c.drawCircle((float)width-500,(height+200)+range,radius,boardPaint);    //row 12
-        c.drawCircle((float)width-600,(height+200)+range,radius,boardPaint);    //row 12
+        c.drawCircle((float)width-450,(height-20)+range, radius, centerBoardPaint);   //row 9
+        c.drawCircle((float)width-500,(height+50)+range,radius,centerBoardPaint);     //row 10
+        c.drawCircle((float)width-400,(height+50)+range,radius,centerBoardPaint);     //row 10
+        c.drawCircle((float)width-550,(height+125)+range,radius,centerBoardPaint);    //row 11
+        c.drawCircle((float)width-450,(height+125)+range,radius,centerBoardPaint);    //row 11
+        c.drawCircle((float)width-350,(height+125)+range,radius,centerBoardPaint);    //row 11
+        c.drawCircle((float)width-300,(height+200)+range,radius,centerBoardPaint);    //row 12
+        c.drawCircle((float)width-400,(height+200)+range,radius,centerBoardPaint);    //row 12
+        c.drawCircle((float)width-500,(height+200)+range,radius,centerBoardPaint);    //row 12
+        c.drawCircle((float)width-600,(height+200)+range,radius,centerBoardPaint);    //row 12
 
         /*Draw the top-left triangle.*/
         /*int purple = Color.rgb(159, 11, 245);
@@ -183,18 +401,18 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         tri6Path.lineTo(width-200, height-400);
         tri6Path.lineTo(width-400, height-50);
         c.drawPath(tri6Path, tri6Paint);*/
-//        c.drawPath(tri6Path, boardPaint);
+//        c.drawPath(tri6Path, centerBoardPaint);
 
-        c.drawCircle((float)width-300,(height-400)+range,radius,boardPaint);     //row 4
-        c.drawCircle((float)width-400,(height-400)+range,radius,boardPaint);     //row 4
-        c.drawCircle((float)width-500,(height-400)+range,radius,boardPaint);     //row 4
-        c.drawCircle((float)width-600,(height-400)+range,radius,boardPaint);     //row 4
-        c.drawCircle((float)width-350,(height-325)+range,radius,boardPaint);   //row 5
-        c.drawCircle((float)width-450,(height-325)+range,radius,boardPaint);   //row 5
-        c.drawCircle((float)width-550,(height-325)+range,radius,boardPaint);   //row 5
-        c.drawCircle((float)width-400,(height-250)+range,radius,boardPaint);   //row 6
-        c.drawCircle((float)width-500,(height-250)+range,radius,boardPaint);   //row 6
-        c.drawCircle((float)width-450,(height-175)+range,radius,boardPaint);   //row 7
+        c.drawCircle((float)width-300,(height-400)+range,radius,centerBoardPaint);     //row 4
+        c.drawCircle((float)width-400,(height-400)+range,radius,centerBoardPaint);     //row 4
+        c.drawCircle((float)width-500,(height-400)+range,radius,centerBoardPaint);     //row 4
+        c.drawCircle((float)width-600,(height-400)+range,radius,centerBoardPaint);     //row 4
+        c.drawCircle((float)width-350,(height-325)+range,radius,centerBoardPaint);   //row 5
+        c.drawCircle((float)width-450,(height-325)+range,radius,centerBoardPaint);   //row 5
+        c.drawCircle((float)width-550,(height-325)+range,radius,centerBoardPaint);   //row 5
+        c.drawCircle((float)width-400,(height-250)+range,radius,centerBoardPaint);   //row 6
+        c.drawCircle((float)width-500,(height-250)+range,radius,centerBoardPaint);   //row 6
+        c.drawCircle((float)width-450,(height-175)+range,radius,centerBoardPaint);   //row 7
 
         /*Draw the central space.*/
         /*hexPaint.setColor(Color.WHITE);
@@ -207,67 +425,67 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         hexPath.lineTo(width-200, height-400);*/
 //        c.drawPath(hexPath, hexPaint);
 
-        c.drawCircle((float)width+100,(height+200)+range,radius,boardPaint);     //row 12
-        c.drawCircle((float)width+200,(height+200)+range,radius,boardPaint);     //row 12
-        c.drawCircle((float)width-100,(height+200)+range,radius,boardPaint);     //row 12
-        c.drawCircle((float)width-200,(height+200)+range,radius,boardPaint);     //row 12
-        c.drawCircle((float)width,(height+200)+range,radius,boardPaint);             //row 12
-        c.drawCircle((float)width-150,(height+125)+range,radius,boardPaint);     //row 11
-        c.drawCircle((float)width-50,(height+125)+range,radius,boardPaint);      //row 11
-        c.drawCircle((float)width+50,(height+125)+range,radius,boardPaint);      //row 11
-        c.drawCircle((float)width+150,(height+125)+range,radius,boardPaint);     //row 11
-        c.drawCircle((float)width+250,(height+125)+range,radius,boardPaint);     //row 11
-        c.drawCircle((float)width-250,(height+125)+range,radius,boardPaint);     //row 11
-        c.drawCircle((float)width,(height+50)+range,radius,boardPaint);             //row 10
-        c.drawCircle((float)width+100,(height+50)+range,radius,boardPaint);     //row 10
-        c.drawCircle((float)width-100,(height+50)+range,radius,boardPaint);     //row 10
-        c.drawCircle((float)width-200,(height+50)+range,radius,boardPaint);     //row 10
-        c.drawCircle((float)width+200,(height+50)+range,radius,boardPaint);     //row 10
-        c.drawCircle((float)width-300,(height+50)+range,radius,boardPaint);     //row 10
-        c.drawCircle((float)width+300,(height+50)+range,radius,boardPaint);     //row 10
-        c.drawCircle((float)width+50,(height-25)+range,radius,boardPaint);      //row 9
-        c.drawCircle((float)width-50,(height-25)+range,radius,boardPaint);     //row 9
-        c.drawCircle((float)width+150,(height-25)+range,radius,boardPaint);     //row 9
-        c.drawCircle((float)width-150,(height-25)+range,radius,boardPaint);     //row 9
-        c.drawCircle((float)width+250,(height-25)+range,radius,boardPaint);     //row 9
-        c.drawCircle((float)width-250,(height-25)+range,radius,boardPaint);     //row 9
-        c.drawCircle((float)width+350,(height-25)+range,radius,boardPaint);     //row 9
-        c.drawCircle((float)width-350,(height-25)+range,radius,boardPaint);     //row 9
-        c.drawCircle((float)width,(height-100)+range,radius,boardPaint);             //row 8
-        c.drawCircle((float)width+100,(height-100)+range,radius,boardPaint);     //row 8
-        c.drawCircle((float)width-100,(height-100)+range,radius,boardPaint);     //row 8
-        c.drawCircle((float)width-200,(height-100)+range,radius,boardPaint);     //row 8
-        c.drawCircle((float)width+200,(height-100)+range,radius,boardPaint);     //row 8
-        c.drawCircle((float)width-300,(height-100)+range,radius,boardPaint);     //row 8
-        c.drawCircle((float)width+300,(height-100)+range,radius,boardPaint);     //row 8
-        c.drawCircle((float)width+400,(height-100)+range,radius,boardPaint);     //row 8
-        c.drawCircle((float)width-400,(height-100)+range,radius,boardPaint);     //row 8
-        c.drawCircle((float)width+50,(height-175)+range,radius,boardPaint);      //row 7
-        c.drawCircle((float)width-50,(height-175)+range,radius,boardPaint);     //row 7
-        c.drawCircle((float)width+150,(height-175)+range,radius,boardPaint);     //row 7
-        c.drawCircle((float)width-150,(height-175)+range,radius,boardPaint);     //row 7
-        c.drawCircle((float)width+250,(height-175)+range,radius,boardPaint);     //row 7
-        c.drawCircle((float)width-250,(height-175)+range,radius,boardPaint);     //row 7
-        c.drawCircle((float)width+350,(height-175)+range,radius,boardPaint);     //row 7
-        c.drawCircle((float)width-350,(height-175)+range,radius,boardPaint);     //row 7
-        c.drawCircle((float)width,(height-250)+range,radius,boardPaint);             //row 6
-        c.drawCircle((float)width+100,(height-250)+range,radius,boardPaint);     //row 6
-        c.drawCircle((float)width-100,(height-250)+range,radius,boardPaint);     //row 6
-        c.drawCircle((float)width-200,(height-250)+range,radius,boardPaint);     //row 6
-        c.drawCircle((float)width+200,(height-250)+range,radius,boardPaint);     //row 6
-        c.drawCircle((float)width-300,(height-250)+range,radius,boardPaint);     //row 6
-        c.drawCircle((float)width+300,(height-250)+range,radius,boardPaint);     //row 6
-        c.drawCircle((float)width-150,(height-325)+range,radius,boardPaint);     //row 5
-        c.drawCircle((float)width-50,(height-325)+range,radius,boardPaint);      //row 5
-        c.drawCircle((float)width+50,(height-325)+range,radius,boardPaint);      //row 5
-        c.drawCircle((float)width+150,(height-325)+range,radius,boardPaint);     //row 5
-        c.drawCircle((float)width+250,(height-325)+range,radius,boardPaint);     //row 5
-        c.drawCircle((float)width-250,(height-325)+range,radius,boardPaint);     //row 5
-        c.drawCircle((float)width+100,(height-400)+range,radius,boardPaint);     //row 4
-        c.drawCircle((float)width+200,(height-400)+range,radius,boardPaint);     //row 4
-        c.drawCircle((float)width-100,(height-400)+range,radius,boardPaint);     //row 4
-        c.drawCircle((float)width-200,(height-400)+range,radius,boardPaint);     //row 4
-        c.drawCircle((float)width,(height-400)+range,radius,boardPaint);             //row 4
+        c.drawCircle((float)width+100,(height+200)+range,radius,centerBoardPaint);     //row 12
+        c.drawCircle((float)width+200,(height+200)+range,radius,centerBoardPaint);     //row 12
+        c.drawCircle((float)width-100,(height+200)+range,radius,centerBoardPaint);     //row 12
+        c.drawCircle((float)width-200,(height+200)+range,radius,centerBoardPaint);     //row 12
+        c.drawCircle((float)width,(height+200)+range,radius,centerBoardPaint);             //row 12
+        c.drawCircle((float)width-150,(height+125)+range,radius,centerBoardPaint);     //row 11
+        c.drawCircle((float)width-50,(height+125)+range,radius,centerBoardPaint);      //row 11
+        c.drawCircle((float)width+50,(height+125)+range,radius,centerBoardPaint);      //row 11
+        c.drawCircle((float)width+150,(height+125)+range,radius,centerBoardPaint);     //row 11
+        c.drawCircle((float)width+250,(height+125)+range,radius,centerBoardPaint);     //row 11
+        c.drawCircle((float)width-250,(height+125)+range,radius,centerBoardPaint);     //row 11
+        c.drawCircle((float)width,(height+50)+range,radius,centerBoardPaint);             //row 10
+        c.drawCircle((float)width+100,(height+50)+range,radius,centerBoardPaint);     //row 10
+        c.drawCircle((float)width-100,(height+50)+range,radius,centerBoardPaint);     //row 10
+        c.drawCircle((float)width-200,(height+50)+range,radius,centerBoardPaint);     //row 10
+        c.drawCircle((float)width+200,(height+50)+range,radius,centerBoardPaint);     //row 10
+        c.drawCircle((float)width-300,(height+50)+range,radius,centerBoardPaint);     //row 10
+        c.drawCircle((float)width+300,(height+50)+range,radius,centerBoardPaint);     //row 10
+        c.drawCircle((float)width+50,(height-25)+range,radius,centerBoardPaint);      //row 9
+        c.drawCircle((float)width-50,(height-25)+range,radius,centerBoardPaint);     //row 9
+        c.drawCircle((float)width+150,(height-25)+range,radius,centerBoardPaint);     //row 9
+        c.drawCircle((float)width-150,(height-25)+range,radius,centerBoardPaint);     //row 9
+        c.drawCircle((float)width+250,(height-25)+range,radius,centerBoardPaint);     //row 9
+        c.drawCircle((float)width-250,(height-25)+range,radius,centerBoardPaint);     //row 9
+        c.drawCircle((float)width+350,(height-25)+range,radius,centerBoardPaint);     //row 9
+        c.drawCircle((float)width-350,(height-25)+range,radius,centerBoardPaint);     //row 9
+        c.drawCircle((float)width,(height-100)+range,radius,centerBoardPaint);             //row 8
+        c.drawCircle((float)width+100,(height-100)+range,radius,centerBoardPaint);     //row 8
+        c.drawCircle((float)width-100,(height-100)+range,radius,centerBoardPaint);     //row 8
+        c.drawCircle((float)width-200,(height-100)+range,radius,centerBoardPaint);     //row 8
+        c.drawCircle((float)width+200,(height-100)+range,radius,centerBoardPaint);     //row 8
+        c.drawCircle((float)width-300,(height-100)+range,radius,centerBoardPaint);     //row 8
+        c.drawCircle((float)width+300,(height-100)+range,radius,centerBoardPaint);     //row 8
+        c.drawCircle((float)width+400,(height-100)+range,radius,centerBoardPaint);     //row 8
+        c.drawCircle((float)width-400,(height-100)+range,radius,centerBoardPaint);     //row 8
+        c.drawCircle((float)width+50,(height-175)+range,radius,centerBoardPaint);      //row 7
+        c.drawCircle((float)width-50,(height-175)+range,radius,centerBoardPaint);     //row 7
+        c.drawCircle((float)width+150,(height-175)+range,radius,centerBoardPaint);     //row 7
+        c.drawCircle((float)width-150,(height-175)+range,radius,centerBoardPaint);     //row 7
+        c.drawCircle((float)width+250,(height-175)+range,radius,centerBoardPaint);     //row 7
+        c.drawCircle((float)width-250,(height-175)+range,radius,centerBoardPaint);     //row 7
+        c.drawCircle((float)width+350,(height-175)+range,radius,centerBoardPaint);     //row 7
+        c.drawCircle((float)width-350,(height-175)+range,radius,centerBoardPaint);     //row 7
+        c.drawCircle((float)width,(height-250)+range,radius,centerBoardPaint);             //row 6
+        c.drawCircle((float)width+100,(height-250)+range,radius,centerBoardPaint);     //row 6
+        c.drawCircle((float)width-100,(height-250)+range,radius,centerBoardPaint);     //row 6
+        c.drawCircle((float)width-200,(height-250)+range,radius,centerBoardPaint);     //row 6
+        c.drawCircle((float)width+200,(height-250)+range,radius,centerBoardPaint);     //row 6
+        c.drawCircle((float)width-300,(height-250)+range,radius,centerBoardPaint);     //row 6
+        c.drawCircle((float)width+300,(height-250)+range,radius,centerBoardPaint);     //row 6
+        c.drawCircle((float)width-150,(height-325)+range,radius,centerBoardPaint);     //row 5
+        c.drawCircle((float)width-50,(height-325)+range,radius,centerBoardPaint);      //row 5
+        c.drawCircle((float)width+50,(height-325)+range,radius,centerBoardPaint);      //row 5
+        c.drawCircle((float)width+150,(height-325)+range,radius,centerBoardPaint);     //row 5
+        c.drawCircle((float)width+250,(height-325)+range,radius,centerBoardPaint);     //row 5
+        c.drawCircle((float)width-250,(height-325)+range,radius,centerBoardPaint);     //row 5
+        c.drawCircle((float)width+100,(height-400)+range,radius,centerBoardPaint);     //row 4
+        c.drawCircle((float)width+200,(height-400)+range,radius,centerBoardPaint);     //row 4
+        c.drawCircle((float)width-100,(height-400)+range,radius,centerBoardPaint);     //row 4
+        c.drawCircle((float)width-200,(height-400)+range,radius,centerBoardPaint);     //row 4
+        c.drawCircle((float)width,(height-400)+range,radius,centerBoardPaint);             //row 4
 
 
 

@@ -12,15 +12,15 @@ import android.view.SurfaceView;
 
 public class IntArray
 {//extends SurfaceView {
-//    public boolean[][] CCBoard;
-    public int[][] CCBoard;
+//    public boolean[][] intArray;
+    public int[][] intArray;
 
     public IntArray()
     {
         /*As per Vegdahl's recommendations on 11/20/2017:
-        * Factor playerId (from Marble class) into CCBoard so that -2 is invalid, -1 is empty,
+        * Factor playerId (from Marble class) into intArray so that -2 is invalid, -1 is empty,
         * 0 designates player 1, 1 designates player two, and so on.*/
-        CCBoard = new int[][]{
+        intArray = new int[][]{
                 { -2, -2, -2, -2, -2, -2,  -1, -2, -2, -2, -2, -2, -2 }, // row 0
 
                 { -2, -2, -2, -2, -2,  -1,  -1, -2, -2, -2, -2, -2, -2 }, // row 1
@@ -29,7 +29,7 @@ public class IntArray
 
                 { -2, -2, -2, -2,  -1,  -1,  -1,  -1, -2, -2, -2, -2, -2 }, // row 3
 
-                {  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1 }, // row 4
+                {  -1, -1, -1, -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1 }, // row 4
 
                 {  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1, -2 }, // row 5
 
@@ -57,14 +57,14 @@ public class IntArray
         };
     }
 
-//    public void setCCBoard(boolean[][] argBoard, Marble argMarble)
+//    public void setintArray(boolean[][] argBoard, Marble argMarble)
     public void setTopCorner(Marble argMarble) {
-        //set a Marble to a true position on the CCBoard (defined above)
+        //set a Marble to a true position on the intArray (defined above)
         //we need a distinction between false and empty
 //        for(int i = x; i < 13; i++)
 //        {
 //            for(int j = y; j < 4; j++) {
-//                if (CCBoard[i][j] == true) {
+//                if (intArray[i][j] == true) {
 //                    argMarble.setRow(i);
 //                    argMarble.setCol(j);
 //                }
@@ -79,7 +79,7 @@ public class IntArray
                 {
                     argMarble.setRow(i);
                     argMarble.setCol(j);
-                    CCBoard[i][j] = 1;
+                    intArray[i][j] = 1;
                     argMarble.setColor(Color.RED);
                 }
             }
@@ -96,7 +96,7 @@ public class IntArray
                 {
                     argMarble.setRow(i);
                     argMarble.setCol(j);
-                    CCBoard[i][j] = 1;
+                    intArray[i][j] = 1;
                     argMarble.setColor(Color.YELLOW);
                 }
             }
@@ -113,7 +113,7 @@ public class IntArray
                 {
                     argMarble.setRow(i);
                     argMarble.setCol(j);
-                    CCBoard[i][j] = 1;
+                    intArray[i][j] = 1;
                     argMarble.setColor(Color.GREEN);
                 }
             }
@@ -130,7 +130,7 @@ public class IntArray
                 {
                     argMarble.setRow(i);
                     argMarble.setCol(j);
-                    CCBoard[i][j] = 1;
+                    intArray[i][j] = 1;
                     argMarble.setColor(Color.CYAN);
                 }
             }
@@ -147,7 +147,7 @@ public class IntArray
                 {
                     argMarble.setRow(i);
                     argMarble.setCol(j);
-                    CCBoard[i][j] = 1;
+                    intArray[i][j] = 1;
                     argMarble.setColor(Color.BLUE);
                 }
             }
@@ -164,7 +164,7 @@ public class IntArray
                 {
                     argMarble.setRow(i);
                     argMarble.setCol(j);
-                    CCBoard[i][j] = 1;
+                    intArray[i][j] = 1;
                     argMarble.setColor(Color.MAGENTA);
                 }
             }
