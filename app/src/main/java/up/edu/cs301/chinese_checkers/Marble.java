@@ -8,18 +8,19 @@ import android.graphics.Color;
 
 public class Marble
 {
-    int row, col, id;
-    Color color;
+    int color, row, col, id, valid;
 
-    public Marble(Color color, int row, int col, int id)
+
+    public Marble(int color, int row, int col, int id)
     {
         this.color = color;
         this.row = row;
         this.col = col;
         this.id = id;
+
     }
 
-    public Color getColor()
+    public int getColor()
     {
         return color;
     }
@@ -36,13 +37,14 @@ public class Marble
         return id;
     }
 
-    public void setColor(Color c){
 
-    }
+    public void setColor(int c){color = c;}
 
     public void setRow(int i ){row = i;}
 
     public void setCol(int i ){col = i;}
 
     public void setId(int i ){id = i;}
+
+
 }

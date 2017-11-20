@@ -18,7 +18,7 @@ public class CCGameState extends CCState {
     //instance variables
     Marble[][] board;
     int id;
-    Hashtable<Integer,Color> colorPlayerTable;
+//    Hashtable<Integer,Color> colorPlayerTable;
 
     /**
      * Constructor
@@ -47,13 +47,13 @@ public class CCGameState extends CCState {
         return id;
     }
 
-    /**
-     * Standard getter method for ColorPlayerTable. Used by GUI to properly set the color to a player.
-     * @return returns id which represents whose turn it is.
-     */
-    public Hashtable<Integer,Color> getCPT(){
-        return colorPlayerTable;
-    }
+//    /**
+//     * Standard getter method for ColorPlayerTable. Used by GUI to properly set the color to a player.
+//     * @return returns id which represents whose turn it is.
+//     */
+////    public Hashtable<Integer,Color> getCPT(){
+////        return colorPlayerTable;
+////    }
 
     /**
      * Standard setter method for instance variable board
@@ -70,13 +70,13 @@ public class CCGameState extends CCState {
         id = i;
     }
 
-    /**
-     * Standard setter method for instance variable colorPlayerTable
-     * @param cpt takes a Hashtable<Integer,Color>. Sets colorPlayerTable to i
-     */
-    public void setCPT(Hashtable<Integer,Color> cpt){
-        colorPlayerTable = cpt;
-    }
+//    /**
+//     * Standard setter method for instance variable colorPlayerTable
+//     * @param cpt takes a Hashtable<Integer,Color>. Sets colorPlayerTable to i
+//     */
+//    public void setCPT(Hashtable<Integer,Color> cpt){
+//        colorPlayerTable = cpt;
+//    }
 
 
 

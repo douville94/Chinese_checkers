@@ -2,6 +2,7 @@ package up.edu.cs301.chinese_checkers;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
 
@@ -75,6 +76,7 @@ public class CCBoardSurfaceView {//extends SurfaceView {
                     argMarble.setRow(i);
                     argMarble.setCol(j);
                     CCBoard[i][j] = 1;
+                    argMarble.setColor(Color.RED);
                 }
             }
         }
@@ -91,6 +93,7 @@ public class CCBoardSurfaceView {//extends SurfaceView {
                     argMarble.setRow(i);
                     argMarble.setCol(j);
                     CCBoard[i][j] = 1;
+                    argMarble.setColor(Color.YELLOW);
                 }
             }
         }
@@ -106,6 +109,8 @@ public class CCBoardSurfaceView {//extends SurfaceView {
                 {
                     argMarble.setRow(i);
                     argMarble.setCol(j);
+                    CCBoard[i][j] = 1;
+                    argMarble.setColor(Color.GREEN);
                 }
             }
         }
@@ -113,17 +118,53 @@ public class CCBoardSurfaceView {//extends SurfaceView {
 
     public void setBottomCorner(Marble argMarble)
     {
-
+        for (int i = 4; i < 8; i++)
+        {
+            for(int j = 13; j < 17; j++)
+            {
+                if(i != -1 && j != -1)
+                {
+                    argMarble.setRow(i);
+                    argMarble.setCol(j);
+                    CCBoard[i][j] = 1;
+                    argMarble.setColor(Color.CYAN);
+                }
+            }
+        }
     }
 
     public void setBottomLeftCorner(Marble argMarble)
     {
-
+        for (int i = 0; i < 4; i++)
+        {
+            for(int j = 13; j < 17; j++)
+            {
+                if(i != -1 && j != -1)
+                {
+                    argMarble.setRow(i);
+                    argMarble.setCol(j);
+                    CCBoard[i][j] = 1;
+                    argMarble.setColor(Color.BLUE);
+                }
+            }
+        }
     }
 
     public void setTopLeftCorner(Marble argMarble)
     {
-
+        for (int i = 0; i < 4; i++)
+        {
+            for(int j = 4; j < 8; j++)
+            {
+                if(i != -1 && j != -1)
+                {
+                    argMarble.setRow(i);
+                    argMarble.setCol(j);
+                    CCBoard[i][j] = 1;
+                    argMarble.setColor(Color.MAGENTA);
+                }
+            }
+        }
     }
 
 //    public CCBoardSurfaceView(Context context){

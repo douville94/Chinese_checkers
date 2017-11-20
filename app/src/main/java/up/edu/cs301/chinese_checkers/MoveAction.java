@@ -31,7 +31,7 @@ public class MoveAction extends GameAction
      * @param marble
      */
     public boolean getMarble(Marble marble) {
-        Color colorMarble = marble.getColor();
+        int colorMarble = marble.getColor();
         int rowMarble = marble.getRow();
         int colMarble = marble.getCol();
 //        row = marble.getRow();
