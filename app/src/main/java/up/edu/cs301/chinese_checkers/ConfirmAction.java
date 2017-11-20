@@ -2,7 +2,7 @@ package up.edu.cs301.chinese_checkers;
 
 import up.edu.cs301.game.Player;
 import up.edu.cs301.game.actionMsg.GameAction;
-import up.edu.cs301.game.infoMsg.CCState;
+import up.edu.cs301.game.infoMsg.GameState;
 
 /**
  * Created by Luke Douville on 11/18/17.
@@ -11,7 +11,7 @@ import up.edu.cs301.game.infoMsg.CCState;
 public class ConfirmAction extends GameAction
 {
     private Player player;
-    private CCState state;
+    private GameState state;
 
     public ConfirmAction(Player p)
     {

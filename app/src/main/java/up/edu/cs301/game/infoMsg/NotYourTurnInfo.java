@@ -7,7 +7,7 @@ package up.edu.cs301.game.infoMsg;
  * @author Steven R. Vegdahl
  * @version July 2013
  */
-public class NotYourTurnInfo extends CCInfo
+public class NotYourTurnInfo extends GameInfo
 {
 
     // to satisfy the Serializable interface

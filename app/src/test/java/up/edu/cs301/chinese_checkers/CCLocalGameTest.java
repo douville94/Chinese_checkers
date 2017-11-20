@@ -1,14 +1,6 @@
 package up.edu.cs301.chinese_checkers;
 
-import android.view.View;
-
 import org.junit.Test;
-
-import up.edu.cs301.game.HumanPlayer;
-import up.edu.cs301.game.MainActivity;
-import up.edu.cs301.game.Player;
-import up.edu.cs301.game.infoMsg.CCInfo;
-import up.edu.cs301.chinese_checkers.CCLocalGame;
 
 import static org.junit.Assert.*;
 

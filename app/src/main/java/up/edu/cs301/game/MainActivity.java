@@ -27,9 +27,11 @@ import java.util.ArrayList;
 import up.edu.cs301.chinese_checkers.BoardSurfaceView;
 import up.edu.cs301.chinese_checkers.R;
 import up.edu.cs301.game.config.GameConfig;
-import up.edu.cs301.game.config.CCPlayerType;
+import up.edu.cs301.game.config.GamePlayerType;
 import up.edu.cs301.game.util.IPCoder;
 import up.edu.cs301.game.util.MessageBox;
+import up.edu.cs301.chinese_checkers.CCGameState;
+import up.edu.cs301.chinese_checkers.IntArray;
 
 /**
  * class GameMainActivity
@@ -75,6 +77,8 @@ public abstract class MainActivity extends Activity implements
     private TextView turnTextView, currentPlayerTextView;
     private BoardSurfaceView bsf;
     private Button confirm, cancel;
+    private CCGameState cgs;
+    private IntArray ia;
 
     /**
      * contains the game configuration this activity will be used to initialize
@@ -150,9 +154,11 @@ public abstract class MainActivity extends Activity implements
 
         /*Initialize the layout*/
         /*Use this line later*/
-//        setContentView(R.layout.game_config_main);
+        setContentView(R.layout.game_config_main);
+//        setContentView(R.layout.activity_main);
 
-        setContentView(R.layout.activity_main);
+//        cgs = new CCGameState();
+//        cgs.setBoard();
 
         // create the default configuration for this game
         this.config = createDefaultConfig();
@@ -190,9 +196,7 @@ public abstract class MainActivity extends Activity implements
             }
         }
 
-        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-
+        ia = new IntArray();
     }// onCreate
 
     /**
@@ -309,8 +313,8 @@ public abstract class MainActivity extends Activity implements
         for(int i = 0; i < players.length; i++)
         {
             String name = config.getSelName(i); // the player's name
-            CCPlayerType gpt = config.getSelType(i); // the player's type
-            CCPlayerType[] availTypes = config.getAvailTypes(); // the available player types
+            GamePlayerType gpt = config.getSelType(i); // the player's type
+            GamePlayerType[] availTypes = config.getAvailTypes(); // the available player types
             players[i] = gpt.createPlayer(name); // create the player
 
             // check that the player name is legal
@@ -434,8 +438,8 @@ public abstract class MainActivity extends Activity implements
 //            playerName.setText(config.getSelName(i));
 
             // Set the initial selection for the spinner
-            CCPlayerType[] selTypes = config.getSelTypes(); // the player types in the config
-            CCPlayerType[] availTypes = config.getAvailTypes(); // the available player types
+            GamePlayerType[] selTypes = config.getSelTypes(); // the player types in the config
+            GamePlayerType[] availTypes = config.getAvailTypes(); // the available player types
 //            Spinner typeSpinner = (Spinner) row
 //                    .findViewById(R.id.playerTypeSpinner); // the spinner for the current player
 //            // search through to find the one whose label matches; set it as the selection
@@ -466,8 +470,8 @@ public abstract class MainActivity extends Activity implements
         remoteNameEditText.setText(config.getRemoteName());
 
         // index of remote player type
-        CCPlayerType remotePlayerType = config.getRemoteSelType();
-        CCPlayerType[] availTypes = config.getAvailTypes();
+        GamePlayerType remotePlayerType = config.getRemoteSelType();
+        GamePlayerType[] availTypes = config.getAvailTypes();
         Spinner remoteTypeSpinner = (Spinner) findViewById(R.id.remote_player_spinner);
         for(int j = 0; j < availTypes.length; ++j)
         {

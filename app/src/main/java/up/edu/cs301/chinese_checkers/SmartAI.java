@@ -1,7 +1,7 @@
 package up.edu.cs301.chinese_checkers;
 
 import up.edu.cs301.game.ComputerPlayer;
-import up.edu.cs301.game.infoMsg.CCInfo;
+import up.edu.cs301.game.infoMsg.GameInfo;
 
 /**
  * Created by douvillionaire on 10/25/17.
@@ -9,7 +9,7 @@ import up.edu.cs301.game.infoMsg.CCInfo;
 
 public class SmartAI extends ComputerPlayer
 {
-    private CCInfo info;
+    private GameInfo info;
 
     public SmartAI(String name)
     {
@@ -17,7 +17,7 @@ public class SmartAI extends ComputerPlayer
     }
 
     @Override
-    public void receiveInfo(CCInfo i)
+    public void receiveInfo(GameInfo i)
     {
         this.info = i;
     }

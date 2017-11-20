@@ -10,7 +10,7 @@ import up.edu.cs301.game.Game;
  * @author Steven R. Vegdahl
  * @version July 2013
  */
-public class BindGameInfo extends CCInfo
+public class BindGameInfo extends GameInfo
 {
 
     // to satisfy the Serializable interface

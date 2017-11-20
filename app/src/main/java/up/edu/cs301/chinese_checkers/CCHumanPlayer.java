@@ -2,8 +2,6 @@ package up.edu.cs301.chinese_checkers;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Point;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -12,8 +10,7 @@ import android.widget.TextView;
 
 import up.edu.cs301.game.HumanPlayer;
 import up.edu.cs301.game.MainActivity;
-import up.edu.cs301.game.infoMsg.CCInfo;
-import up.edu.cs301.game.infoMsg.CCState;
+import up.edu.cs301.game.infoMsg.GameInfo;
 
 /**
  * Created by sizhecao on 11/12/17.
@@ -47,10 +44,11 @@ public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
      *
      * @param name
      * 		the player's name
-     * @param layoutId
-     *      the id of the layout to use
      */
-    public CCHumanPlayer(String name, int layoutId) {
+//     * @param layoutId
+//     *      the id of the layout to use
+//     */
+    public CCHumanPlayer(String name) {//}, int layoutId) {
         super(name);
         this.layoutId = layoutId;
     }
@@ -62,7 +60,7 @@ public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
      * 		the message
      */
     @Override
-    public void receiveInfo(CCInfo info) {
+    public void receiveInfo(GameInfo info) {
 
         /*if (surfaceView == null) return;
 
@@ -70,11 +68,11 @@ public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
             // if the move was out of turn or otherwise illegal, flash the screen
             surfaceView.flash(Color.RED, 50);
         }
-        else if (!(info instanceof CCState))
-            // if we do not have a CCState, ignore
+        else if (!(info instanceof GameState))
+            // if we do not have a GameState, ignore
             return;
         else {
-            surfaceView.setState((CCState)info);
+            surfaceView.setState((GameState)info);
             surfaceView.invalidate();
             Log.i("human player", "receiving");
         }*/

@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import up.edu.cs301.game.actionMsg.GameAction;
-import up.edu.cs301.game.infoMsg.CCInfo;
+import up.edu.cs301.game.infoMsg.GameInfo;
 import up.edu.cs301.game.util.IPCoder;
 import up.edu.cs301.game.util.NetworkObjectPasser;
 
@@ -29,7 +29,7 @@ public class ProxyGame implements Game
 
     // a queue of objects that are collected, which might have been sent over the
     // network before we are connected to a player
-    private Queue<CCInfo> queuedObjectsForPlayer = new LinkedList<CCInfo>();
+    private Queue<GameInfo> queuedObjectsForPlayer = new LinkedList<GameInfo>();
 
     // the network-connection object
     private NetworkObjectPasser networkPasser;
@@ -84,11 +84,11 @@ public class ProxyGame implements Game
                 Log.i("ProxyGame", "received object (" + obj.getClass() + ")");
                 try
                 {
-                    boolean b = obj instanceof CCInfo;
+                    boolean b = obj instanceof GameInfo;
                     if(b)
                     {
                         // object is a GameStae object
-                        CCInfo gs = (CCInfo) obj;
+                        GameInfo gs = (GameInfo) obj;
                         gs.setGame(ProxyGame.this);
                         synchronized (this)
                         {
@@ -109,7 +109,7 @@ public class ProxyGame implements Game
                         }
                     } else
                     {
-                        // ignore if the object is not a CCInfo object
+                        // ignore if the object is not a GameInfo object
                         Log.i("ProxyGame", "object NOT being sent to player");
                     }
                 } catch(Exception x)
@@ -168,7 +168,7 @@ public class ProxyGame implements Game
         // accumulated in the queue before the player was bound
         for(; ; )
         {
-            CCInfo unqueuedObject;
+            GameInfo unqueuedObject;
             synchronized (this)
             {
                 if(queuedObjectsForPlayer.isEmpty())

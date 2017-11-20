@@ -7,7 +7,7 @@ import up.edu.cs301.game.actionMsg.GameOverAckAction;
 import up.edu.cs301.game.actionMsg.MyNameIsAction;
 import up.edu.cs301.game.actionMsg.ReadyAction;
 import up.edu.cs301.game.infoMsg.BindGameInfo;
-import up.edu.cs301.game.infoMsg.CCInfo;
+import up.edu.cs301.game.infoMsg.GameInfo;
 import up.edu.cs301.game.infoMsg.GameOverInfo;
 import up.edu.cs301.game.infoMsg.StartGameInfo;
 import up.edu.cs301.game.infoMsg.TimerInfo;
@@ -123,7 +123,7 @@ public abstract class ComputerPlayer implements Player, Tickable
      *
      * @param info the information message to send
      */
-    public final void sendInfo(CCInfo info)
+    public final void sendInfo(GameInfo info)
     {
         // post the state to the player's thread, waiting (if needed) until handler is there
         while(myHandler == null)
@@ -168,7 +168,7 @@ public abstract class ComputerPlayer implements Player, Tickable
      *
      * @param info the object representing the information from the game
      */
-    protected abstract void receiveInfo(CCInfo info);
+    protected abstract void receiveInfo(GameInfo info);
 
     /**
      * Helper-class to post a message to this player's thread
@@ -197,9 +197,9 @@ public abstract class ComputerPlayer implements Player, Tickable
             }
 
             // if it's a GameInfo object, process it
-            if(data instanceof CCInfo)
+            if(data instanceof GameInfo)
             { // ignore non GameInfo objects
-                CCInfo myInfo = (CCInfo) data;
+                GameInfo myInfo = (GameInfo) data;
                 if(game == null)
                 {
 

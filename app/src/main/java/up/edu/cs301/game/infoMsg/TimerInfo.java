@@ -10,7 +10,7 @@ import up.edu.cs301.game.util.GameTimer;
  * @version July 2013
  */
 
-public class TimerInfo extends CCInfo
+public class TimerInfo extends GameInfo
 {
 
     // to satisfy the Serializable interface

@@ -11,7 +11,7 @@ import up.edu.cs301.game.actionMsg.GameOverAckAction;
 import up.edu.cs301.game.actionMsg.MyNameIsAction;
 import up.edu.cs301.game.actionMsg.ReadyAction;
 import up.edu.cs301.game.infoMsg.BindGameInfo;
-import up.edu.cs301.game.infoMsg.CCInfo;
+import up.edu.cs301.game.infoMsg.GameInfo;
 import up.edu.cs301.game.infoMsg.GameOverInfo;
 import up.edu.cs301.game.infoMsg.StartGameInfo;
 import up.edu.cs301.game.infoMsg.TimerInfo;
@@ -211,7 +211,7 @@ public abstract class HumanPlayer implements Player, Tickable
      *
      * @param info the information object to send
      */
-    public void sendInfo(CCInfo info)
+    public void sendInfo(GameInfo info)
     {
         // wait until handler is there
         while(myHandler == null)
@@ -230,7 +230,7 @@ public abstract class HumanPlayer implements Player, Tickable
      *
      * @param info the message
      */
-    public abstract void receiveInfo(CCInfo info);
+    public abstract void receiveInfo(GameInfo info);
 
 
     /**
@@ -240,10 +240,10 @@ public abstract class HumanPlayer implements Player, Tickable
     private class MyRunnable implements Runnable
     {
         // the message to send to the player
-        private CCInfo myInfo;
+        private GameInfo myInfo;
 
         // constructor
-        public MyRunnable(CCInfo info)
+        public MyRunnable(GameInfo info)
         {
             myInfo = info;
         }

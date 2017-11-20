@@ -1,12 +1,13 @@
 package up.edu.cs301.chinese_checkers;
 
-import up.edu.cs301.game.infoMsg.CCState;
+import up.edu.cs301.game.infoMsg.GameState;
 
 /**
  * Created by Charlie Wu on 11/5/17.
  */
 
-public class CCGameState extends CCState {
+public class CCGameState extends GameState
+{
 
     //instance variables
     Marble[][] board;

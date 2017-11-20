@@ -4,7 +4,7 @@ import android.util.Log;
 
 import up.edu.cs301.game.actionMsg.GameAction;
 import up.edu.cs301.game.infoMsg.BindGameInfo;
-import up.edu.cs301.game.infoMsg.CCInfo;
+import up.edu.cs301.game.infoMsg.GameInfo;
 import up.edu.cs301.game.util.NetworkObjectPasser;
 
 /**
@@ -88,11 +88,11 @@ public class ProxyPlayer implements Player
     }
 
     /**
-     * Used by the game to send a CCInfo object to this player
+     * Used by the game to send a GameInfo object to this player
      *
      * @param state The state to send
      */
-    public void sendInfo(CCInfo state)
+    public void sendInfo(GameInfo state)
     {
         if(game == null && state instanceof BindGameInfo)
         {
@@ -104,7 +104,7 @@ public class ProxyPlayer implements Player
             game = ((BindGameInfo) state).getGame();
         }
 
-        // Null out the game from the CCInfo object (if present),
+        // Null out the game from the GameInfo object (if present),
         // so that the entire game does not get passed across the
         // network
         state.setGame(null);

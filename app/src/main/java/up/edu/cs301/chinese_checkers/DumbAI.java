@@ -1,7 +1,7 @@
 package up.edu.cs301.chinese_checkers;
 
 import up.edu.cs301.game.ComputerPlayer;
-import up.edu.cs301.game.infoMsg.CCInfo;
+import up.edu.cs301.game.infoMsg.GameInfo;
 import up.edu.cs301.game.infoMsg.NotYourTurnInfo;
 
 /**
@@ -10,7 +10,7 @@ import up.edu.cs301.game.infoMsg.NotYourTurnInfo;
 
 public class DumbAI extends ComputerPlayer
 {
-    private CCInfo info;
+    private GameInfo info;
 //    private Marble m;
     /*MoveAction needs to have a Marble object but then we have initialize a Marble object in this class
     so that we can pass it in.
@@ -21,7 +21,7 @@ public class DumbAI extends ComputerPlayer
     }
 
     @Override
-    public void receiveInfo(CCInfo info)
+    public void receiveInfo(GameInfo info)
     {
         // if it was a "not your turn" message, just ignore it
         if (info instanceof NotYourTurnInfo) return;

@@ -1,6 +1,6 @@
 package up.edu.cs301.game;
 
-import up.edu.cs301.game.infoMsg.CCInfo;
+import up.edu.cs301.game.infoMsg.GameInfo;
 
 /**
  * A player who plays a (generic) game. Each class that implements a player for
@@ -22,7 +22,7 @@ public interface Player
     public abstract void setAsGui(MainActivity activity);
 
     // sends a message to the player
-    public abstract void sendInfo(CCInfo info);
+    public abstract void sendInfo(GameInfo info);
 
     // start the player
     public abstract void start();
