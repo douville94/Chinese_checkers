@@ -52,38 +52,38 @@ public class CCMainActivity extends MainActivity //AppCompatActivity
 //            }
 //        };
 
-        gpt = new ArrayList<GamePlayerType>();
-        gpt.add(new GamePlayerType("Local Human Player")
-        {
-            public Player createPlayer(String name)
-            {
-                return new CCHumanPlayer(name);
-            }
-        });
-        gpt.add(new GamePlayerType("Dumb Computer Player")
-        {
-            public Player createPlayer(String name)
-            {
-                return new DumbAI(name);
-            }
-        });
-        gpt.add(new GamePlayerType("Smart Computer Player")
-        {
-            public Player createPlayer(String name)
-            {
-                return new SmartAI(name);
-            }
-        });
-
-        defaultConfig = new GameConfig(gpt, 2, 6, "Chinese checkers", PORT_NUMBER);
-
-        /*Add the default players.*/
-        defaultConfig.addPlayer("Human", 0);
-        defaultConfig.addPlayer("Dumb Computer Player", 1);
-
-        /*Set the initial value for the remote player.*/
-        defaultConfig.setRemoteData("Remote Player", "", 2);
-
+//        gpt = new ArrayList<GamePlayerType>();
+//        gpt.add(new GamePlayerType("Local Human Player")
+//        {
+//            public Player createPlayer(String name)
+//            {
+//                return new CCHumanPlayer(name);
+//            }
+//        });
+//        gpt.add(new GamePlayerType("Dumb Computer Player")
+//        {
+//            public Player createPlayer(String name)
+//            {
+//                return new DumbAI(name);
+//            }
+//        });
+//        gpt.add(new GamePlayerType("Smart Computer Player")
+//        {
+//            public Player createPlayer(String name)
+//            {
+//                return new SmartAI(name);
+//            }
+//        });
+//
+//        defaultConfig = new GameConfig(gpt, 2, 6, "Chinese checkers", PORT_NUMBER);
+//
+//        /*Add the default players.*/
+//        defaultConfig.addPlayer("Human", 0);
+//        defaultConfig.addPlayer("Dumb Computer Player", 1);
+//
+//        /*Set the initial value for the remote player.*/
+//        defaultConfig.setRemoteData("Remote Player", "", 2);
+//
         return defaultConfig;
     }
 

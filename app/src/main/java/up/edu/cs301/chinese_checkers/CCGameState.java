@@ -12,8 +12,10 @@ public class CCGameState extends GameState
     //instance variables
     Marble[][] board;
     int id;
-    IntArray cbsf;
-//    Hashtable<Integer,Color> colorPlayerTable;
+    private IntArray ia;
+//    private Hashtable<Integer,Color> colorPlayerTable;
+    private int[][] myXYs;
+    private int width, height, range;
 
     /**
      * Constructor
@@ -30,8 +32,13 @@ public class CCGameState extends GameState
         super();
     }
 
-    public Marble[][] getBoard(){
-        return board;
+//    public Marble[][] getBoard(){
+//        return board;
+//    }
+
+    public int[][] getBoard()
+    {
+        return myXYs;
     }
 
     /**
@@ -56,7 +63,86 @@ public class CCGameState extends GameState
 //    public void setBoard(Marble[][] b){
     public void setBoard() {
 //        board = b;
-        cbsf = new IntArray();
+        ia = new IntArray();
+        width = 1536 / 2;
+        height = 1742 / 2;
+        range = 350 / 8;
+//        myXYs = new int[13][17];
+        myXYs = new int[][]
+                {
+                        //top corner
+                        {width, height - 750},
+                        {width + 50, (height - 750) + 3 * range},
+                        {width - 50, (height - 750) + 3 * range},
+                        {width - 100, (height - 750) + 5 * range},
+                        {width, (height - 750) + 5 * range},
+                        {width + 100, (height - 750) + 5 * range},
+                        {width - 150, (height - 400) - range},
+                        {width - 50, (height - 400) - range},
+                        {width + 50, (height - 400) - range},
+                        {width + 150, (height - 400) - range},
+
+                        //top-right corner
+                        {width+300, (height-400)+range},
+                        {width+400, (height-400)+range},
+                        {width+500, (height-400)+range},
+                        {width+600, (height-400)+range},
+                        {width+350, (height-325)+range},
+                        {width+450, (height-325)+range},
+                        {width+550, (height-325)+range},
+                        {width+400, (height-250)+range},
+                        {width+500, (height-250)+range},
+                        {width+450, (height-175)+range},
+
+                        //bottom-right corner
+                        {width+450, (height-25)+range},
+                        {width+400, (height+50)+range},
+                        {width+500, (height+50)+range},
+                        {width+350, (height+125)+range},
+                        {width+450, (height+125)+range},
+                        {width+550, (height+125)+range},
+                        {width+300, (height+200)+range},
+                        {width+400, (height+200)+range},
+                        {width+500, (height+200)+range},
+                        {width+600, (height+200)+range},
+
+                        //bottom corner
+                        {width, (height+500)+range},
+                        {width+50, (height+425)+range},
+                        {width-50, (height+425)+range},
+                        {width-100, (height+350)+range},
+                        {width, (height+350)+range},
+                        {width-100, (height+350)+range},
+                        {width-150, (height+275)+range},
+                        {width-50, (height+275)+range},
+                        {width+50, (height+275)+range},
+                        {width+150, (height+275)+range},
+
+                        //bottom-left corner
+                        {width-450, (height-20)+range},
+                        {width-500, (height+50)+range},
+                        {width-400, (height+50)+range},
+                        {width-550, (height+125)+range},
+                        {width-450, (height+125)+range},
+                        {width-350, (height+125)+range},
+                        {width-300, (height+200)+range},
+                        {width-400, (height+200)+range},
+                        {width-500, (height+200)+range},
+                        {width-600, (height+200)+range},
+
+                        //top-left corner
+                        {width-300, (height-400)+range},
+                        {width-400, (height-400)+range},
+                        {width-500, (height-400)+range},
+                        {width-600, (height-400)+range},
+                        {width-350, (height-325)+range},
+                        {width-450, (height-325)+range},
+                        {width-550, (height-325)+range},
+                        {width-400, (height-250)+range},
+                        {width-500, (height-250)+range},
+                        {width-450, (height-175)+range},
+                };
+
 
 //        for(int i = 0; i < 13; i++)
 //        {
@@ -64,27 +150,27 @@ public class CCGameState extends GameState
 //            {
 //                if(i > 3 && i < 9 && j > 0 && j < 4)
 //                {
-//                    cbsf.setTopCorner(board[i][j]);
+//                    ia.setTopCorner(board[i][j]);
 //                }
 //                else if(i > 8 && i < 13 && j > 3 && j < 8)
 //                {
-//                    cbsf.setTopRightCorner(board[i][j]);
+//                    ia.setTopRightCorner(board[i][j]);
 //                }
 //                else if(i > 8 && i < 13 && j > 7 && j < 13)
 //                {
-//                    cbsf.setBottomRightCorner(board[i][j]);
+//                    ia.setBottomRightCorner(board[i][j]);
 //                }
 //                else if(i > 3 && i < 9 && j > 12 && j < 17)
 //                {
-//                    cbsf.setBottomCorner(board[i][j]);
+//                    ia.setBottomCorner(board[i][j]);
 //                }
 //                else if(i > 0 && i < 4 && j > 7 && j < 13)
 //                {
-//                    cbsf.setBottomLeftCorner(board[i][j]);
+//                    ia.setBottomLeftCorner(board[i][j]);
 //                }
 //                else if(i > 0 && i < 4 && j > 3 && j < 8)
 //                {
-//                    cbsf.setTopLeftCorner(board[i][j]);
+//                    ia.setTopLeftCorner(board[i][j]);
 //                }
 //            }
 //        }
@@ -94,27 +180,27 @@ public class CCGameState extends GameState
             for(int j = 0; j < 17; j++)
             {
                 /*If configuration is two players*/
-                cbsf.setTopCorner(board[i][j]);
-                cbsf.setBottomCorner(board[i][j]);
+                ia.setTopCorner(board[i][j]);
+                ia.setBottomCorner(board[i][j]);
 
                 /*If configuration is three players*/
-                cbsf.setTopCorner(board[i][j]);
-                cbsf.setBottomRightCorner(board[i][j]);
-                cbsf.setBottomLeftCorner(board[i][j]);
+                ia.setTopCorner(board[i][j]);
+                ia.setBottomRightCorner(board[i][j]);
+                ia.setBottomLeftCorner(board[i][j]);
 
                 /*If configuration is four players*/
-                cbsf.setTopRightCorner(board[i][j]);
-                cbsf.setBottomRightCorner(board[i][j]);
-                cbsf.setBottomLeftCorner(board[i][j]);
-                cbsf.setTopLeftCorner(board[i][j]);
+                ia.setTopRightCorner(board[i][j]);
+                ia.setBottomRightCorner(board[i][j]);
+                ia.setBottomLeftCorner(board[i][j]);
+                ia.setTopLeftCorner(board[i][j]);
 
                 /*If configuration is six players*/
-                cbsf.setTopCorner(board[i][j]);
-                cbsf.setTopRightCorner(board[i][j]);
-                cbsf.setBottomRightCorner(board[i][j]);
-                cbsf.setBottomCorner(board[i][j]);
-                cbsf.setBottomLeftCorner(board[i][j]);
-                cbsf.setTopLeftCorner(board[i][j]);
+                ia.setTopCorner(board[i][j]);
+                ia.setTopRightCorner(board[i][j]);
+                ia.setBottomRightCorner(board[i][j]);
+                ia.setBottomCorner(board[i][j]);
+                ia.setBottomLeftCorner(board[i][j]);
+                ia.setTopLeftCorner(board[i][j]);
             }
         }
 

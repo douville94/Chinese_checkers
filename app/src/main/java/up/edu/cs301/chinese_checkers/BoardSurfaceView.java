@@ -20,7 +20,8 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
     protected Paint tri1Paint, tri2Paint, tri3Paint, tri4Paint, tri5Paint, tri6Paint, hexPaint, boardPaint;
     private Canvas tempCanvas;
     private LinearLayout boardSurfaceViewParent;
-    private IntArray cbsf;
+    private IntArray ia;
+    private CCGameState cgs;
 
     public BoardSurfaceView(Context context)
     {
@@ -48,7 +49,7 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 
     private void init()//Context context)
     {
-
+//        cgs = new CCGameState();
     }
 
     /*Have to clean project after project is built with draw instead of onDraw.*/

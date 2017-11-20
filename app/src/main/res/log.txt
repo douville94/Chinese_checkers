@@ -2,3 +2,4 @@
 2.  Consulted for learning how to add custom attributes to XML file:  https://developer.android.com/training/custom-views/create-view.html
 3.  Consulted for learning how to implement quit game button.  https://stackoverflow.com/questions/17719634/how-to-exit-an-android-app-using-code
 4.  Consulted for learning how to implement quit game button.  https://stackoverflow.com/questions/7991393/how-to-switch-between-screens
+5.  Consulted for learning how to force portrait orientation programatically.  https://stackoverflow.com/questions/4885620/force-portrait-orientation-mode
