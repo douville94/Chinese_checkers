@@ -91,9 +91,9 @@ public class CCGameState extends GameState
 //     * Standard getter method for ColorPlayerTable. Used by GUI to properly set the color to a player.
 //     * @return returns id which represents whose turn it is.
 //     */
-////    public Hashtable<Integer,Color> getCPT(){
-////        return colorPlayerTable;
-////    }
+//    public Hashtable<Integer,Color> getCPT(){
+//        return colorPlayerTable;
+//    }
 
     /**
      * Standard setter method for instance variable board
