@@ -15,27 +15,24 @@ import android.widget.LinearLayout;
  * Created by Luke D. Douville on 10/17/17.
  */
 
-public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callback
-{
-    protected Path tri1Path, tri2Path, tri3Path, tri4Path, tri5Path, tri6Path, hexPath;
-    protected Paint tri1Paint, tri2Paint, tri3Paint, tri4Paint, tri5Paint, tri6Paint, hexPaint;
+public class BoardSurfaceView extends SurfaceView {
+//    protected Path tri1Path, tri2Path, tri3Path, tri4Path, tri5Path, tri6Path, hexPath;
+//    protected Paint tri1Paint, tri2Paint, tri3Paint, tri4Paint, tri5Paint, tri6Paint, hexPaint;
     protected Paint centerBoardPaint, player1Paint, player2Paint, player3Paint, player4Paint, player5Paint, player6Paint;
 //    private Canvas tempCanvas;
 //    private LinearLayout boardSurfaceViewParent;
 //    private IntArray ia;
     private CCGameState cgs = new CCGameState();
-    private int[][] myXYs;//[13][17] myXYs;
+//    private int[][] myXYs;//[13][17] myXYs;
     private int width, height, a, b;
     private float radius, range;
 
-    public BoardSurfaceView(Context context)
-    {
+    public BoardSurfaceView(Context context) {
         super(context);
         init();
     }
 
-    public BoardSurfaceView(Context context, AttributeSet as)
-    {
+    public BoardSurfaceView(Context context, AttributeSet as) {
         super(context, as);
         if(!isInEditMode())
         {
@@ -43,8 +40,7 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         }
     }
 
-    public BoardSurfaceView(Context context, AttributeSet as, int defStyle)
-    {
+    public BoardSurfaceView(Context context, AttributeSet as, int defStyle) {
         super(context, as, defStyle);
         if(!isInEditMode())
         {
@@ -52,17 +48,13 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         }
     }
 
-    private void init()//Context context)
-    {
+    private void init() {
 //        cgs = new CCGameState();
     }
 
     /*Have to clean project after project is built with draw instead of onDraw.*/
     @Override
-    public void onDraw(Canvas c)
-    {
-//        Log.i("Canvas Height",""+c.getWidth());
-//        Log.i("Canvas Height",""+c.getHeight());
+    public void onDraw(Canvas c) {
         width = c.getWidth()/2;
         height = c.getHeight()/2;
         radius = (50/3)*(float)Math.sqrt(3.0);
@@ -82,44 +74,10 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         player6Paint = new Paint();
         player6Paint.setColor(Color.rgb(174, 23, 179));//purple
 
-        int[][] intArray = new int[][]{
-                {-2, -2, -2, -2, -2, -2, -1, -2, -2, -2, -2, -2, -2}, // row 0
-
-                {-2, -2, -2, -2, -2, -1, -1, -2, -2, -2, -2, -2, -2}, // row 1
-
-                {-2, -2, -2, -2, -2, -1, -1, -1, -2, -2, -2, -2, -2}, // row 2
-
-                {-2, -2, -2, -2, -1, -1, -1, -1, -2, -2, -2, -2, -2}, // row 3
-
-                {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}, // row 4
-
-                {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2}, // row 5
-
-                {-2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2}, // row 6
-
-                {-2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2, -2}, // row 7
-
-                {-2, -2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2, -2}, // row 8 -----
-
-                {-2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2, -2}, // row 9
-
-                {-2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2}, // row 10
-
-                {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2}, // row 11
-
-                {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}, // row 12
-
-                {-2, -2, -2, -2, -1, -1, -1, -1, -2, -2, -2, -2, -2}, // row 13
-
-                {-2, -2, -2, -2, -2, -1, -1, -1, -2, -2, -2, -2, -2}, // row 14
-
-                {-2, -2, -2, -2, -2, -1, -1, -2, -2, -2, -2, -2, -2}, // row 15
-
-                {-2, -2, -2, -2, -2, -2, -1, -2, -2, -2, -2, -2, -2}, // row 16
-        };
+        int[][] intArray = cgs.getIntArray();
         Log.i("1stbox",""+intArray.length);
         Log.i("2nd box",""+intArray[0].length);
-        int x = 200;
+        int x;
         int y =40;
         boolean offset = false;
         float[][] xposition = new float[17][13];
@@ -127,8 +85,7 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         Log.i("1stbox",""+xposition.length);
         Log.i("2nd box",""+xposition[0].length);
         //iterate first row
-        for(int i = 0; i < 17; i++)
-        {
+        for(int i = 0; i < 17; i++) {
             //
             y+=100;
             if(offset){
@@ -140,8 +97,7 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
            // iterate each column
 
 
-            for(int j = 0; j < 13; j++)
-            {
+            for(int j = 0; j < 13; j++) {
                 int z = intArray[i][j];
                 switch (z){
                     case -2:// invalid don't draw anything
@@ -197,24 +153,7 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 
     }
 
-    /*Needed all three of these abstract methods or else the class wouldn't compile.*/
-    public void surfaceChanged(SurfaceHolder sh, int a, int b, int c)
-    {
-
-    }
-
-    public void surfaceDestroyed(SurfaceHolder sh)
-    {
-
-    }
-
-    public void surfaceCreated(SurfaceHolder sh)
-    {
-
-    }
-
-    public void compareArrays()
-    {
+    public void compareArrays() {
         for(int i = 4; i < 8; i++)
         {
             for(int j = 0; j < 4; j++)
@@ -232,9 +171,7 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         }
     }
 
-    public int getX(int[][] array)
-    {
-
+    public int getX(int[][] array) {
         return 1;
     }
 }

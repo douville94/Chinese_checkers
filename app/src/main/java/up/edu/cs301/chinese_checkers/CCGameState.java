@@ -19,7 +19,7 @@ public class CCGameState extends GameState
     /*As per Vegdahl's recommendations on 11/20/2017:
         * Factor playerId (from Marble class) into intArray so that -2 is invalid, -1 is empty,
         * 0 designates player 1, 1 designates player two, and so on.*/
-    protected int[][] intArray = new int[][]{
+    private int[][] intArray = new int[][]{
         { -2, -2, -2, -2,  -2, -2, -1, -2, -2,  -2, -2, -2, -2 }, // row 0
 
         { -2, -2, -2, -2,  -2, -1, -1, -2, -2,  -2, -2, -2, -2 }, // row 1
