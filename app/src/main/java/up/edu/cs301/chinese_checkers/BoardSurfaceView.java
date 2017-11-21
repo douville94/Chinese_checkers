@@ -375,7 +375,7 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         };
 
         int x = 200;
-        int y = 0;
+        int y =40;
         boolean offset = false;
 //        float[][] validPos = new[13][17];
         //iterate first row
@@ -408,7 +408,8 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
                         break;
                 }
 
-                x+=100;
+                x+=95;
+                y-=1;
             }
             offset = !offset;
         }
