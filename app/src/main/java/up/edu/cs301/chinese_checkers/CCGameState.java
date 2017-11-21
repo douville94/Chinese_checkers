@@ -247,5 +247,21 @@ public class CCGameState extends GameState
         return 0;
     }
 
+    public void set2Player(){
+        for(int i = 4; i<8; i++){
+            for(int j = 0; j < 4; j++){
+
+                intArray[i][j] = 3;
+
+            }
+        }
+        for(int i = 4; i < 8; i++){
+            for(int j = 13; j < 17; j++){
+
+                intArray[i][j] = 0;
+
+            }
+        }
+    }
 
 }
