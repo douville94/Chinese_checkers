@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.LinearLayout;
@@ -17,12 +18,15 @@ import android.widget.LinearLayout;
 public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callback
 {
     protected Path tri1Path, tri2Path, tri3Path, tri4Path, tri5Path, tri6Path, hexPath;
-    protected Paint tri1Paint, tri2Paint, tri3Paint, tri4Paint, tri5Paint, tri6Paint, hexPaint, centerBoardPaint;
-    private Canvas tempCanvas;
-    private LinearLayout boardSurfaceViewParent;
-    private IntArray ia;
-    private CCGameState cgs;
-    private int[][] myXYs;
+    protected Paint tri1Paint, tri2Paint, tri3Paint, tri4Paint, tri5Paint, tri6Paint, hexPaint;
+    protected Paint centerBoardPaint, player1Paint, player2Paint, player3Paint, player4Paint, player5Paint, player6Paint;
+//    private Canvas tempCanvas;
+//    private LinearLayout boardSurfaceViewParent;
+//    private IntArray ia;
+    private CCGameState cgs = new CCGameState();
+    private int[][] myXYs;//[13][17] myXYs;
+    private int width, height, a, b;
+    private float radius, range;
 
     public BoardSurfaceView(Context context)
     {
@@ -72,14 +76,28 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 //        tri5Path = new Path();
 //        tri6Path = new Path();
 //        hexPath = new Path();
-        int width = c.getWidth()/2;
-        int height = c.getHeight()/2;
-        float radius = (50/3)*(float)Math.sqrt(3.0);
-        float range = 350/8;
+        width = c.getWidth()/2;
+        height = c.getHeight()/2;
+        radius = (50/3)*(float)Math.sqrt(3.0);
+        range = 350/8;
         centerBoardPaint = new Paint();
         centerBoardPaint.setColor(Color.BLACK);
+        player1Paint = new Paint();
+        player1Paint.setColor(Color.BLUE);
+        player2Paint = new Paint();
+        player2Paint.setColor(Color.GREEN);
+        player3Paint = new Paint();
+        player3Paint.setColor(Color.YELLOW);
+        player4Paint = new Paint();
+        player4Paint.setColor(Color.RED);
+        player5Paint = new Paint();
+        player5Paint.setColor(Color.rgb(255, 119, 0));//orange
+        player6Paint = new Paint();
+        player6Paint.setColor(Color.rgb(174, 23, 179));//purple
 
         /*myXYs is an array of all possible positions on the board, including invalid positions.*/
+        /*You may want to initialize myXYs before entering any method.  Initializing it here in the
+         onDraw method can interfere with gameplay by slowing down the GUI.*/
         //min x coord = width - 300
         //max x coord = width + 600
         //min y coord = (height - 750) + (int)range
@@ -295,6 +313,8 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
                         {width+600, (height + 500) + (int)range},
 
                 };
+        Log.i("ArrayLength", "" + myXYs.length);
+        cgs = new CCGameState();
 
         /*Draw the top triangle.*/
         /*tri1Paint.setColor(Color.BLUE);//set the color
@@ -304,17 +324,30 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         tri1Path.lineTo(width, height-750);
         c.drawPath(tri1Path, tri1Paint);*/
 
-        c.drawCircle((float)width,(height-750)+range,radius,centerBoardPaint);           //row 0
-        c.drawCircle((float)width+50,(height-750)+3*range,radius,centerBoardPaint);  //row 1
-        c.drawCircle((float)width-50,(height-750)+3*range,radius,centerBoardPaint);  //row 1
-        c.drawCircle((float)width-100,(height-750)+5*range,radius,centerBoardPaint); //row 2
-        c.drawCircle((float)width,(height-750)+5*range,radius,centerBoardPaint);         //row 2
-        c.drawCircle((float)width+100,(height-750)+5*range,radius,centerBoardPaint); //row 2
-        c.drawCircle((float)width-150,(height-400)-range,radius,centerBoardPaint);   //row 3
-        c.drawCircle((float)width-50,(height-400)-range,radius,centerBoardPaint);    //row 3
-        c.drawCircle((float)width+50,(height-400)-range,radius,centerBoardPaint);    //row 3
-        c.drawCircle((float)width+150,(height-400)-range,radius,centerBoardPaint);   //row 3
+//        c.drawCircle((float)width,(height-750)+range,radius,centerBoardPaint);           //row 0
+//        c.drawCircle((float)width+50,(height-750)+3*range,radius,centerBoardPaint);  //row 1
+//        c.drawCircle((float)width-50,(height-750)+3*range,radius,centerBoardPaint);  //row 1
+//        c.drawCircle((float)width-100,(height-750)+5*range,radius,centerBoardPaint); //row 2
+//        c.drawCircle((float)width,(height-750)+5*range,radius,centerBoardPaint);         //row 2
+//        c.drawCircle((float)width+100,(height-750)+5*range,radius,centerBoardPaint); //row 2
+//        c.drawCircle((float)width-150,(height-400)-range,radius,centerBoardPaint);   //row 3
+//        c.drawCircle((float)width-50,(height-400)-range,radius,centerBoardPaint);    //row 3
+//        c.drawCircle((float)width+50,(height-400)-range,radius,centerBoardPaint);    //row 3
+//        c.drawCircle((float)width+150,(height-400)-range,radius,centerBoardPaint);   //row 3
 
+        /*Loop through myXYs as per Dr. Vegdahl's recommendation.*/
+        for(int i = 0; i < myXYs.length / 13; i++)
+        {
+            a = myXYs[i][0];
+            for(int j = 0; j <= myXYs[0].length; j++)
+            {
+//                if(cgs.intArray[i][0] != -2)
+//                {
+//                    cgs.intArray[i][j];
+                    c.drawCircle(myXYs[0][0], myXYs[0][0], radius, player1Paint);
+//                }
+            }
+        }
 
         /*Draw the top-right triangle.*/
         /*tri2Paint.setColor(Color.GREEN);//set the color
@@ -511,5 +544,30 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
     public void surfaceCreated(SurfaceHolder sh)
     {
 
+    }
+
+    public void compareArrays()
+    {
+        for(int i = 4; i < 8; i++)
+        {
+            for(int j = 0; j < 4; j++)
+            {
+
+            }
+        }
+
+        for(int i = 9; i < 13; i++)
+        {
+            for(int j = 4; j < 8; j++)
+            {
+
+            }
+        }
+    }
+
+    public int getX(int[][] array)
+    {
+
+        return 1;
     }
 }

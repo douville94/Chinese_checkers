@@ -12,14 +12,14 @@ public class CCGameState extends GameState
     //instance variables
     Marble[][] board;
     int id;
-    private IntArray ia;
+//    private IntArray ia;
 //    private Hashtable<Integer,Color> colorPlayerTable;
     private int[][] myXYs;
     private int width, height, range;
     /*As per Vegdahl's recommendations on 11/20/2017:
         * Factor playerId (from Marble class) into intArray so that -2 is invalid, -1 is empty,
         * 0 designates player 1, 1 designates player two, and so on.*/
-    private int[][] intArray = new int[][]{
+    protected int[][] intArray = new int[][]{
     { -2, -2, -2, -2,  -2, -2, -1, -2, -2,  -2, -2, -2, -2 }, // row 0
 
     { -2, -2, -2, -2,  -2, -1, -1, -2, -2,  -2, -2, -2, -2 }, // row 1
@@ -140,34 +140,34 @@ public class CCGameState extends GameState
 //            }
 //        }
 
-        for(int i = 0; i < 13; i++)
-        {
-            for(int j = 0; j < 17; j++)
-            {
-                /*If configuration is two players*/
-                ia.setTopCorner(board[i][j]);
-                ia.setBottomCorner(board[i][j]);
-
-                /*If configuration is three players*/
-                ia.setTopCorner(board[i][j]);
-                ia.setBottomRightCorner(board[i][j]);
-                ia.setBottomLeftCorner(board[i][j]);
-
-                /*If configuration is four players*/
-                ia.setTopRightCorner(board[i][j]);
-                ia.setBottomRightCorner(board[i][j]);
-                ia.setBottomLeftCorner(board[i][j]);
-                ia.setTopLeftCorner(board[i][j]);
-
-                /*If configuration is six players*/
-                ia.setTopCorner(board[i][j]);
-                ia.setTopRightCorner(board[i][j]);
-                ia.setBottomRightCorner(board[i][j]);
-                ia.setBottomCorner(board[i][j]);
-                ia.setBottomLeftCorner(board[i][j]);
-                ia.setTopLeftCorner(board[i][j]);
-            }
-        }
+//        for(int i = 0; i < 13; i++)
+//        {
+//            for(int j = 0; j < 17; j++)
+//            {
+//                /*If configuration is two players*/
+//                ia.setTopCorner(board[i][j]);
+//                ia.setBottomCorner(board[i][j]);
+//
+//                /*If configuration is three players*/
+//                ia.setTopCorner(board[i][j]);
+//                ia.setBottomRightCorner(board[i][j]);
+//                ia.setBottomLeftCorner(board[i][j]);
+//
+//                /*If configuration is four players*/
+//                ia.setTopRightCorner(board[i][j]);
+//                ia.setBottomRightCorner(board[i][j]);
+//                ia.setBottomLeftCorner(board[i][j]);
+//                ia.setTopLeftCorner(board[i][j]);
+//
+//                /*If configuration is six players*/
+//                ia.setTopCorner(board[i][j]);
+//                ia.setTopRightCorner(board[i][j]);
+//                ia.setBottomRightCorner(board[i][j]);
+//                ia.setBottomCorner(board[i][j]);
+//                ia.setBottomLeftCorner(board[i][j]);
+//                ia.setTopLeftCorner(board[i][j]);
+//            }
+//        }
 
     }
 
@@ -241,7 +241,6 @@ public class CCGameState extends GameState
         }
         return board[x][y];
     }
-
 
 
     public int getWhoseMove(){

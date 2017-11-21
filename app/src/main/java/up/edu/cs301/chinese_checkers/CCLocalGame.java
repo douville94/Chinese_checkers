@@ -22,6 +22,7 @@ public class CCLocalGame extends LocalGame {
     protected int moveCount;
 
     private CCHumanPlayer chp;
+    private BoardSurfaceView bsf;
 
     /**
      * Constructor for the LocalGame.
@@ -73,7 +74,18 @@ public class CCLocalGame extends LocalGame {
      * 		game is not over
      */
     @Override
-    protected String checkIfGameOver() {return null; }
+    protected String checkIfGameOver() {
+        /*Put this in its own method in BoardSurfaceView and call the method here.*/
+//        for(int i = 0; i < state.intArray.length; i++)
+//        {
+//            for(int j = 0; j < myXYs.length; j++)
+//            {
+//
+//            }
+//        }
+//        bsf.compareArrays();
+        return null;
+    }
 
     /**
      * Makes a move on behalf of a player.
