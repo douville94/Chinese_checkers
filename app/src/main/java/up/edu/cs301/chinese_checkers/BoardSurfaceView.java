@@ -145,8 +145,8 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
                 int z = intArray[i][j];
                 switch (z){
                     case -2:// invalid don't draw anything
-//                        xposition[i][j] = 0;
-//                        yposition[i][j] = 0;
+                        xposition[i][j] = 0;
+                        yposition[i][j] = 0;
                         break;
                     case -1: //empty
                         c.drawCircle(x,y, radius, centerBoardPaint);
@@ -188,8 +188,8 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
                 }
                 x+=95;
                 y-=1;
-//                Log.i("xposition",""+xposition[i][j]);
-//                Log.i("yposition",""+yposition[i][j]);
+                Log.i("xposition",""+xposition[i][j]);
+                Log.i("yposition",""+yposition[i][j]);
             }
             offset = !offset;
         }
