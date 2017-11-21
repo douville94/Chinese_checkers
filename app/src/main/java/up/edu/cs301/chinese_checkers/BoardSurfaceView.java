@@ -117,12 +117,15 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 
                 {-2, -2, -2, -2, -2, -2, -1, -2, -2, -2, -2, -2, -2}, // row 16
         };
-
+        Log.i("1stbox",""+intArray.length);
+        Log.i("2nd box",""+intArray[0].length);
         int x = 200;
         int y =40;
         boolean offset = false;
-        float[][] xposition = new float[13][17];
-        float[][] yposition = new float[13][17];
+        float[][] xposition = new float[17][13];
+        float[][] yposition = new float[17][13];
+        Log.i("1stbox",""+xposition.length);
+        Log.i("2nd box",""+xposition[0].length);
         //iterate first row
         for(int i = 0; i < 17; i++)
         {
@@ -142,8 +145,8 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
                 int z = intArray[i][j];
                 switch (z){
                     case -2:// invalid don't draw anything
-                        xposition[i][j] = 0;
-                        yposition[i][j] = 0;
+//                        xposition[i][j] = 0;
+//                        yposition[i][j] = 0;
                         break;
                     case -1: //empty
                         c.drawCircle(x,y, radius, centerBoardPaint);
@@ -184,8 +187,9 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
                         break;
                 }
                 x+=95;
-                Log.i("xposition",""+xposition[i][j]);
-                Log.i("yposition",""+yposition[i][j]);
+                y-=1;
+//                Log.i("xposition",""+xposition[i][j]);
+//                Log.i("yposition",""+yposition[i][j]);
             }
             offset = !offset;
         }
