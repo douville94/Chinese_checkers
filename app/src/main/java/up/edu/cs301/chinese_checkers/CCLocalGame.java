@@ -90,25 +90,25 @@ public class CCLocalGame extends LocalGame {
      */
     @Override
     protected boolean makeMove(GameAction action) {
-        // get the row and column position of the player's move
-        MoveAction tm = (MoveAction) action;
-        int row = tm.getRow();
-        int col = tm.getCol();
-
-        // get the player id of our player
-        int playerId = getPlayerIdx(tm.getPlayer());
-
-        // if that space is not blank, indicate an illegal move
-        if (state.getMarble(row, col) != null) {
-            return false;
-        }
-
-        // get the player id of the player whose move it is
-        int whoseMove = state.getWhoseMove();
-
-        // place the player's piece on the selected square
-//        state.setBoard(row, col, whoseMove);
-        state.setBoard();
+//        // get the row and column position of the player's move
+//        MoveAction tm = (MoveAction) action;
+//        int row = tm.getRow();
+//        int col = tm.getCol();
+//
+//        // get the player id of our player
+//        int playerId = getPlayerIdx(tm.getPlayer());
+//
+//        // if that space is not blank, indicate an illegal move
+//        if (state.getMarble(row, col) != null) {
+//            return false;
+//        }
+//
+//        // get the player id of the player whose move it is
+//        int whoseMove = state.getWhoseMove();
+//
+//        // place the player's piece on the selected square
+////        state.setBoard(row, col, whoseMove);
+//        state.setBoard();
 
         return false;
     }

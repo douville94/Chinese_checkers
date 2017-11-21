@@ -1,5 +1,6 @@
 package up.edu.cs301.chinese_checkers;
 
+import up.edu.cs301.game.Player;
 import up.edu.cs301.game.infoMsg.GameState;
 
 /**
@@ -10,11 +11,12 @@ public class CCGameState extends GameState
 {
 
     //instance variables
-    Marble[][] board;
-    int id;
+//    Marble[][] board;
+    private int playerID;
+    private int playerConfig = 2;
 //    private IntArray ia;
 //    private Hashtable<Integer,Color> colorPlayerTable;
-    private int[][] myXYs;
+//    private int[][] myXYs;
     private int width, height, range;
     /*As per Vegdahl's recommendations on 11/20/2017:
         * Factor playerId (from Marble class) into intArray so that -2 is invalid, -1 is empty,
@@ -57,14 +59,18 @@ public class CCGameState extends GameState
 
     /**
      * Constructor
+     *
      */
     public CCGameState() {
         super();
+        this.initialIntArray();
     }
 
 
     /**
      * Copy Constructor. Copies the values from the parameter state into the new instance.
+     *
+     * @param state the game official game state.
      */
     public CCGameState(CCGameState state) {
         super();
@@ -74,17 +80,18 @@ public class CCGameState extends GameState
 //        return board;
 //    }
 
-    public int[][] getBoard()
-    {
-        return myXYs;
-    }
+//    public int[][] getBoard()
+//    {
+//        return myXYs;
+//    }
 
     /**
      * Standard getter method for id. Also used to see whose turn it is.
+     *
      * @return returns id which represents whose turn it is.
      */
     public int getId(){
-        return id;
+        return playerID;
     }
 
 //    /**
@@ -95,81 +102,81 @@ public class CCGameState extends GameState
 //        return colorPlayerTable;
 //    }
 
-    /**
-     * Standard setter method for instance variable board
-     */
-//    public void setBoard(Marble[][] b){
-    public void setBoard() {
-//        board = b;
-//        ia = new IntArray();
-//        width = 1536 / 2;
-//        height = 1742 / 2;
-//        range = 350 / 8;
-
-
-
-
-//        for(int i = 0; i < 13; i++)
-//        {
-//            for(int j = 0; j < 17; j++)
-//            {
-//                if(i > 3 && i < 9 && j > 0 && j < 4)
-//                {
-//                    ia.setTopCorner(board[i][j]);
-//                }
-//                else if(i > 8 && i < 13 && j > 3 && j < 8)
-//                {
-//                    ia.setTopRightCorner(board[i][j]);
-//                }
-//                else if(i > 8 && i < 13 && j > 7 && j < 13)
-//                {
-//                    ia.setBottomRightCorner(board[i][j]);
-//                }
-//                else if(i > 3 && i < 9 && j > 12 && j < 17)
-//                {
-//                    ia.setBottomCorner(board[i][j]);
-//                }
-//                else if(i > 0 && i < 4 && j > 7 && j < 13)
-//                {
-//                    ia.setBottomLeftCorner(board[i][j]);
-//                }
-//                else if(i > 0 && i < 4 && j > 3 && j < 8)
-//                {
-//                    ia.setTopLeftCorner(board[i][j]);
-//                }
-//            }
-//        }
-
-//        for(int i = 0; i < 13; i++)
-//        {
-//            for(int j = 0; j < 17; j++)
-//            {
-//                /*If configuration is two players*/
-//                ia.setTopCorner(board[i][j]);
-//                ia.setBottomCorner(board[i][j]);
+//    /**
+//     * Standard setter method for instance variable board
+//     */
+////    public void setBoard(Marble[][] b){
+//    public void setBoard() {
+////        board = b;
+////        ia = new IntArray();
+////        width = 1536 / 2;
+////        height = 1742 / 2;
+////        range = 350 / 8;
 //
-//                /*If configuration is three players*/
-//                ia.setTopCorner(board[i][j]);
-//                ia.setBottomRightCorner(board[i][j]);
-//                ia.setBottomLeftCorner(board[i][j]);
 //
-//                /*If configuration is four players*/
-//                ia.setTopRightCorner(board[i][j]);
-//                ia.setBottomRightCorner(board[i][j]);
-//                ia.setBottomLeftCorner(board[i][j]);
-//                ia.setTopLeftCorner(board[i][j]);
 //
-//                /*If configuration is six players*/
-//                ia.setTopCorner(board[i][j]);
-//                ia.setTopRightCorner(board[i][j]);
-//                ia.setBottomRightCorner(board[i][j]);
-//                ia.setBottomCorner(board[i][j]);
-//                ia.setBottomLeftCorner(board[i][j]);
-//                ia.setTopLeftCorner(board[i][j]);
-//            }
-//        }
-
-    }
+//
+////        for(int i = 0; i < 13; i++)
+////        {
+////            for(int j = 0; j < 17; j++)
+////            {
+////                if(i > 3 && i < 9 && j > 0 && j < 4)
+////                {
+////                    ia.setTopCorner(board[i][j]);
+////                }
+////                else if(i > 8 && i < 13 && j > 3 && j < 8)
+////                {
+////                    ia.setTopRightCorner(board[i][j]);
+////                }
+////                else if(i > 8 && i < 13 && j > 7 && j < 13)
+////                {
+////                    ia.setBottomRightCorner(board[i][j]);
+////                }
+////                else if(i > 3 && i < 9 && j > 12 && j < 17)
+////                {
+////                    ia.setBottomCorner(board[i][j]);
+////                }
+////                else if(i > 0 && i < 4 && j > 7 && j < 13)
+////                {
+////                    ia.setBottomLeftCorner(board[i][j]);
+////                }
+////                else if(i > 0 && i < 4 && j > 3 && j < 8)
+////                {
+////                    ia.setTopLeftCorner(board[i][j]);
+////                }
+////            }
+////        }
+//
+////        for(int i = 0; i < 13; i++)
+////        {
+////            for(int j = 0; j < 17; j++)
+////            {
+////                /*If configuration is two players*/
+////                ia.setTopCorner(board[i][j]);
+////                ia.setBottomCorner(board[i][j]);
+////
+////                /*If configuration is three players*/
+////                ia.setTopCorner(board[i][j]);
+////                ia.setBottomRightCorner(board[i][j]);
+////                ia.setBottomLeftCorner(board[i][j]);
+////
+////                /*If configuration is four players*/
+////                ia.setTopRightCorner(board[i][j]);
+////                ia.setBottomRightCorner(board[i][j]);
+////                ia.setBottomLeftCorner(board[i][j]);
+////                ia.setTopLeftCorner(board[i][j]);
+////
+////                /*If configuration is six players*/
+////                ia.setTopCorner(board[i][j]);
+////                ia.setTopRightCorner(board[i][j]);
+////                ia.setBottomRightCorner(board[i][j]);
+////                ia.setBottomCorner(board[i][j]);
+////                ia.setBottomLeftCorner(board[i][j]);
+////                ia.setTopLeftCorner(board[i][j]);
+////            }
+////        }
+//
+//    }
 
     /**
      * Standard getter method for instance variable intArray
@@ -179,16 +186,18 @@ public class CCGameState extends GameState
 
     /**
      * Standard setter method for instance variable intArray
+     *
      * @param args an int array to set to intArray
      */
     public void setIntArray(int[][] args){intArray = args;}
 
     /**
      * Standard setter method for instance variable id
+     *
      * @param i takes an int. Sets id to i
      */
     public void setId(int i){
-        id = i;
+        playerID = i;
     }
 
 //    /**
@@ -200,68 +209,96 @@ public class CCGameState extends GameState
 //    }
 
 
-
     /////////////////////////////////////////////////////////////////////////////
     // LOOK HERE NOT BORING GETTER AND SETTER METHODS
     /////////////////////////////////////////////////////////////////////////////
-
+//
+//
+//    /**
+//     * This will assign an object to certain spot on the board
+//     * Checks to see if the inputs x and y are within the bounds of the board. Then will assign the
+//     * b to the position into the array. Can take in null objects into the array.
+//     *
+//     * @param x x-coordinate
+//     * @param y y-coordinate
+//     * @param b Marble object to put into the board. !!!!!!!!!!!!!!!!!!!!!!!!!!! WILL WE ABLE TO TAKE INT NULL OBJECTS?
+//     * @return returns true if added successfully and false if it did not add the object.
+//     */
+//    public boolean add2Board(int x, int y, Marble b){
+//        if(x > board.length){
+//            if(y > board[0].length){
+//                return false;
+//            }
+//        }
+//        board[x][y] = b;
+//        return true;
+//    }
+//
+//    /**
+//     * Returns a marble at a given coordinate on the board
+//     *
+//     * @param x x-coordinate
+//     * @param y y-coordinate
+//     * @return returns a Marble object at position x and y
+//     */
+//    public Marble getMarble(int x, int y){
+//        if(x > board.length){
+//            if(y > board[0].length){
+//                return null;
+//            }
+//        }
+//        return board[x][y];
+//    }
 
     /**
-     * This will assign an object to certain spot on the board
-     * Checks to see if the inputs x and y are within the bounds of the board. Then will assign the
-     * b to the position into the array. Can take in null objects into the array.
+     * method to get whose turn is this turn.
      *
-     * @param x x-coordinate
-     * @param y y-coordinate
-     * @param b Marble object to put into the board. !!!!!!!!!!!!!!!!!!!!!!!!!!! WILL WE ABLE TO TAKE INT NULL OBJECTS?
-     * @return returns true if added succesfully and false if it did not add the object.
+     * @return the player ID that is moving this turn.
      */
-    public boolean add2Board(int x, int y, Marble b){
-        if(x > board.length){
-            if(y > board[0].length){
-                return false;
-            }
-        }
-        board[x][y] = b;
-        return true;
-    }
-
-    /**
-     * Returns a marble at a given coordinate on the board
-     *
-     * @param x x-coordinate
-     * @param y y-coordinate
-     * @return returns a Marble object at position x and y
-     */
-    public Marble getMarble(int x, int y){
-        if(x > board.length){
-            if(y > board[0].length){
-                return null;
-            }
-        }
-        return board[x][y];
-    }
-
-
     public int getWhoseMove(){
         return 0;
     }
 
-    public void set2Player(){
-        for(int i = 4; i<8; i++){
-            for(int j = 0; j < 4; j++){
+//    public void set2Player(){
+//        for(int i = 4; i<8; i++){
+//            for(int j = 0; j < 4; j++){
+//
+//                intArray[i][j] = 3;
+//
+//            }
+//        }
+//        for(int i = 4; i < 8; i++){
+//            for(int j = 13; j < 17; j++){
+//
+//                intArray[i][j] = 0;
+//
+//            }
+//        }
+//    }
 
-                intArray[i][j] = 3;
-
+    /**
+     * method to initialize the IntArray according to the configuration that user inputted.
+     *
+     */
+    private void initialIntArray() {
+        //2 players' case
+        if (playerConfig == 2) {
+            for (int i=0; i<4; i++) {
+                for (int j=0; j<13; j++) {
+                    if (intArray[i][j] != -2) {
+                        intArray[i][j] = 0;
+                    }
+                }
+            }
+            for (int i=13; i<17; i++) {
+                for (int j=0; j<13; j++) {
+                    if (intArray[i][j] != -2) {
+                        intArray[i][j] = 1;
+                    }
+                }
             }
         }
-        for(int i = 4; i < 8; i++){
-            for(int j = 13; j < 17; j++){
+        //3 players' case
 
-                intArray[i][j] = 0;
-
-            }
-        }
     }
-
 }

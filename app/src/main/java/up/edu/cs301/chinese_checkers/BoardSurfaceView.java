@@ -55,10 +55,12 @@ public class BoardSurfaceView extends SurfaceView {
     /*Have to clean project after project is built with draw instead of onDraw.*/
     @Override
     public void onDraw(Canvas c) {
+
         width = c.getWidth()/2;
         height = c.getHeight()/2;
         radius = (50/3)*(float)Math.sqrt(3.0);
         range = 350/8;
+
         centerBoardPaint = new Paint();
         centerBoardPaint.setColor(Color.BLACK);
         player1Paint = new Paint();
@@ -75,14 +77,14 @@ public class BoardSurfaceView extends SurfaceView {
         player6Paint.setColor(Color.rgb(174, 23, 179));//purple
 
         int[][] intArray = cgs.getIntArray();
-        Log.i("1stbox",""+intArray.length);
+        Log.i("1st box",""+intArray.length);
         Log.i("2nd box",""+intArray[0].length);
         int x;
         int y =40;
         boolean offset = false;
         float[][] xposition = new float[17][13];
         float[][] yposition = new float[17][13];
-        Log.i("1stbox",""+xposition.length);
+        Log.i("1st box",""+xposition.length);
         Log.i("2nd box",""+xposition[0].length);
         //iterate first row
         for(int i = 0; i < 17; i++) {
