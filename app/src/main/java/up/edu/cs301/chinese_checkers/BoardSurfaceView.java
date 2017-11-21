@@ -121,10 +121,12 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         int x = 200;
         int y =40;
         boolean offset = false;
-//        float[][] validPos = new[13][17];
+        float[][] xposition = new float[13][17];
+        float[][] yposition = new float[13][17];
         //iterate first row
         for(int i = 0; i < 17; i++)
         {
+            //
             y+=100;
             if(offset){
                 x = 250;
@@ -139,24 +141,55 @@ public class BoardSurfaceView extends SurfaceView implements SurfaceHolder.Callb
             {
                 int z = intArray[i][j];
                 switch (z){
-                    case -2:
+                    case -2:// invalid don't draw anything
+                        xposition[i][j] = 0;
+                        yposition[i][j] = 0;
                         break;
-                    case -1:
+                    case -1: //empty
                         c.drawCircle(x,y, radius, centerBoardPaint);
+                        xposition[i][j] = (float)x;
+                        yposition[i][j] = (float)y;
                         break;
-                    case 0:
+                    case 0: //player1
                         c.drawCircle(x,y, radius, centerBoardPaint);
+                        xposition[i][j] = (float)x;
+                        yposition[i][j] = (float)y;
                         break;
-                    case 1:
+                    case 1: //player2
+                        c.drawCircle(x,y, radius, centerBoardPaint);
+                        xposition[i][j] = (float)x;
+                        yposition[i][j] = (float)y;
+                        break;
+                    case 2: //player3
+                        c.drawCircle(x,y, radius, centerBoardPaint);
+                        xposition[i][j] = (float)x;
+                        yposition[i][j] = (float)y;
+                        break;
+                    case 3: //player4
+                        c.drawCircle(x,y, radius, centerBoardPaint);
+                        xposition[i][j] = (float)x;
+                        yposition[i][j] = (float)y;
+                        break;
+                    case 4: //player5
+                        c.drawCircle(x,y, radius, centerBoardPaint);
+                        xposition[i][j] = (float)x;
+                        yposition[i][j] = (float)y;
+                        break;
+                    case 5: //player6
+                        c.drawCircle(x,y, radius, centerBoardPaint);
+                        xposition[i][j] = (float)x;
+                        yposition[i][j] = (float)y;
+                        break;
                     default:
                         break;
                 }
-
                 x+=95;
-                y-=1;
+                Log.i("xposition",""+xposition[i][j]);
+                Log.i("yposition",""+yposition[i][j]);
             }
             offset = !offset;
         }
+
 
     }
 
