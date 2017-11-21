@@ -13,14 +13,7 @@ public class CCLocalGame extends LocalGame {
 
     // the game's state
     protected CCGameState state;
-
-    // the marks for player 0 and player 1, respectively
-//    private final static char[] mark = {'X','O'};
-
-    // the number of moves that have been played so far, used to
-    // determine whether the game is over
-    protected int moveCount;
-
+    // the human player
     private CCHumanPlayer chp;
     private BoardSurfaceView bsf;
 
