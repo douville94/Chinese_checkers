@@ -7,63 +7,27 @@ import up.edu.cs301.game.infoMsg.GameState;
  * Created by Charlie Wu on 11/5/17.
  */
 
-public class CCGameState extends GameState
-{
+public class CCGameState extends GameState {
 
     //instance variables
 //    Marble[][] board;
     private int playerID;
-    private int playerConfig = 2;
-//    private IntArray ia;
+    //    private IntArray ia;
 //    private Hashtable<Integer,Color> colorPlayerTable;
 //    private int[][] myXYs;
     private int width, height, range;
     /*As per Vegdahl's recommendations on 11/20/2017:
         * Factor playerId (from Marble class) into intArray so that -2 is invalid, -1 is empty,
         * 0 designates player 1, 1 designates player two, and so on.*/
-    private int[][] intArray = new int[][]{
-        { -2, -2, -2, -2,  -2, -2, -1, -2, -2,  -2, -2, -2, -2 }, // row 0
-
-        { -2, -2, -2, -2,  -2, -1, -1, -2, -2,  -2, -2, -2, -2 }, // row 1
-
-        { -2, -2, -2, -2,  -2, -1, -1, -1, -2,  -2, -2, -2, -2 }, // row 2
-
-        { -2, -2, -2, -2,  -1, -1, -1, -1, -2,  -2, -2, -2, -2 }, // row 3
-
-        { -1, -1, -1, -1,  -1, -1, -1, -1, -1,  -1, -1, -1, -1 }, // row 4
-
-        { -1, -1, -1, -1,  -1, -1, -1, -1, -1,  -1, -1, -1, -2 }, // row 5
-
-        { -2, -1, -1, -1,  -1, -1, -1, -1, -1,  -1, -1, -1, -2 }, // row 6
-
-        { -2, -1, -1, -1,  -1, -1, -1, -1, -1,  -1, -1, -2, -2 }, // row 7
-
-        { -2, -2, -1, -1,  -1, -1, -1, -1, -1,  -1, -1, -2, -2 }, // row 8 -----
-
-        { -2, -1, -1, -1,  -1, -1, -1, -1, -1,  -1, -1, -2, -2 }, // row 9
-
-        { -2, -1, -1, -1,  -1, -1, -1, -1, -1,  -1, -1, -1, -2 }, // row 10
-
-        { -1, -1, -1, -1,  -1, -1, -1, -1, -1,  -1, -1, -1, -2 }, // row 11
-
-        { -1, -1, -1, -1,  -1, -1, -1, -1, -1,  -1, -1, -1, -1 }, // row 12
-
-        { -2, -2, -2, -2,  -1, -1, -1, -1, -2,  -2, -2, -2, -2 }, // row 13
-
-        { -2, -2, -2, -2,  -2, -1, -1, -1, -2,  -2, -2, -2, -2 }, // row 14
-
-        { -2, -2, -2, -2,  -2, -1, -1, -2, -2,  -2, -2, -2, -2 }, // row 15
-
-        { -2, -2, -2, -2,  -2, -2, -1, -2, -2,  -2, -2, -2, -2 }, // row 16
-    };
+    private int[][] intArray;
 
     /**
      * Constructor
-     *
      */
     public CCGameState() {
         super();
-        this.initialIntArray();
+        this.setIntArray();
+        this.initialIntArray(2);
     }
 
 
@@ -90,7 +54,7 @@ public class CCGameState extends GameState
      *
      * @return returns id which represents whose turn it is.
      */
-    public int getId(){
+    public int getId() {
         return playerID;
     }
 
@@ -180,16 +144,53 @@ public class CCGameState extends GameState
 
     /**
      * Standard getter method for instance variable intArray
+     *
      * @return intArray
      */
-    public int[][] getIntArray(){return intArray;}
+    public int[][] getIntArray() {
+        return intArray;
+    }
 
     /**
      * Standard setter method for instance variable intArray
-     *
-     * @param args an int array to set to intArray
      */
-    public void setIntArray(int[][] args){intArray = args;}
+    public void setIntArray() {
+        intArray = new int[][]{
+                {-2, -2, -2, -2, -2, -2, -1, -2, -2, -2, -2, -2, -2}, // row 0
+
+                {-2, -2, -2, -2, -2, -1, -1, -2, -2, -2, -2, -2, -2}, // row 1
+
+                {-2, -2, -2, -2, -2, -1, -1, -1, -2, -2, -2, -2, -2}, // row 2
+
+                {-2, -2, -2, -2, -1, -1, -1, -1, -2, -2, -2, -2, -2}, // row 3
+
+                {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}, // row 4
+
+                {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2}, // row 5
+
+                {-2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2}, // row 6
+
+                {-2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2, -2}, // row 7
+
+                {-2, -2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2, -2}, // row 8 -----
+
+                {-2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2, -2}, // row 9
+
+                {-2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2}, // row 10
+
+                {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2}, // row 11
+
+                {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}, // row 12
+
+                {-2, -2, -2, -2, -1, -1, -1, -1, -2, -2, -2, -2, -2}, // row 13
+
+                {-2, -2, -2, -2, -2, -1, -1, -1, -2, -2, -2, -2, -2}, // row 14
+
+                {-2, -2, -2, -2, -2, -1, -1, -2, -2, -2, -2, -2, -2}, // row 15
+
+                {-2, -2, -2, -2, -2, -2, -1, -2, -2, -2, -2, -2, -2}, // row 16
+        };
+    }
 
     /**
      * Standard setter method for instance variable id
@@ -279,8 +280,10 @@ public class CCGameState extends GameState
     /**
      * method to initialize the IntArray according to the configuration that user inputted.
      *
+     * @param numberOfPlayers
      */
-    private void initialIntArray() {
+    private void initialIntArray(int numberOfPlayers) {
+        int playerConfig = numberOfPlayers;
         //2 players' case
         if (playerConfig == 2) {
             for (int i=0; i<4; i++) {

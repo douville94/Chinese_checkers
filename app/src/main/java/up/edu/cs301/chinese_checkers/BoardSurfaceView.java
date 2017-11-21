@@ -55,12 +55,12 @@ public class BoardSurfaceView extends SurfaceView {
     /*Have to clean project after project is built with draw instead of onDraw.*/
     @Override
     public void onDraw(Canvas c) {
-
+        //variables for coordinate
         width = c.getWidth()/2;
         height = c.getHeight()/2;
         radius = (50/3)*(float)Math.sqrt(3.0);
         range = 350/8;
-
+        //different paint variables
         centerBoardPaint = new Paint();
         centerBoardPaint.setColor(Color.BLACK);
         player1Paint = new Paint();
@@ -77,18 +77,18 @@ public class BoardSurfaceView extends SurfaceView {
         player6Paint.setColor(Color.rgb(174, 23, 179));//purple
 
         int[][] intArray = cgs.getIntArray();
-        Log.i("1st box",""+intArray.length);
-        Log.i("2nd box",""+intArray[0].length);
+//        Log.i("1st box",""+intArray.length);
+//        Log.i("2nd box",""+intArray[0].length);
         int x;
         int y =40;
         boolean offset = false;
         float[][] xposition = new float[17][13];
         float[][] yposition = new float[17][13];
-        Log.i("1st box",""+xposition.length);
-        Log.i("2nd box",""+xposition[0].length);
+//        Log.i("1st box",""+xposition.length);
+//        Log.i("2nd box",""+xposition[0].length);
         //iterate first row
         for(int i = 0; i < 17; i++) {
-            //
+            //iterate each row
             y+=100;
             if(offset){
                 x = 250;
@@ -97,8 +97,6 @@ public class BoardSurfaceView extends SurfaceView {
                 x = 200;
             }
            // iterate each column
-
-
             for(int j = 0; j < 13; j++) {
                 int z = intArray[i][j];
                 switch (z){
@@ -112,32 +110,32 @@ public class BoardSurfaceView extends SurfaceView {
                         yposition[i][j] = (float)y;
                         break;
                     case 0: //player1
-                        c.drawCircle(x,y, radius, centerBoardPaint);
+                        c.drawCircle(x,y, radius, player1Paint);
                         xposition[i][j] = (float)x;
                         yposition[i][j] = (float)y;
                         break;
                     case 1: //player2
-                        c.drawCircle(x,y, radius, centerBoardPaint);
+                        c.drawCircle(x,y, radius, player2Paint);
                         xposition[i][j] = (float)x;
                         yposition[i][j] = (float)y;
                         break;
                     case 2: //player3
-                        c.drawCircle(x,y, radius, centerBoardPaint);
+                        c.drawCircle(x,y, radius, player3Paint);
                         xposition[i][j] = (float)x;
                         yposition[i][j] = (float)y;
                         break;
                     case 3: //player4
-                        c.drawCircle(x,y, radius, centerBoardPaint);
+                        c.drawCircle(x,y, radius, player4Paint);
                         xposition[i][j] = (float)x;
                         yposition[i][j] = (float)y;
                         break;
                     case 4: //player5
-                        c.drawCircle(x,y, radius, centerBoardPaint);
+                        c.drawCircle(x,y, radius, player5Paint);
                         xposition[i][j] = (float)x;
                         yposition[i][j] = (float)y;
                         break;
                     case 5: //player6
-                        c.drawCircle(x,y, radius, centerBoardPaint);
+                        c.drawCircle(x,y, radius, player6Paint);
                         xposition[i][j] = (float)x;
                         yposition[i][j] = (float)y;
                         break;
@@ -152,28 +150,27 @@ public class BoardSurfaceView extends SurfaceView {
             offset = !offset;
         }
 
-
     }
 
-    public void compareArrays() {
-        for(int i = 4; i < 8; i++)
-        {
-            for(int j = 0; j < 4; j++)
-            {
-
-            }
-        }
-
-        for(int i = 9; i < 13; i++)
-        {
-            for(int j = 4; j < 8; j++)
-            {
-
-            }
-        }
-    }
-
-    public int getX(int[][] array) {
-        return 1;
-    }
+//    public void compareArrays() {
+//        for(int i = 4; i < 8; i++)
+//        {
+//            for(int j = 0; j < 4; j++)
+//            {
+//
+//            }
+//        }
+//
+//        for(int i = 9; i < 13; i++)
+//        {
+//            for(int j = 4; j < 8; j++)
+//            {
+//
+//            }
+//        }
+//    }
+//
+//    public int getX(int[][] array) {
+//        return 1;
+//    }
 }
