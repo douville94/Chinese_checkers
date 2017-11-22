@@ -105,7 +105,7 @@ public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
         save.setOnClickListener(new saveButtonListener());
         quit = (Button)myActivity.findViewById(R.id.quit);
         quit.setOnClickListener(new quitButtonListener());
-        //surfaceView.setOnTouchListener(this);
+        bsf.setOnTouchListener(this);
     }
 
     /**
@@ -136,6 +136,7 @@ public class CCHumanPlayer extends HumanPlayer implements View.OnTouchListener {
      * 		the motion event that was detected
      */
     public boolean onTouch(View v, MotionEvent event) {
+        Log.i("onTouch","is touched");
         // ignore if not an "up" event
         if (event.getAction() != MotionEvent.ACTION_UP) return true;
         // get the x and y coordinates of the touch-location;

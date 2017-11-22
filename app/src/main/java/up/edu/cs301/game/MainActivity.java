@@ -154,8 +154,8 @@ public abstract class MainActivity extends Activity implements
 
         /*Initialize the layout*/
         /*Use this line later*/
-//        setContentView(R.layout.game_config_main);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.game_config_main2);
+//        setContentView(R.layout.activity_main);
 
 //        cgs = new CCGameState();
 //        cgs.setBoard();

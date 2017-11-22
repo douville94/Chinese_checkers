@@ -18,14 +18,15 @@ import android.widget.LinearLayout;
 public class BoardSurfaceView extends SurfaceView {
 //    protected Path tri1Path, tri2Path, tri3Path, tri4Path, tri5Path, tri6Path, hexPath;
 //    protected Paint tri1Paint, tri2Paint, tri3Paint, tri4Paint, tri5Paint, tri6Paint, hexPaint;
+    private int width, height, a, b;
+    private float radius, range;
     protected Paint centerBoardPaint, player1Paint, player2Paint, player3Paint, player4Paint, player5Paint, player6Paint;
 //    private Canvas tempCanvas;
 //    private LinearLayout boardSurfaceViewParent;
 //    private IntArray ia;
     private CCGameState cgs = new CCGameState();
 //    private int[][] myXYs;//[13][17] myXYs;
-    private int width, height, a, b;
-    private float radius, range;
+//    private OnTouchListener CCTouchListener;
 
     public BoardSurfaceView(Context context) {
         super(context);
@@ -151,6 +152,8 @@ public class BoardSurfaceView extends SurfaceView {
         }
 
     }
+
+
 
 //    public void compareArrays() {
 //        for(int i = 4; i < 8; i++)
