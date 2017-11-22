@@ -13,9 +13,8 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
@@ -28,9 +27,11 @@ import java.util.ArrayList;
 import up.edu.cs301.chinese_checkers.BoardSurfaceView;
 import up.edu.cs301.chinese_checkers.R;
 import up.edu.cs301.game.config.GameConfig;
-import up.edu.cs301.game.config.CCPlayerType;
+import up.edu.cs301.game.config.GamePlayerType;
 import up.edu.cs301.game.util.IPCoder;
 import up.edu.cs301.game.util.MessageBox;
+import up.edu.cs301.chinese_checkers.CCGameState;
+import up.edu.cs301.chinese_checkers.IntArray;
 
 /**
  * class GameMainActivity
@@ -42,7 +43,7 @@ import up.edu.cs301.game.util.MessageBox;
  * @author Steven R. Vegdahl
  * @date Version 2013
  */
-public abstract class CCMainActivity extends Activity implements
+public abstract class MainActivity extends Activity implements
         View.OnClickListener
 {
 	/*
@@ -54,13 +55,13 @@ public abstract class CCMainActivity extends Activity implements
     // A reference to the object representing the game itself. This is the
     // object that knows the rules of the game. This variable is initialized in
     // launchGame.
-    private CCGame game = null;
+    private Game game = null;
 
     // an array containing references to all the players that are playing the game
-    private CCPlayer[] players = null;
+    private Player[] players = null;
 
     // tells which player, if any, is running in the GUI
-    private CCPlayer guiPlayer = null;
+    private Player guiPlayer = null;
 
     // whether the game is over
     private boolean gameIsOver = false;
@@ -75,6 +76,9 @@ public abstract class CCMainActivity extends Activity implements
 
     private TextView turnTextView, currentPlayerTextView;
     private BoardSurfaceView bsf;
+    private Button confirm, cancel;
+    private CCGameState cgs;
+    private IntArray ia;
 
     /**
      * contains the game configuration this activity will be used to initialize
@@ -111,12 +115,12 @@ public abstract class CCMainActivity extends Activity implements
      * Creates a new game that runs on the server tablet. For example, if
      * you were creating tic-tac-toe, you would implement this method to return
      * an instance of your TTTLocalGame class which, in turn, would be a
-     * subclass of {@link CCLocalGame}.
+     * subclass of {@link LocalGame}.
      *
      * @return a new, game-specific instance of a sub-class of the LocalGame
      * class.
      */
-    public abstract CCLocalGame createLocalGame();
+    public abstract LocalGame createLocalGame();
 
     /**
      * Creates a "proxy" game that acts as an intermediary between a local
@@ -150,9 +154,11 @@ public abstract class CCMainActivity extends Activity implements
 
         /*Initialize the layout*/
         /*Use this line later*/
-//        setContentView(R.layout.game_config_main);
+        setContentView(R.layout.game_config_main);
+//        setContentView(R.layout.activity_main);
 
-        setContentView(R.layout.activity_main);
+//        cgs = new CCGameState();
+//        cgs.setBoard();
 
         // create the default configuration for this game
         this.config = createDefaultConfig();
@@ -190,23 +196,7 @@ public abstract class CCMainActivity extends Activity implements
             }
         }
 
-        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-        turnTextView = (TextView) findViewById(R.id.turnTextView);
-        currentPlayerTextView = (TextView) findViewById(R.id.currentPlayerTextView);
-//        boardSurfaceView = (SurfaceView)findViewById(R.id.boardSurfaceView);
-        bsf = (BoardSurfaceView) findViewById(R.id.boardSurfaceView);
-//        bsf = new BoardSurfaceView(this);
-//        setContentView(bsf);
-//        b = new Board();
-//        c = new Canvas();/*These two lines cause program to crash*/
-//        b.draw(c);
-//        boardSurfaceHolder = boardSurfaceView.getHolder();
-//        boardSurfaceHolder.addCallback(this);//this line only works if class implements SurfaceHolder.Callback interface
-//        boardSurfaceView.setWillNotDraw(false);
-//        boardSurfaceView.invalidate();
-//        bsf.invalidate();
-        /*Create a Bitmap object?*/
+        ia = new IntArray();
     }// onCreate
 
     /**
@@ -317,14 +307,14 @@ public abstract class CCMainActivity extends Activity implements
         //////////////////////////////////////
         int requiresGuiCount = 0; // the number of players that require a GUI
         guiPlayer = null; // the player that will be our GUI player
-        players = new CCPlayer[config.getNumPlayers()]; // the array to contains our players
+        players = new Player[config.getNumPlayers()]; // the array to contains our players
 
         // loop through each player
         for(int i = 0; i < players.length; i++)
         {
             String name = config.getSelName(i); // the player's name
-            CCPlayerType gpt = config.getSelType(i); // the player's type
-            CCPlayerType[] availTypes = config.getAvailTypes(); // the available player types
+            GamePlayerType gpt = config.getSelType(i); // the player's type
+            GamePlayerType[] availTypes = config.getAvailTypes(); // the available player types
             players[i] = gpt.createPlayer(name); // create the player
 
             // check that the player name is legal
@@ -401,6 +391,23 @@ public abstract class CCMainActivity extends Activity implements
         tabHost.addTab(localTabSpec);
         tabHost.addTab(remoteTabSpec);
 
+//        View v = findViewById(R.id.player_config_1);
+//        v.setOnClickListener(this);
+//        v = findViewById(R.id.player_config_2);
+//        v.setOnClickListener(this);
+//        v = findViewById(R.id.player_config_3);
+//        v.setOnClickListener(this);
+//        v = findViewById(R.id.player_config_4);
+//        v.setOnClickListener(this);
+//        v = findViewById(R.id.player_config_5);
+//        v.setOnClickListener(this);
+//        v = findViewById(R.id.player_config_5);
+//        v.setOnClickListener(this);
+//        v = findViewById(R.id.saveConfigButton);
+//        v.setOnClickListener(this);
+//        v = findViewById(R.id.playGameButton);
+//        v.setOnClickListener(this);
+
         // make sure the current tab is the right one
         tabHost.setCurrentTab(config.isLocal() ? 0 : 1);
 
@@ -431,8 +438,8 @@ public abstract class CCMainActivity extends Activity implements
 //            playerName.setText(config.getSelName(i));
 
             // Set the initial selection for the spinner
-            CCPlayerType[] selTypes = config.getSelTypes(); // the player types in the config
-            CCPlayerType[] availTypes = config.getAvailTypes(); // the available player types
+            GamePlayerType[] selTypes = config.getSelTypes(); // the player types in the config
+            GamePlayerType[] availTypes = config.getAvailTypes(); // the available player types
 //            Spinner typeSpinner = (Spinner) row
 //                    .findViewById(R.id.playerTypeSpinner); // the spinner for the current player
 //            // search through to find the one whose label matches; set it as the selection
@@ -463,8 +470,8 @@ public abstract class CCMainActivity extends Activity implements
         remoteNameEditText.setText(config.getRemoteName());
 
         // index of remote player type
-        CCPlayerType remotePlayerType = config.getRemoteSelType();
-        CCPlayerType[] availTypes = config.getAvailTypes();
+        GamePlayerType remotePlayerType = config.getRemoteSelType();
+        GamePlayerType[] availTypes = config.getAvailTypes();
         Spinner remoteTypeSpinner = (Spinner) findViewById(R.id.remote_player_spinner);
         for(int j = 0; j < availTypes.length; ++j)
         {
