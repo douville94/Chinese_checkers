@@ -1,0 +1,355 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/douvillionaire/Desktop/CS 301 (fall 2017)/Chinese checkers/ChineseCheckers_Charlie/app/build/intermediates/res/merged/debug/values-v11_values-v11.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/douvillionaire/Desktop/CS 301 (fall 2017)/Chinese checkers/ChineseCheckers_Charlie/app/src/main/res/values-v11/styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endColumns": "63",
+                        "endOffsets": "76"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "62",
+                        "endOffsets": "113"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/sizhecao/Desktop/ChineseCheckers/app/build/intermediates/res/merged/debug/values-v14_values-v14.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/sizhecao/Desktop/ChineseCheckers/app/src/main/res/values-v14/styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endColumns": "77",
+                        "endOffsets": "90"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "76",
+                        "endOffsets": "127"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/sizhecao/Desktop/ChineseCheckers/app/build/intermediates/res/merged/debug/values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/sizhecao/Desktop/ChineseCheckers/app/src/main/res/values/color.xml",
+                    "from": {
+                        "startLines": "2,5,3,4",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,167,92,129",
+                        "endColumns": "36,38,36,37",
+                        "endOffsets": "87,201,124,162"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,92,131,168",
+                        "endColumns": "36,38,36,37",
+                        "endOffsets": "87,126,163,201"
+                    }
+                },
+                {
+                    "source": "/Users/sizhecao/Desktop/ChineseCheckers/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "11,2,7,17,18,19,14,3,20,4,8,12,13,21,10,6,15,9,15,5",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,89,4",
+                        "startOffsets": "533,17,320,872,944,995,687,71,1072,124,370,583,635,1121,477,250,727,415,812,175",
+                        "endColumns": "49,53,49,71,50,76,39,52,48,50,44,51,51,50,55,69,89,61,139,74",
+                        "endOffsets": "578,66,365,939,990,1067,722,119,1116,170,410,630,682,1167,528,315,812,472,862,245"
+                    },
+                    "to": {
+                        "startLines": "12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "509,559,613,663,735,786,863,903,956,1005,1056,1101,1153,1205,1256,1312,1382,1472,1534,1589",
+                        "endColumns": "49,53,49,71,50,76,39,52,48,50,44,51,51,50,55,69,89,61,54,74",
+                        "endOffsets": "554,608,658,730,781,858,898,951,1000,1051,1096,1148,1200,1251,1307,1377,1467,1529,1584,1659"
+                    }
+                },
+                {
+                    "source": "/Users/sizhecao/Desktop/ChineseCheckers/app/src/main/res/values/dimen.xml",
+                    "from": {
+                        "startLines": "7,2,4,3,6,5",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "307,55,164,109,256,206",
+                        "endColumns": "50,53,41,54,50,49",
+                        "endOffsets": "353,104,201,159,302,251"
+                    },
+                    "to": {
+                        "startLines": "6,7,8,9,10,11",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "206,257,311,353,408,459",
+                        "endColumns": "50,53,41,54,50,49",
+                        "endOffsets": "252,306,348,403,454,504"
+                    }
+                },
+                {
+                    "source": "/Users/sizhecao/Desktop/ChineseCheckers/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endColumns": "58",
+                        "endOffsets": "71"
+                    },
+                    "to": {
+                        "startLines": "32",
+                        "startColumns": "4",
+                        "startOffsets": "1664",
+                        "endColumns": "57",
+                        "endOffsets": "1717"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/qihangwu/Documents/CS301/ChineseCheckers/app/build/intermediates/res/merged/debug/values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/qihangwu/Documents/CS301/ChineseCheckers/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "11,2,7,17,18,19,14,3,20,4,8,12,13,21,10,6,15,9,15,5",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,89,4",
+                        "startOffsets": "533,17,320,872,944,995,687,71,1072,124,370,583,635,1121,477,250,727,415,812,175",
+                        "endColumns": "49,53,49,71,50,76,39,52,48,50,44,51,51,50,55,69,89,61,139,74",
+                        "endOffsets": "578,66,365,939,990,1067,722,119,1116,170,410,630,682,1167,528,315,812,472,862,245"
+                    },
+                    "to": {
+                        "startLines": "12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "509,559,613,663,735,786,863,903,956,1005,1056,1101,1153,1205,1256,1312,1382,1472,1534,1589",
+                        "endColumns": "49,53,49,71,50,76,39,52,48,50,44,51,51,50,55,69,89,61,54,74",
+                        "endOffsets": "554,608,658,730,781,858,898,951,1000,1051,1096,1148,1200,1251,1307,1377,1467,1529,1584,1659"
+                    }
+                },
+                {
+                    "source": "/Users/qihangwu/Documents/CS301/ChineseCheckers/app/src/main/res/values/color.xml",
+                    "from": {
+                        "startLines": "2,5,3,4",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,167,92,129",
+                        "endColumns": "36,38,36,37",
+                        "endOffsets": "87,201,124,162"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,92,131,168",
+                        "endColumns": "36,38,36,37",
+                        "endOffsets": "87,126,163,201"
+                    }
+                },
+                {
+                    "source": "/Users/qihangwu/Documents/CS301/ChineseCheckers/app/src/main/res/values/dimen.xml",
+                    "from": {
+                        "startLines": "7,2,4,3,6,5",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "307,55,164,109,256,206",
+                        "endColumns": "50,53,41,54,50,49",
+                        "endOffsets": "353,104,201,159,302,251"
+                    },
+                    "to": {
+                        "startLines": "6,7,8,9,10,11",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "206,257,311,353,408,459",
+                        "endColumns": "50,53,41,54,50,49",
+                        "endOffsets": "252,306,348,403,454,504"
+                    }
+                },
+                {
+                    "source": "/Users/qihangwu/Documents/CS301/ChineseCheckers/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endColumns": "58",
+                        "endOffsets": "71"
+                    },
+                    "to": {
+                        "startLines": "32",
+                        "startColumns": "4",
+                        "startOffsets": "1664",
+                        "endColumns": "57",
+                        "endOffsets": "1717"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/douvillionaire/Desktop/CS 301 (fall 2017)/Chinese checkers/ChineseCheckers_Charlie/app/build/intermediates/res/merged/debug/values-v14_values-v14.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/douvillionaire/Desktop/CS 301 (fall 2017)/Chinese checkers/ChineseCheckers_Charlie/app/src/main/res/values-v14/styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endColumns": "77",
+                        "endOffsets": "90"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "76",
+                        "endOffsets": "127"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/qihangwu/Documents/CS301/ChineseCheckers/app/build/intermediates/res/merged/debug/values-v14_values-v14.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/qihangwu/Documents/CS301/ChineseCheckers/app/src/main/res/values-v14/styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endColumns": "77",
+                        "endOffsets": "90"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "76",
+                        "endOffsets": "127"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/douvillionaire/Desktop/CS 301 (fall 2017)/Chinese checkers/ChineseCheckers_Charlie/app/build/intermediates/res/merged/debug/values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/douvillionaire/Desktop/CS 301 (fall 2017)/Chinese checkers/ChineseCheckers_Charlie/app/src/main/res/values/color.xml",
+                    "from": {
+                        "startLines": "2,5,3,4",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,167,92,129",
+                        "endColumns": "36,38,36,37",
+                        "endOffsets": "87,201,124,162"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,92,131,168",
+                        "endColumns": "36,38,36,37",
+                        "endOffsets": "87,126,163,201"
+                    }
+                },
+                {
+                    "source": "/Users/douvillionaire/Desktop/CS 301 (fall 2017)/Chinese checkers/ChineseCheckers_Charlie/app/src/main/res/values/dimen.xml",
+                    "from": {
+                        "startLines": "7,2,4,3,6,5",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "307,55,164,109,256,206",
+                        "endColumns": "50,53,41,54,50,49",
+                        "endOffsets": "353,104,201,159,302,251"
+                    },
+                    "to": {
+                        "startLines": "6,7,8,9,10,11",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "206,257,311,353,408,459",
+                        "endColumns": "50,53,41,54,50,49",
+                        "endOffsets": "252,306,348,403,454,504"
+                    }
+                },
+                {
+                    "source": "/Users/douvillionaire/Desktop/CS 301 (fall 2017)/Chinese checkers/ChineseCheckers_Charlie/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endColumns": "58",
+                        "endOffsets": "71"
+                    },
+                    "to": {
+                        "startLines": "32",
+                        "startColumns": "4",
+                        "startOffsets": "1664",
+                        "endColumns": "57",
+                        "endOffsets": "1717"
+                    }
+                },
+                {
+                    "source": "/Users/douvillionaire/Desktop/CS 301 (fall 2017)/Chinese checkers/ChineseCheckers_Charlie/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "11,2,7,17,18,19,14,3,20,4,8,12,13,21,10,6,15,9,15,5",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,89,4",
+                        "startOffsets": "533,17,320,872,944,995,687,71,1072,124,370,583,635,1121,477,250,727,415,812,175",
+                        "endColumns": "49,53,49,71,50,76,39,52,48,50,44,51,51,50,55,69,89,61,139,74",
+                        "endOffsets": "578,66,365,939,990,1067,722,119,1116,170,410,630,682,1167,528,315,812,472,862,245"
+                    },
+                    "to": {
+                        "startLines": "12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "509,559,613,663,735,786,863,903,956,1005,1056,1101,1153,1205,1256,1312,1382,1472,1534,1589",
+                        "endColumns": "49,53,49,71,50,76,39,52,48,50,44,51,51,50,55,69,89,61,54,74",
+                        "endOffsets": "554,608,658,730,781,858,898,951,1000,1051,1096,1148,1200,1251,1307,1377,1467,1529,1584,1659"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/qihangwu/Documents/CS301/ChineseCheckers/app/build/intermediates/res/merged/debug/values-v11_values-v11.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/qihangwu/Documents/CS301/ChineseCheckers/app/src/main/res/values-v11/styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endColumns": "63",
+                        "endOffsets": "76"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "62",
+                        "endOffsets": "113"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/sizhecao/Desktop/ChineseCheckers/app/build/intermediates/res/merged/debug/values-v11_values-v11.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/sizhecao/Desktop/ChineseCheckers/app/src/main/res/values-v11/styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endColumns": "63",
+                        "endOffsets": "76"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "62",
+                        "endOffsets": "113"
+                    }
+                }
+            ]
+        }
+    ]
+}

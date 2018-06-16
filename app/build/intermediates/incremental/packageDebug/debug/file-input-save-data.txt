@@ -1,0 +1,7 @@
+#Internal package file, do not edit.
+#Fri Dec 08 23:21:13 PST 2017
+0.baseType=DIRECTORY
+0.base=/Users/douvillionaire/Desktop/CS 301 (fall 2017)/Chinese checkers/ChineseCheckers_Charlie/app/build/intermediates/transforms/dexMerger/debug/0
+0.path=classes.dex
+0.set=DEX
+count=1

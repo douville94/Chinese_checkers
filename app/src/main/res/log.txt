@@ -1,5 +1,39 @@
-1.  Consulted for learning how to draw on a SurfaceView:  https://stackoverflow.com/questions/10931419/android-drawing-on-surfaceview-and-canvas
-2.  Consulted for learning how to add custom attributes to XML file:  https://developer.android.com/training/custom-views/create-view.html
-3.  Consulted for learning how to implement quit game button.  https://stackoverflow.com/questions/17719634/how-to-exit-an-android-app-using-code
-4.  Consulted for learning how to implement quit game button.  https://stackoverflow.com/questions/7991393/how-to-switch-between-screens
-5.  Consulted for learning how to force portrait orientation programatically.  https://stackoverflow.com/questions/4885620/force-portrait-orientation-mode
+1.  Consulted for learning how to draw on a SurfaceView:
+    https://stackoverflow.com/questions/10931419/android-drawing-on-surfaceview-and-canvas
+
+2.  Consulted for learning how to add custom attributes to XML file:
+    https://developer.android.com/training/custom-views/create-view.html
+
+3.  Consulted for learning how to implement quit game button.
+    https://stackoverflow.com/questions/17719634/how-to-exit-an-android-app-using-code
+
+4.  Consulted for learning how to implement quit game button.
+    https://stackoverflow.com/questions/7991393/how-to-switch-between-screens
+
+5.  Consulted for learning how to force portrait orientation programatically.
+    https://stackoverflow.com/questions/4885620/force-portrait-orientation-mode
+
+6.  Consulted for learning how to find out what thread the program is currently in.
+    https://stackoverflow.com/questions/2848575/how-to-detect-ui-thread-on-android
+
+7.  Consulted to learn how to fix debugger.  
+    Debugger was finding no executable code at return statements.
+    https://stackoverflow.com/questions/39855656/android-studio-gradle-breakpoint-no-executable-code-found-at-line
+
+8.  Consulted to learn how to remove local.properties file from Git.  
+    This file specified the SDK pathway for the project, which was obviously different on each person's computer.
+    https://stackoverflow.com/questions/29052342/android-studio-git-gitignore-vs-project-settings-version-control-ignored
+
+    The .gitignore file was copied from here:
+    https://stackoverflow.com/questions/16736856/what-should-be-in-my-gitignore-for-an-android-studio-project/21049338#21049338
+
+9.  Consulted for learning how to display a pop-up text box. Implemented this to check if the game over
+    method was working without actually playing the game to completion.
+    https://stackoverflow.com/questions/32050647/how-to-create-simple-android-studio-pop-up-window-with-edittext-field-for-data-i
+
+10. Consulted with Dr. Vegdahl on how to map the pixel to intArray.
+    We come up with a method to map the actual pixel to the intArray coordinates.  
+	
+
+11. Consulted with Dr. Vegdahl on smartAI not responding. 
+    After debugging with Dr. Vegdahl, the smartAI is always returning illegal move actions which causes it not doing anything. 

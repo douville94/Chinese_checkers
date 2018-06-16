@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <declare-styleable name="BoardSurfaceView">
-        <!--<attr name="context" format="reference"/>
-        <attr name="attributeSet" format="reference"/>
-        <attr name="surfaceHolder" format="reference"/>
-        <attr name="name" format="string"/>-->
-    </declare-styleable>
-</resources>

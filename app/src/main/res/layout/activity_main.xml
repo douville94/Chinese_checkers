@@ -9,7 +9,7 @@
     android:layout_height="fill_parent"
     android:baselineAligned="false"
     android:orientation="horizontal"
-    tools:context="up.edu.cs301.chinese_checkers.CCMainActivity">
+    tools:context="edu.up.cs301.chinese_checkers.CCMainActivity">
 
     <LinearLayout
         android:id="@+id/ll1"
@@ -28,8 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Turn"
-                android:textSize="24sp"/>
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/currentPlayerTextView"
@@ -40,7 +39,7 @@
 
         </LinearLayout>
 
-        <up.edu.cs301.chinese_checkers.BoardSurfaceView
+        <edu.up.cs301.chinese_checkers.BoardSurfaceView
             android:id="@+id/boardSurfaceView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -48,7 +47,7 @@
             android:background="@android:color/darker_gray"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -57,37 +56,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@android:color/holo_blue_bright"
+                android:background="@android:color/holo_red_light"
                 android:text="CONFIRM"/>
 
-            <Button
-                android:id="@+id/cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@android:color/holo_red_light"
-                android:text="CANCEL"/>
-
-            <Space
-                android:layout_width="500dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-
-            <Button
-                android:id="@+id/save"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@android:color/holo_green_light"
-                android:text="SAVE"/>
-
-            <Button
-                android:id="@+id/quit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@android:color/holo_purple"
-                android:text="QUIT"/>
         </LinearLayout>
 
     </LinearLayout>

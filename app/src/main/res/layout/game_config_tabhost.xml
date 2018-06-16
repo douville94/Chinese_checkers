@@ -17,13 +17,14 @@
             android:id="@+id/localGameTab"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="@dimen/tab_height" >
 
             <include
                 android:id="@+id/localTabLayout"
-                layout="@layout/game_local_tab"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                layout="@layout/game_local_tab" />
 
         </LinearLayout>
 
@@ -31,7 +32,9 @@
             android:id="@+id/remoteGameTab"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="@dimen/tab_height" >
+
             <include
                 android:id="@+id/remoteTabLayout"
                 layout="@layout/game_remote_tab" />
